@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v8S-AO-6vX">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Loop Trip Sample app-->
+        <scene sceneID="OSU-LT-ZhH">
+            <objects>
+                <tableViewController title="Loop Trip Sample app" modalPresentationStyle="currentContext" id="mjo-dg-VLS" customClass="TripTableController" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cgF-xK-2Uq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripCell" id="06h-RW-p3s">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="06h-RW-p3s" id="TUR-fT-49j">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mjo-dg-VLS" id="LCQ-y8-oOM"/>
+                            <outlet property="delegate" destination="mjo-dg-VLS" id="aYK-ln-WhZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Loop trip sample app" id="Pur-3P-Eed">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="G2o-lJ-qwB"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="miV-F1-F6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="919.5" y="296.25"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="reX-Ym-vxP">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="Qep-Yx-TzS" customClass="MapViewController" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="orG-w6-nsn"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ft-nr-egI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wb2-g8-diJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5s4-Ad-GeN">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance: 0Km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-zk-o7v">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="5s4-Ad-GeN" secondAttribute="leading" constant="20" id="RRb-vG-Jf7"/>
+                            <constraint firstItem="9Ft-nr-egI" firstAttribute="top" secondItem="5s4-Ad-GeN" secondAttribute="bottom" constant="8" symbolic="YES" id="UK5-nc-xY0"/>
+                            <constraint firstItem="AZo-zk-o7v" firstAttribute="top" secondItem="orG-w6-nsn" secondAttribute="bottom" constant="5" id="V1t-dJ-AdL"/>
+                            <constraint firstItem="AZo-zk-o7v" firstAttribute="centerX" secondItem="Wb2-g8-diJ" secondAttribute="centerX" id="ekA-FV-2Tw"/>
+                            <constraint firstItem="5s4-Ad-GeN" firstAttribute="top" secondItem="AZo-zk-o7v" secondAttribute="bottom" constant="5" id="vCv-aL-LaB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5s4-Ad-GeN" secondAttribute="trailing" constant="-20" id="zp7-Sw-ZtD"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5s4-Ad-GeN"/>
+                                <exclude reference="AZo-zk-o7v"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="UK5-nc-xY0"/>
+                                <exclude reference="V1t-dJ-AdL"/>
+                                <exclude reference="ekA-FV-2Tw"/>
+                                <exclude reference="RRb-vG-Jf7"/>
+                                <exclude reference="vCv-aL-LaB"/>
+                                <exclude reference="zp7-Sw-ZtD"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="5s4-Ad-GeN"/>
+                                <include reference="AZo-zk-o7v"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="UK5-nc-xY0"/>
+                                <include reference="V1t-dJ-AdL"/>
+                                <include reference="ekA-FV-2Tw"/>
+                                <include reference="RRb-vG-Jf7"/>
+                                <include reference="vCv-aL-LaB"/>
+                                <include reference="zp7-Sw-ZtD"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="distLabel" destination="AZo-zk-o7v" id="P7h-ts-p6f"/>
+                        <outlet property="mapView" destination="5s4-Ad-GeN" id="fi3-Ca-7JU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VhR-yd-6OD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1669.5" y="296.25"/>
+        </scene>
+        <!--Loop trip sample app-->
+        <scene sceneID="ftK-BF-abh">
+            <objects>
+                <navigationController title="Loop trip sample app" id="v8S-AO-6vX" customClass="TripNavigationConntroller" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vQ9-lG-CPt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mjo-dg-VLS" kind="relationship" relationship="rootViewController" id="lTk-wL-JDu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q1I-63-EWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="87" y="296.25"/>
+        </scene>
+    </scenes>
+</document>
