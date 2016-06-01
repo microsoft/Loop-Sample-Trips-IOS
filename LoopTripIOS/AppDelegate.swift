@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	var window: UIWindow?
 	
-	let appID = "YOUR_APP_ID"
-	let appToken = "YOUR_APP_TOKEN"
+	let appID = "YOUR_APP_ID";
+	let appToken = "YOUR_APP_TOKEN";
 	let userID = "YOUR_USER_ID"
 	let deviceID = "YOUR_DEVICE_ID"
 	
