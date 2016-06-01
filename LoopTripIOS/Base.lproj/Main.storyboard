@@ -110,7 +110,7 @@
         <!--Loop trip sample app-->
         <scene sceneID="ftK-BF-abh">
             <objects>
-                <navigationController title="Loop trip sample app" id="v8S-AO-6vX" customClass="TripNavigationConntroller" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="Loop trip sample app" id="v8S-AO-6vX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vQ9-lG-CPt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

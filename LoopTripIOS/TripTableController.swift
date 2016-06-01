@@ -42,7 +42,7 @@ class TripTableController: UITableViewController {
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let vc = storyboard.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
 			vc.tripData = tableData[row].data;
-			(self.parentViewController as! TripNavigationConntroller).pushViewController(vc, animated: true)
+			(self.parentViewController as! UINavigationController).pushViewController(vc, animated: true)
 		} else {
 			self.tableView.deselectRowAtIndexPath(indexPath, animated:true);
 			

@@ -15,7 +15,6 @@
 		B5A29D8E1CFF9A3100939908 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A29D8B1CFF9A3100939908 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5A29D8F1CFF9A3100939908 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A29D8C1CFF9A3100939908 /* Alamofire.framework */; };
 		B5A29D901CFF9A3100939908 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A29D8C1CFF9A3100939908 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5CEBD4F1CFCF69F00EC3F20 /* TripNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD4E1CFCF69F00EC3F20 /* TripNavigationController.swift */; };
 		B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */; };
 		B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +43,6 @@
 		B588871E1CF3A6AD00B25BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A29D8B1CFF9A3100939908 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
 		B5A29D8C1CFF9A3100939908 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		B5CEBD4E1CFCF69F00EC3F20 /* TripNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripNavigationController.swift; sourceTree = "<group>"; };
 		B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
 		B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				B58887121CF3A6AD00B25BCD /* AppDelegate.swift */,
-				B5CEBD4E1CFCF69F00EC3F20 /* TripNavigationController.swift */,
 				B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */,
 				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
 				B58887161CF3A6AD00B25BCD /* Main.storyboard */,
@@ -172,7 +169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CEBD4F1CFCF69F00EC3F20 /* TripNavigationController.swift in Sources */,
 				B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */,
 				B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */,
 				B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */,
@@ -291,7 +287,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LoopTripIOS/Info.plist;
@@ -308,7 +303,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LoopTripIOS/Info.plist;
