@@ -25,7 +25,11 @@ class MapViewController: UIViewController {
 		super.viewDidLoad()
 		
 		if tripData != nil {
-			distLabel.text = "Distance: \(String(format: "%.3f", tripData!.distanceTraveledInKilometers))Km";
+			var transportMode = "on_foot"
+			if let mode = tripData!.transportMode {
+				transportMode = mode;
+			}
+			distLabel.text = "Distance: \(String(format: "%.3f", tripData!.distanceTraveledInKilometers))Km(\(transportMode))";
 			mapView.showAnnotations(tripData!.path.enumerate().map { index, element in
 				return createAnnotationFromLocation(index, location: element)}, animated: false)
 		}

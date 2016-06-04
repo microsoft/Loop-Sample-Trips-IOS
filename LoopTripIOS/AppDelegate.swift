@@ -16,16 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 	
 	let appID = "YOUR_APP_ID";
 	let appToken = "YOUR_APP_TOKEN";
-	let userID = "YOUR_USER_ID"
-	let deviceID = "YOUR_DEVICE_ID"
 	
 	var loopInitialized = false;
-	
+
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
 		
-		LoopSDK.setUserID(userID)
-		LoopSDK.setDeviceID(deviceID)
 		LoopSDK.initialize(self, appID: appID, token: appToken);
 
 		return true

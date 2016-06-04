@@ -10,12 +10,26 @@ import UIKit
 import LoopSDK
 
 class TripTableController: UITableViewController {
-	var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = [
-		(text:"Get trips", shouldShowMap:false, data:nil)
-	];
+	var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = [];
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		LoopSDK.syncManager.getTrips {
+			(loopTrips:[LoopTrip]) in
+			
+			self.tableData.removeAll();
+			
+			if loopTrips.isEmpty {
+				self.tableData.append((text: "No trips!", shouldShowMap:false, data: nil));
+			} else {
+				loopTrips.forEach { trip in
+					self.tableData.append((text: "started:\(trip.startedAt.toLocalStringWithFormat()) distance:\(trip.distanceTraveledInKilometers)Km", shouldShowMap:true, data:trip));
+				}
+			}
+			
+			self.tableView.reloadData();
+		}
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -53,23 +67,6 @@ class TripTableController: UITableViewController {
 					self.tableData.append((text: "SDK credential error!", shouldShowMap:false, data:nil))
 					self.tableView.reloadData();
 					return;
-				}
-				
-				LoopSDK.syncManager.getTrips {
-					(loopTrips:[LoopTrip]) in
-					
-					self.tableData.removeAll();
-					self.tableData.append((text: "Get trips", shouldShowMap:false, data:nil))
-					
-					if loopTrips.isEmpty {
-						self.tableData.append((text: "No trips!", shouldShowMap:false, data: nil));
-					} else {
-						loopTrips.forEach { trip in
-							self.tableData.append((text: "started:\(trip.startedAt.toLocalStringWithFormat()) distance:\(trip.distanceTraveledInKilometers)Km", shouldShowMap:true, data:trip));
-						}
-					}
-					
-					self.tableView.reloadData();
 				}
 			}
 		}

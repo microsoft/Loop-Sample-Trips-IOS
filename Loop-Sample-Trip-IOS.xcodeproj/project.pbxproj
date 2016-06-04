@@ -11,23 +11,25 @@
 		B58887181CF3A6AD00B25BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58887161CF3A6AD00B25BCD /* Main.storyboard */; };
 		B588871A1CF3A6AD00B25BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58887191CF3A6AD00B25BCD /* Assets.xcassets */; };
 		B588871D1CF3A6AD00B25BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */; };
-		B5A29D8D1CFF9A3100939908 /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A29D8B1CFF9A3100939908 /* LoopSDK.framework */; };
-		B5A29D8E1CFF9A3100939908 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A29D8B1CFF9A3100939908 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5A29D8F1CFF9A3100939908 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A29D8C1CFF9A3100939908 /* Alamofire.framework */; };
-		B5A29D901CFF9A3100939908 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A29D8C1CFF9A3100939908 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */; };
 		B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */; };
+		B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */; };
+		B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* logViewController.swift */; };
+		B5CEFDCD1D029E1300E0B799 /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */; };
+		B5CEFDCE1D029E1300E0B799 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5CEFDCF1D029E1300E0B799 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */; };
+		B5CEFDD01D029E1300E0B799 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B588872A1CF3A7B000B25BCD /* Embed Frameworks */ = {
+		B5CEFDC81D0132CC00E0B799 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B5A29D8E1CFF9A3100939908 /* LoopSDK.framework in Embed Frameworks */,
-				B5A29D901CFF9A3100939908 /* Alamofire.framework in Embed Frameworks */,
+				B5CEFDCE1D029E1300E0B799 /* LoopSDK.framework in Embed Frameworks */,
+				B5CEFDD01D029E1300E0B799 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,10 +43,12 @@
 		B58887191CF3A6AD00B25BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B588871C1CF3A6AD00B25BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B588871E1CF3A6AD00B25BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5A29D8B1CFF9A3100939908 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
-		B5A29D8C1CFF9A3100939908 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
 		B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
+		B5CEFDC91D024A7600E0B799 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
+		B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
+		B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A29D8D1CFF9A3100939908 /* LoopSDK.framework in Frameworks */,
-				B5A29D8F1CFF9A3100939908 /* Alamofire.framework in Frameworks */,
+				B5CEFDCD1D029E1300E0B799 /* LoopSDK.framework in Frameworks */,
+				B5CEFDCF1D029E1300E0B799 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +67,8 @@
 		B58887061CF3A6AD00B25BCD = {
 			isa = PBXGroup;
 			children = (
-				B5A29D8B1CFF9A3100939908 /* LoopSDK.framework */,
-				B5A29D8C1CFF9A3100939908 /* Alamofire.framework */,
+				B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */,
+				B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */,
 				B58887111CF3A6AD00B25BCD /* LoopTripIOS */,
 				B58887101CF3A6AD00B25BCD /* Products */,
 			);
@@ -84,6 +88,8 @@
 				B58887121CF3A6AD00B25BCD /* AppDelegate.swift */,
 				B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */,
 				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
+				B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */,
+				B5CEFDC91D024A7600E0B799 /* logViewController.swift */,
 				B58887161CF3A6AD00B25BCD /* Main.storyboard */,
 				B58887191CF3A6AD00B25BCD /* Assets.xcassets */,
 				B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */,
@@ -102,7 +108,7 @@
 				B588870B1CF3A6AD00B25BCD /* Sources */,
 				B588870C1CF3A6AD00B25BCD /* Frameworks */,
 				B588870D1CF3A6AD00B25BCD /* Resources */,
-				B588872A1CF3A7B000B25BCD /* Embed Frameworks */,
+				B5CEFDC81D0132CC00E0B799 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,7 +133,7 @@
 						CreatedOnToolsVersion = 7.3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -169,8 +175,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */,
 				B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */,
 				B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */,
+				B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */,
 				B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
