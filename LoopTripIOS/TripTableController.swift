@@ -11,25 +11,34 @@ import LoopSDK
 
 class TripTableController: UITableViewController {
 	var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = [];
-	
+	var showTrips = true;
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		LoopSDK.syncManager.getTrips {
-			(loopTrips:[LoopTrip]) in
-			
-			self.tableData.removeAll();
-			
-			if loopTrips.isEmpty {
-				self.tableData.append((text: "No trips!", shouldShowMap:false, data: nil));
-			} else {
-				loopTrips.forEach { trip in
-					self.tableData.append((text: "started:\(trip.startedAt.toLocalStringWithFormat()) distance:\(trip.distanceTraveledInKilometers)Km", shouldShowMap:true, data:trip));
+		let completion = {
+				(loopTrips:[LoopTrip]) in
+				
+				self.tableData.removeAll();
+				
+				if loopTrips.isEmpty {
+					let text = self.showTrips ? "No trips" : "No drives"
+					self.tableData.append((text: text, shouldShowMap:false, data: nil));
+				} else {
+					loopTrips.forEach { trip in
+						self.tableData.append((text: "started:\(trip.startedAt.toLocalStringWithFormat()) distance:\(trip.distanceTraveledInKilometers)Km", shouldShowMap:true, data:trip));
+					}
 				}
-			}
-			
-			self.tableView.reloadData();
+				
+				self.tableView.reloadData();
 		}
+
+		if (showTrips) {
+			LoopSDK.syncManager.getTrips(completion);
+		} else {
+			LoopSDK.syncManager.getDrives(completion);
+		}
+		
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -59,16 +68,6 @@ class TripTableController: UITableViewController {
 			(self.parentViewController as! UINavigationController).pushViewController(vc, animated: true)
 		} else {
 			self.tableView.deselectRowAtIndexPath(indexPath, animated:true);
-			
-			if (tableData[row].text == "Get trips") {
-				if !getLoopInitialized() {
-					self.tableData.removeAll();
-					self.tableData.append((text: "Get trips", shouldShowMap:false, data:nil))
-					self.tableData.append((text: "SDK credential error!", shouldShowMap:false, data:nil))
-					self.tableView.reloadData();
-					return;
-				}
-			}
 		}
 	}
 	

@@ -31,8 +31,8 @@ class TrackViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad();
 		
-		if let userId = LoopSDK.getUserID() {
-			credentialView.text = "UserID: \(userId)\n"
+		if let userId = LoopSDK.getUserID(), let deviceId = LoopSDK.getDeviceID() {
+			credentialView.text = "UserID: \(userId)\nDeviceID: \(deviceId)"
 		}
 
 		if LoopSDK.locationManager.active {

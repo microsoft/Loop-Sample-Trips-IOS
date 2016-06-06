@@ -19,6 +19,7 @@
 		B5CEFDCE1D029E1300E0B799 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5CEFDCF1D029E1300E0B799 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */; };
 		B5CEFDD01D029E1300E0B799 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5CEFDDC1D062C4F00E0B799 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		B5CEFDC91D024A7600E0B799 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
 		B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
 		B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				B58887121CF3A6AD00B25BCD /* AppDelegate.swift */,
+				B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */,
 				B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */,
 				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
 				B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */,
@@ -178,6 +181,7 @@
 				B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */,
 				B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */,
 				B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */,
+				B5CEFDDC1D062C4F00E0B799 /* menuViewController.swift in Sources */,
 				B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */,
 				B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */,
 			);

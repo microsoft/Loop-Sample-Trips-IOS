@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="1024.5" y="309.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="i3c-zZ-Fxt">
             <objects>
-                <viewController id="Vyz-RU-U12" sceneMemberID="viewController">
+                <viewController id="Vyz-RU-U12" customClass="menuViewController" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j9m-2y-qZw"/>
                         <viewControllerLayoutGuide type="bottom" id="25X-te-gE1"/>
@@ -66,10 +66,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="See Trips"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="125" y="267" width="150" height="30"/>
+                                    <rect key="frame" x="125" y="161" width="150" height="30"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="mjo-dg-VLS" kind="show" id="K0k-KM-r3M"/>
+                                    <segue destination="mjo-dg-VLS" kind="show" identifier="tripsSegue" id="K0k-KM-r3M"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93v-j3-ds3">
@@ -83,6 +83,17 @@
                                     <segue destination="f98-V6-lX1" kind="show" id="BIs-Wq-Zf2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5J-k2-7fe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="See Drives"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="125" y="274" width="150" height="48"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="mjo-dg-VLS" kind="show" identifier="drivesSegue" id="F2H-hb-TEJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -90,6 +101,7 @@
                                 <exclude reference="apc-hA-owv"/>
                                 <exclude reference="PFv-qx-Oaa"/>
                                 <exclude reference="93v-j3-ds3"/>
+                                <exclude reference="E5J-k2-7fe"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -97,6 +109,7 @@
                                 <include reference="apc-hA-owv"/>
                                 <include reference="PFv-qx-Oaa"/>
                                 <include reference="93v-j3-ds3"/>
+                                <include reference="E5J-k2-7fe"/>
                             </mask>
                         </variation>
                     </view>
@@ -360,4 +373,7 @@
             <point key="canvasLocation" x="-711" y="336.75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="K0k-KM-r3M"/>
+    </inferredMetricsTieBreakers>
 </document>
