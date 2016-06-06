@@ -14,6 +14,10 @@ class TrackViewController: UIViewController {
 	
 	@IBOutlet weak var credentialView: UITextView!
 	
+	@IBAction func syncClicked(sender: AnyObject) {
+		LoopSDK.syncManager.forceSendSignals();
+	}
+	
 	@IBAction func trackToggled(sender: UISwitch) {
 		if sender.on {
 			LoopSDK.locationManager.startListener()
