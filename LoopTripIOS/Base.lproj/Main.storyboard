@@ -180,43 +180,76 @@
                         <viewControllerLayoutGuide type="bottom" id="NTx-w0-J2z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Mri-sc-ukY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GSO-b3-gMP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GSO-b3-gMP">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crH-W7-9cF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Copy to clipboard"/>
+                                <connections>
+                                    <action selector="copyClicked:" destination="f98-V6-lX1" eventType="touchUpInside" id="2mL-Jt-JxQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo0-t1-RVF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearClicked:" destination="f98-V6-lX1" eventType="touchUpInside" id="1mt-Ar-EWu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="GSO-b3-gMP" secondAttribute="trailing" id="0Sb-6f-Trt"/>
+                            <constraint firstItem="crH-W7-9cF" firstAttribute="leading" secondItem="Mri-sc-ukY" secondAttribute="leadingMargin" id="B7u-ZE-1Rh"/>
+                            <constraint firstItem="NTx-w0-J2z" firstAttribute="top" secondItem="crH-W7-9cF" secondAttribute="bottom" constant="20" id="JIz-a6-Rpl"/>
+                            <constraint firstItem="NTx-w0-J2z" firstAttribute="top" secondItem="Wo0-t1-RVF" secondAttribute="bottom" constant="20" id="ZvX-Ze-75h"/>
                             <constraint firstItem="GSO-b3-gMP" firstAttribute="leading" secondItem="Mri-sc-ukY" secondAttribute="leadingMargin" id="dZM-pk-VC8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wo0-t1-RVF" secondAttribute="trailing" id="pCp-9u-fMd"/>
                             <constraint firstItem="GSO-b3-gMP" firstAttribute="top" secondItem="lE7-th-9r7" secondAttribute="bottom" id="tz1-8o-7Dd"/>
                             <constraint firstItem="NTx-w0-J2z" firstAttribute="top" secondItem="GSO-b3-gMP" secondAttribute="bottom" id="vt9-sH-fhX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="GSO-b3-gMP"/>
+                                <exclude reference="crH-W7-9cF"/>
+                                <exclude reference="Wo0-t1-RVF"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="0Sb-6f-Trt"/>
                                 <exclude reference="dZM-pk-VC8"/>
                                 <exclude reference="tz1-8o-7Dd"/>
+                                <exclude reference="B7u-ZE-1Rh"/>
+                                <exclude reference="JIz-a6-Rpl"/>
+                                <exclude reference="ZvX-Ze-75h"/>
                                 <exclude reference="vt9-sH-fhX"/>
+                                <exclude reference="pCp-9u-fMd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="GSO-b3-gMP"/>
+                                <include reference="crH-W7-9cF"/>
+                                <include reference="Wo0-t1-RVF"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="0Sb-6f-Trt"/>
                                 <include reference="dZM-pk-VC8"/>
                                 <include reference="tz1-8o-7Dd"/>
+                                <include reference="B7u-ZE-1Rh"/>
+                                <include reference="JIz-a6-Rpl"/>
+                                <include reference="ZvX-Ze-75h"/>
                                 <include reference="vt9-sH-fhX"/>
+                                <include reference="pCp-9u-fMd"/>
                             </mask>
                         </variation>
                     </view>

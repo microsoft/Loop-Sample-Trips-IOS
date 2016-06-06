@@ -16,6 +16,14 @@ class logViewController: UIViewController, LogManagerListener {
 
 	@IBOutlet weak var logView: UITextView!
 	
+	@IBAction func copyClicked(sender: AnyObject) {
+		UIPasteboard.generalPasteboard().string = cleanText();
+	}
+
+	@IBAction func clearClicked(sender: AnyObject) {
+		logManager.clearLog()
+	}
+	
 	override func viewDidLoad() {
 		logManager.addListener(self);
 		
