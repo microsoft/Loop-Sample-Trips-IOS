@@ -55,7 +55,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Tracking"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="93" y="430" width="214" height="48"/>
+                                    <rect key="frame" x="93" y="269" width="214" height="48"/>
                                 </variation>
                                 <connections>
                                     <segue destination="Ede-pO-cu4" kind="show" id="8TL-Xh-src"/>
@@ -66,21 +66,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="See Trips"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="125" y="161" width="150" height="30"/>
+                                    <rect key="frame" x="125" y="117" width="150" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="mjo-dg-VLS" kind="show" identifier="tripsSegue" id="K0k-KM-r3M"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93v-j3-ds3">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Log"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="142" y="595" width="116" height="54"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="f98-V6-lX1" kind="show" id="BIs-Wq-Zf2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5J-k2-7fe">
@@ -88,10 +77,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="See Drives"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="125" y="274" width="150" height="48"/>
+                                    <rect key="frame" x="125" y="187" width="150" height="48"/>
                                 </variation>
                                 <connections>
                                     <segue destination="mjo-dg-VLS" kind="show" identifier="drivesSegue" id="F2H-hb-TEJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93v-j3-ds3">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Log"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="354" width="116" height="54"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="f98-V6-lX1" kind="show" id="BIs-Wq-Zf2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -100,16 +100,16 @@
                             <mask key="subviews">
                                 <exclude reference="apc-hA-owv"/>
                                 <exclude reference="PFv-qx-Oaa"/>
-                                <exclude reference="93v-j3-ds3"/>
                                 <exclude reference="E5J-k2-7fe"/>
+                                <exclude reference="93v-j3-ds3"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="apc-hA-owv"/>
                                 <include reference="PFv-qx-Oaa"/>
-                                <include reference="93v-j3-ds3"/>
                                 <include reference="E5J-k2-7fe"/>
+                                <include reference="93v-j3-ds3"/>
                             </mask>
                         </variation>
                     </view>
@@ -117,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9l-75-WVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96" y="322.5"/>
+            <point key="canvasLocation" x="120" y="309.75"/>
         </scene>
         <!--Track View Controller-->
         <scene sceneID="J6S-uo-tIW">
@@ -137,13 +137,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="80" y="133" width="240" height="128"/>
+                                    <rect key="frame" x="80" y="133" width="240" height="274"/>
                                 </variation>
                             </textView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-2p-59V">
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="176" y="447" width="51" height="31"/>
+                                    <rect key="frame" x="176" y="368" width="51" height="31"/>
                                 </variation>
                                 <connections>
                                     <action selector="trackToggled:" destination="Ede-pO-cu4" eventType="valueChanged" id="RQ8-XZ-qq7"/>
@@ -155,7 +155,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="132" y="494" width="136" height="21"/>
+                                    <rect key="frame" x="132" y="415" width="136" height="21"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tzz-kY-pGT">
@@ -163,7 +163,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sync"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="169" y="598" width="63" height="33"/>
+                                    <rect key="frame" x="169" y="453" width="63" height="33"/>
                                 </variation>
                                 <connections>
                                     <action selector="syncClicked:" destination="Ede-pO-cu4" eventType="touchUpInside" id="0ld-p8-tFR"/>
@@ -251,14 +251,14 @@
                                 <exclude reference="Wo0-t1-RVF"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="0Sb-6f-Trt"/>
-                                <exclude reference="dZM-pk-VC8"/>
-                                <exclude reference="tz1-8o-7Dd"/>
-                                <exclude reference="B7u-ZE-1Rh"/>
                                 <exclude reference="JIz-a6-Rpl"/>
                                 <exclude reference="ZvX-Ze-75h"/>
                                 <exclude reference="vt9-sH-fhX"/>
                                 <exclude reference="pCp-9u-fMd"/>
+                                <exclude reference="B7u-ZE-1Rh"/>
+                                <exclude reference="0Sb-6f-Trt"/>
+                                <exclude reference="dZM-pk-VC8"/>
+                                <exclude reference="tz1-8o-7Dd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -268,14 +268,14 @@
                                 <include reference="Wo0-t1-RVF"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="0Sb-6f-Trt"/>
-                                <include reference="dZM-pk-VC8"/>
-                                <include reference="tz1-8o-7Dd"/>
-                                <include reference="B7u-ZE-1Rh"/>
                                 <include reference="JIz-a6-Rpl"/>
                                 <include reference="ZvX-Ze-75h"/>
                                 <include reference="vt9-sH-fhX"/>
                                 <include reference="pCp-9u-fMd"/>
+                                <include reference="B7u-ZE-1Rh"/>
+                                <include reference="0Sb-6f-Trt"/>
+                                <include reference="dZM-pk-VC8"/>
+                                <include reference="tz1-8o-7Dd"/>
                             </mask>
                         </variation>
                     </view>

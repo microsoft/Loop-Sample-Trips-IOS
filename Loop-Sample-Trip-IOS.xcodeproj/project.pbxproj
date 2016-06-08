@@ -15,11 +15,8 @@
 		B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */; };
 		B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */; };
 		B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* logViewController.swift */; };
-		B5CEFDCD1D029E1300E0B799 /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */; };
-		B5CEFDCE1D029E1300E0B799 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5CEFDCF1D029E1300E0B799 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */; };
-		B5CEFDD01D029E1300E0B799 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5CEFDDC1D062C4F00E0B799 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */; };
+		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +26,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B5CEFDCE1D029E1300E0B799 /* LoopSDK.framework in Embed Frameworks */,
-				B5CEFDD01D029E1300E0B799 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,9 +43,8 @@
 		B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		B5CEFDC91D024A7600E0B799 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
-		B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
-		B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
+		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CEFDCD1D029E1300E0B799 /* LoopSDK.framework in Frameworks */,
-				B5CEFDCF1D029E1300E0B799 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,8 +61,7 @@
 		B58887061CF3A6AD00B25BCD = {
 			isa = PBXGroup;
 			children = (
-				B5CEFDCB1D029E1300E0B799 /* LoopSDK.framework */,
-				B5CEFDCC1D029E1300E0B799 /* Alamofire.framework */,
+				B5CEFDE31D07A57300E0B799 /* test.gpx */,
 				B58887111CF3A6AD00B25BCD /* LoopTripIOS */,
 				B58887101CF3A6AD00B25BCD /* Products */,
 			);
@@ -134,6 +125,7 @@
 				TargetAttributes = {
 					B588870E1CF3A6AD00B25BCD = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = UBF8T346G9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -166,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B588871D1CF3A6AD00B25BCD /* LaunchScreen.storyboard in Resources */,
+				B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */,
 				B588871A1CF3A6AD00B25BCD /* Assets.xcassets in Resources */,
 				B58887181CF3A6AD00B25BCD /* Main.storyboard in Resources */,
 			);
@@ -296,15 +289,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LoopTripIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Microsoft.LoopTripIOS;
 				PRODUCT_NAME = "Loop-Sample-Trip-IOS";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -312,15 +307,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LoopTripIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Microsoft.LoopTripIOS;
 				PRODUCT_NAME = "Loop-Sample-Trip-IOS";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
