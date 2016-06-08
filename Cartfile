@@ -1,1 +1,1 @@
-git "https://msloop.visualstudio.com/DefaultCollection/OSS-Projects/_git/sdk-ios" ~>1.0
+git "git@github.com:Microsoft/Loop-iOS-SDK.git" ~>2.0

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v8S-AO-6vX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v8S-AO-6vX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -10,7 +10,7 @@
         <!--Loop Trip Sample app-->
         <scene sceneID="OSU-LT-ZhH">
             <objects>
-                <tableViewController title="Loop Trip Sample app" modalPresentationStyle="currentContext" id="mjo-dg-VLS" customClass="TripTableController" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Loop Trip Sample app" modalPresentationStyle="currentContext" id="mjo-dg-VLS" customClass="TripTableController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cgF-xK-2Uq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
         <!--Menu View Controller-->
         <scene sceneID="i3c-zZ-Fxt">
             <objects>
-                <viewController id="Vyz-RU-U12" customClass="menuViewController" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vyz-RU-U12" customClass="menuViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j9m-2y-qZw"/>
                         <viewControllerLayoutGuide type="bottom" id="25X-te-gE1"/>
@@ -122,7 +122,7 @@
         <!--Track View Controller-->
         <scene sceneID="J6S-uo-tIW">
             <objects>
-                <viewController id="Ede-pO-cu4" customClass="TrackViewController" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ede-pO-cu4" customClass="TrackViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lbY-W8-3c7"/>
                         <viewControllerLayoutGuide type="bottom" id="cii-gI-5r8"/>
@@ -200,7 +200,7 @@
         <!--Log View Controller-->
         <scene sceneID="0Ab-3Z-l1a">
             <objects>
-                <viewController id="f98-V6-lX1" customClass="logViewController" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f98-V6-lX1" customClass="logViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lE7-th-9r7"/>
                         <viewControllerLayoutGuide type="bottom" id="NTx-w0-J2z"/>
@@ -290,7 +290,7 @@
         <!--Map View Controller-->
         <scene sceneID="reX-Ym-vxP">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="Qep-Yx-TzS" customClass="MapViewController" customModule="Loop_Sample_Trip_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="Qep-Yx-TzS" customClass="MapViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="orG-w6-nsn"/>
                         <viewControllerLayoutGuide type="bottom" id="9Ft-nr-egI"/>
