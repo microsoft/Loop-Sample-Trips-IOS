@@ -42,7 +42,5 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Location permission</string>
-	<key>allowsBackgroundLocationUpdates</key>
-	<true/>
 </dict>
 </plist>

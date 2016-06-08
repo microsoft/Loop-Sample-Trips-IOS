@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 		// Override point for customization after application launch.
 		
 		LoopSDK.initialize(self, appID: appID, token: appToken);
-
+		LoopSDK.logManager.logEvent("Launch option \(launchOptions)")
 		return true
 	}
 
