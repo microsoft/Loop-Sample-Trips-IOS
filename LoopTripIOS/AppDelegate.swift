@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	var window: UIWindow?
 	
-    let appID = "funky-dev-e0333598";
-    let appToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZ1bmt5LWRldi1lMDMzMzU5OCIsImFwcEtleSI6IjAzYTg5YmIyNmM3MS00OGZhLTk0ODEtMmRhNTZlNTE3ZWQ2IiwiYWxsb3dlZFJvdXRlcyI6W3sibWV0aG9kIjoicG9zdCIsInBhdGgiOiIvdjIuMC9hcHAvZnVua3ktZGV2LWUwMzMzNTk4L3VzZXIifSx7Im1ldGhvZCI6ImRlbGV0ZSIsInBhdGgiOiIvdjIuMC9hcHAvZnVua3ktZGV2LWUwMzMzNTk4L3VzZXIifSx7Im1ldGhvZCI6InBvc3QiLCJwYXRoIjoiL3YyLjAvYXBwL2Z1bmt5LWRldi1lMDMzMzU5OC9sb2dpbiJ9LHsibWV0aG9kIjoiZ2V0IiwicGF0aCI6Ii92Mi4wL2FwcC9mdW5reS1kZXYtZTAzMzM1OTgvdXNlciJ9LHsibWV0aG9kIjoiZ2V0IiwicGF0aCI6Ii92Mi4wL2FwcC9mdW5reS1kZXYtZTAzMzM1OTgvdXNlci9bd2QtXSoifV0sImlhdCI6MTQ2NTE1NDA3MywiaXNzIjoiTG9vcCBBdXRoIHYyIiwic3ViIjoiZnVua3ktZGV2LWUwMzMzNTk4In0.85uiRhfQjuE26wShZKbU-oTbTwnyq19hRM2Jrjb3Eik";
+    let appID = "YOUR_APP_ID";
+    let appToken = "YOUR_APP_TOKEN";
 	
 	var loopInitialized = false;
 
