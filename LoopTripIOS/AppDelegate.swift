@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	var window: UIWindow?
 	
-	let appID = "YOUR_APP_ID";
-	let appToken = "YOUR_APP_TOKEN";
+    let appID = "YOUR_APP_ID";
+    let appToken = "YOUR_APP_TOKEN";
 	
 	var loopInitialized = false;
 
@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 		// Override point for customization after application launch.
 		
 		LoopSDK.initialize(self, appID: appID, token: appToken);
-		LoopSDK.logManager.logEvent("Launch option \(launchOptions)")
-		return true
+        LoopSDK.logManager.logEvent("Launch option \(launchOptions)")
+        return true
 	}
 
 	func applicationWillResignActive(application: UIApplication) {
