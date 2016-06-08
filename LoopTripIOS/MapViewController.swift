@@ -13,7 +13,7 @@ import LoopSDK
 class LoopPointAnnotation: MKPointAnnotation {
 }
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
 	@IBOutlet weak var distLabel: UILabel!
 	
@@ -32,6 +32,10 @@ class MapViewController: UIViewController {
 			distLabel.text = "Distance: \(String(format: "%.3f", tripData!.distanceTraveledInKilometers))Km(\(transportMode))";
 			mapView.showAnnotations(tripData!.path.enumerate().map { index, element in
 				return createAnnotationFromLocation(index, location: element)}, animated: false)
+			var points = tripData!.path.map { return $0.coordinate }
+			let polyline = MKPolyline(coordinates: &points, count: points.count)
+			mapView.addOverlay(polyline)
+			mapView.delegate = self;
 		}
 	}
 	
@@ -46,5 +50,14 @@ class MapViewController: UIViewController {
 		annotation.subtitle = "\(dateFormatter.stringFromDate(location.timeAt))"
 		
 		return annotation;
+	}
+	
+	//MARK:- MapViewDelegate methods
+ 
+	func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+		let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+		polylineRenderer.strokeColor = UIColor.blueColor()
+		polylineRenderer.lineWidth = 2
+		return polylineRenderer
 	}
 }
