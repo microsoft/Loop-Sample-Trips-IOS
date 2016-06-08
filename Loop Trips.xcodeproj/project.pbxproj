@@ -38,7 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B588870F1CF3A6AD00B25BCD /* Loop-Trips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Loop-Trips.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B588870F1CF3A6AD00B25BCD /* Loop Trips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Loop Trips.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58887121CF3A6AD00B25BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B58887171CF3A6AD00B25BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B58887191CF3A6AD00B25BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		B58887101CF3A6AD00B25BCD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B588870F1CF3A6AD00B25BCD /* Loop-Trips.app */,
+				B588870F1CF3A6AD00B25BCD /* Loop Trips.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B588870E1CF3A6AD00B25BCD /* Loop-Trips */ = {
+		B588870E1CF3A6AD00B25BCD /* Loop Trips */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Loop-Trips" */;
+			buildConfigurationList = B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Loop Trips" */;
 			buildPhases = (
 				B588870B1CF3A6AD00B25BCD /* Sources */,
 				B588870C1CF3A6AD00B25BCD /* Frameworks */,
@@ -117,9 +117,9 @@
 			);
 			dependencies = (
 			);
-			name = "Loop-Trips";
+			name = "Loop Trips";
 			productName = SimpleTest;
-			productReference = B588870F1CF3A6AD00B25BCD /* Loop-Trips.app */;
+			productReference = B588870F1CF3A6AD00B25BCD /* Loop Trips.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -142,7 +142,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Loop-Trips" */;
+			buildConfigurationList = B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Loop Trips" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -155,7 +155,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B588870E1CF3A6AD00B25BCD /* Loop-Trips */,
+				B588870E1CF3A6AD00B25BCD /* Loop Trips */,
 			);
 		};
 /* End PBXProject section */
@@ -304,7 +304,7 @@
 				INFOPLIST_FILE = LoopTripIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Microsoft.LoopTripIOS;
-				PRODUCT_NAME = "Loop-Trips";
+				PRODUCT_NAME = "Loop Trips";
 			};
 			name = Debug;
 		};
@@ -320,14 +320,14 @@
 				INFOPLIST_FILE = LoopTripIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Microsoft.LoopTripIOS;
-				PRODUCT_NAME = "Loop-Trips";
+				PRODUCT_NAME = "Loop Trips";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Loop-Trips" */ = {
+		B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Loop Trips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B588871F1CF3A6AD00B25BCD /* Debug */,
@@ -336,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Loop-Trips" */ = {
+		B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Loop Trips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58887221CF3A6AD00B25BCD /* Debug */,
