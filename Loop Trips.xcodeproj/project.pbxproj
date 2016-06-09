@@ -17,21 +17,21 @@
 		B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* logViewController.swift */; };
 		B5CEFDDC1D062C4F00E0B799 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */; };
 		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
-		B5CEFDE71D07D82E00E0B799 /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDE51D07D82E00E0B799 /* LoopSDK.framework */; };
-		B5CEFDE81D07D82E00E0B799 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDE51D07D82E00E0B799 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5CEFDE91D07D82E00E0B799 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDE61D07D82E00E0B799 /* Alamofire.framework */; };
-		B5CEFDEA1D07D82E00E0B799 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDE61D07D82E00E0B799 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5CEFDF01D09EB5C00E0B799 /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDEE1D09EB5C00E0B799 /* LoopSDK.framework */; };
+		B5CEFDF11D09EB5C00E0B799 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDEE1D09EB5C00E0B799 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5CEFDF21D09EB5C00E0B799 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDEF1D09EB5C00E0B799 /* Alamofire.framework */; };
+		B5CEFDF31D09EB5C00E0B799 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CEFDEF1D09EB5C00E0B799 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B5CEFDC81D0132CC00E0B799 /* Embed Frameworks */ = {
+		B5CEFDF41D09EB5C00E0B799 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B5CEFDE81D07D82E00E0B799 /* LoopSDK.framework in Embed Frameworks */,
-				B5CEFDEA1D07D82E00E0B799 /* Alamofire.framework in Embed Frameworks */,
+				B5CEFDF11D09EB5C00E0B799 /* LoopSDK.framework in Embed Frameworks */,
+				B5CEFDF31D09EB5C00E0B799 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,8 +51,8 @@
 		B5CEFDC91D024A7600E0B799 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
 		B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
-		B5CEFDE51D07D82E00E0B799 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
-		B5CEFDE61D07D82E00E0B799 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		B5CEFDEE1D09EB5C00E0B799 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
+		B5CEFDEF1D09EB5C00E0B799 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CEFDE71D07D82E00E0B799 /* LoopSDK.framework in Frameworks */,
-				B5CEFDE91D07D82E00E0B799 /* Alamofire.framework in Frameworks */,
+				B5CEFDF01D09EB5C00E0B799 /* LoopSDK.framework in Frameworks */,
+				B5CEFDF21D09EB5C00E0B799 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,8 +71,8 @@
 		B58887061CF3A6AD00B25BCD = {
 			isa = PBXGroup;
 			children = (
-				B5CEFDE51D07D82E00E0B799 /* LoopSDK.framework */,
-				B5CEFDE61D07D82E00E0B799 /* Alamofire.framework */,
+				B5CEFDEE1D09EB5C00E0B799 /* LoopSDK.framework */,
+				B5CEFDEF1D09EB5C00E0B799 /* Alamofire.framework */,
 				B5CEFDE31D07A57300E0B799 /* test.gpx */,
 				B58887111CF3A6AD00B25BCD /* LoopTripIOS */,
 				B58887101CF3A6AD00B25BCD /* Products */,
@@ -114,7 +114,7 @@
 				B588870B1CF3A6AD00B25BCD /* Sources */,
 				B588870C1CF3A6AD00B25BCD /* Frameworks */,
 				B588870D1CF3A6AD00B25BCD /* Resources */,
-				B5CEFDC81D0132CC00E0B799 /* Embed Frameworks */,
+				B5CEFDF41D09EB5C00E0B799 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
