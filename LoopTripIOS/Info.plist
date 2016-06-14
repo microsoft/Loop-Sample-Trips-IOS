@@ -42,5 +42,13 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Location permission</string>
+	<key>LOOP_APP_ID_PROP</key>
+	<string>$(LOOP_APP_ID_PROP)</string>
+	<key>LOOP_APP_TOKEN_PROP</key>
+	<string>$(LOOP_APP_TOKEN_PROP)</string>
+	<key>LOOP_USER_ID_PROP</key>
+	<string>$(LOOP_USER_ID_PROP)</string>
+	<key>LOOP_DEVICE_ID_PROP</key>
+	<string>$(LOOP_DEVICE_ID_PROP)</string>
 </dict>
 </plist>

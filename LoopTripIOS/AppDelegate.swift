@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  SimpleTest
+//  Loop Trips Sample
 //
 //  Created by Xuwen Cao on 5/23/16.
 //  Copyright © 2016 Microsoft. All rights reserved.
@@ -14,12 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	var window: UIWindow?
 	
-	let appID = "YOUR_APP_ID";
-	let appToken = "YOUR_APP_TOKEN";
 	var loopInitialized = false;
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		// Override point for customization after application launch.
+        var appID = ""
+        var appToken = ""
+        
+        var keys: NSDictionary?
+        
+        if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        
+        if let dict = keys {
+            appID = (dict["LOOP_APP_ID_PROP"] as? String)!
+            appToken = (dict["LOOP_APP_TOKEN_PROP"] as? String)!
+        }
 		
 		LoopSDK.initialize(self, appID: appID, token: appToken);
         LoopSDK.logManager.logEvent("Launch option \(launchOptions)")
