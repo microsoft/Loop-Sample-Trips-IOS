@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v8S-AO-6vX">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Loop Trip Sample app-->
+        <scene sceneID="OSU-LT-ZhH">
+            <objects>
+                <tableViewController title="Loop Trip Sample app" modalPresentationStyle="currentContext" id="mjo-dg-VLS" customClass="TripTableController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cgF-xK-2Uq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripCell" id="06h-RW-p3s">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="06h-RW-p3s" id="TUR-fT-49j">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mjo-dg-VLS" id="LCQ-y8-oOM"/>
+                            <outlet property="delegate" destination="mjo-dg-VLS" id="aYK-ln-WhZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Loop trip sample app" id="Pur-3P-Eed">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="G2o-lJ-qwB"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="miV-F1-F6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024.5" y="309.75"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="i3c-zZ-Fxt">
+            <objects>
+                <viewController id="Vyz-RU-U12" customClass="menuViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j9m-2y-qZw"/>
+                        <viewControllerLayoutGuide type="bottom" id="25X-te-gE1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5wY-Nq-HVy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apc-hA-owv">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Tracking"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="93" y="269" width="214" height="48"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="Ede-pO-cu4" kind="show" id="8TL-Xh-src"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFv-qx-Oaa">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="See Trips"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="125" y="117" width="150" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="mjo-dg-VLS" kind="show" identifier="tripsSegue" id="K0k-KM-r3M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5J-k2-7fe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="See Drives"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="125" y="187" width="150" height="48"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="mjo-dg-VLS" kind="show" identifier="drivesSegue" id="F2H-hb-TEJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93v-j3-ds3">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Log"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="354" width="116" height="54"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="f98-V6-lX1" kind="show" id="BIs-Wq-Zf2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="apc-hA-owv"/>
+                                <exclude reference="PFv-qx-Oaa"/>
+                                <exclude reference="E5J-k2-7fe"/>
+                                <exclude reference="93v-j3-ds3"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="apc-hA-owv"/>
+                                <include reference="PFv-qx-Oaa"/>
+                                <include reference="E5J-k2-7fe"/>
+                                <include reference="93v-j3-ds3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="dFt-9z-p45"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b9l-75-WVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120" y="309.75"/>
+        </scene>
+        <!--Track View Controller-->
+        <scene sceneID="J6S-uo-tIW">
+            <objects>
+                <viewController id="Ede-pO-cu4" customClass="TrackViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lbY-W8-3c7"/>
+                        <viewControllerLayoutGuide type="bottom" id="cii-gI-5r8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JmR-na-8dv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Credential" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xyu-Rh-NwT">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="133" width="240" height="274"/>
+                                </variation>
+                            </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-2p-59V">
+                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="176" y="368" width="51" height="31"/>
+                                </variation>
+                                <connections>
+                                    <action selector="trackToggled:" destination="Ede-pO-cu4" eventType="valueChanged" id="RQ8-XZ-qq7"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeC-PJ-JcE">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="132" y="415" width="136" height="21"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tzz-kY-pGT">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Sync"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="169" y="453" width="63" height="33"/>
+                                </variation>
+                                <connections>
+                                    <action selector="syncClicked:" destination="Ede-pO-cu4" eventType="touchUpInside" id="0ld-p8-tFR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Xyu-Rh-NwT"/>
+                                <exclude reference="wdq-2p-59V"/>
+                                <exclude reference="BeC-PJ-JcE"/>
+                                <exclude reference="Tzz-kY-pGT"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Xyu-Rh-NwT"/>
+                                <include reference="wdq-2p-59V"/>
+                                <include reference="BeC-PJ-JcE"/>
+                                <include reference="Tzz-kY-pGT"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="credentialView" destination="Xyu-Rh-NwT" id="GFr-L2-iJr"/>
+                        <outlet property="trackSwitch" destination="wdq-2p-59V" id="LAd-Av-ude"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gDX-Nh-nsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="321" y="1003.5"/>
+        </scene>
+        <!--Log View Controller-->
+        <scene sceneID="0Ab-3Z-l1a">
+            <objects>
+                <viewController id="f98-V6-lX1" customClass="logViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lE7-th-9r7"/>
+                        <viewControllerLayoutGuide type="bottom" id="NTx-w0-J2z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mri-sc-ukY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GSO-b3-gMP">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crH-W7-9cF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Copy to clipboard"/>
+                                <connections>
+                                    <action selector="copyClicked:" destination="f98-V6-lX1" eventType="touchUpInside" id="2mL-Jt-JxQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo0-t1-RVF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearClicked:" destination="f98-V6-lX1" eventType="touchUpInside" id="1mt-Ar-EWu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="GSO-b3-gMP" secondAttribute="trailing" id="0Sb-6f-Trt"/>
+                            <constraint firstItem="crH-W7-9cF" firstAttribute="leading" secondItem="Mri-sc-ukY" secondAttribute="leadingMargin" id="B7u-ZE-1Rh"/>
+                            <constraint firstItem="NTx-w0-J2z" firstAttribute="top" secondItem="crH-W7-9cF" secondAttribute="bottom" constant="20" id="JIz-a6-Rpl"/>
+                            <constraint firstItem="NTx-w0-J2z" firstAttribute="top" secondItem="Wo0-t1-RVF" secondAttribute="bottom" constant="20" id="ZvX-Ze-75h"/>
+                            <constraint firstItem="GSO-b3-gMP" firstAttribute="leading" secondItem="Mri-sc-ukY" secondAttribute="leadingMargin" id="dZM-pk-VC8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wo0-t1-RVF" secondAttribute="trailing" id="pCp-9u-fMd"/>
+                            <constraint firstItem="GSO-b3-gMP" firstAttribute="top" secondItem="lE7-th-9r7" secondAttribute="bottom" id="tz1-8o-7Dd"/>
+                            <constraint firstItem="NTx-w0-J2z" firstAttribute="top" secondItem="GSO-b3-gMP" secondAttribute="bottom" id="vt9-sH-fhX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="GSO-b3-gMP"/>
+                                <exclude reference="crH-W7-9cF"/>
+                                <exclude reference="Wo0-t1-RVF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="JIz-a6-Rpl"/>
+                                <exclude reference="ZvX-Ze-75h"/>
+                                <exclude reference="vt9-sH-fhX"/>
+                                <exclude reference="pCp-9u-fMd"/>
+                                <exclude reference="B7u-ZE-1Rh"/>
+                                <exclude reference="0Sb-6f-Trt"/>
+                                <exclude reference="dZM-pk-VC8"/>
+                                <exclude reference="tz1-8o-7Dd"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="GSO-b3-gMP"/>
+                                <include reference="crH-W7-9cF"/>
+                                <include reference="Wo0-t1-RVF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="JIz-a6-Rpl"/>
+                                <include reference="ZvX-Ze-75h"/>
+                                <include reference="vt9-sH-fhX"/>
+                                <include reference="pCp-9u-fMd"/>
+                                <include reference="B7u-ZE-1Rh"/>
+                                <include reference="0Sb-6f-Trt"/>
+                                <include reference="dZM-pk-VC8"/>
+                                <include reference="tz1-8o-7Dd"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="GSO-b3-gMP" id="rKb-oe-Wde"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vcb-Ge-e4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117.5" y="1006.5"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="reX-Ym-vxP">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="Qep-Yx-TzS" customClass="MapViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="orG-w6-nsn"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ft-nr-egI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wb2-g8-diJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5s4-Ad-GeN">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance: 0Km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-zk-o7v">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="5s4-Ad-GeN" secondAttribute="leading" constant="20" id="RRb-vG-Jf7"/>
+                            <constraint firstItem="9Ft-nr-egI" firstAttribute="top" secondItem="5s4-Ad-GeN" secondAttribute="bottom" constant="8" symbolic="YES" id="UK5-nc-xY0"/>
+                            <constraint firstItem="AZo-zk-o7v" firstAttribute="top" secondItem="orG-w6-nsn" secondAttribute="bottom" constant="5" id="V1t-dJ-AdL"/>
+                            <constraint firstItem="AZo-zk-o7v" firstAttribute="centerX" secondItem="Wb2-g8-diJ" secondAttribute="centerX" id="ekA-FV-2Tw"/>
+                            <constraint firstItem="5s4-Ad-GeN" firstAttribute="top" secondItem="AZo-zk-o7v" secondAttribute="bottom" constant="5" id="vCv-aL-LaB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5s4-Ad-GeN" secondAttribute="trailing" constant="-20" id="zp7-Sw-ZtD"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5s4-Ad-GeN"/>
+                                <exclude reference="AZo-zk-o7v"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="UK5-nc-xY0"/>
+                                <exclude reference="V1t-dJ-AdL"/>
+                                <exclude reference="ekA-FV-2Tw"/>
+                                <exclude reference="RRb-vG-Jf7"/>
+                                <exclude reference="vCv-aL-LaB"/>
+                                <exclude reference="zp7-Sw-ZtD"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="5s4-Ad-GeN"/>
+                                <include reference="AZo-zk-o7v"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="UK5-nc-xY0"/>
+                                <include reference="V1t-dJ-AdL"/>
+                                <include reference="ekA-FV-2Tw"/>
+                                <include reference="RRb-vG-Jf7"/>
+                                <include reference="vCv-aL-LaB"/>
+                                <include reference="zp7-Sw-ZtD"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="distLabel" destination="AZo-zk-o7v" id="P7h-ts-p6f"/>
+                        <outlet property="mapView" destination="5s4-Ad-GeN" id="fi3-Ca-7JU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VhR-yd-6OD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1789.5" y="332.25"/>
+        </scene>
+        <!--Loop trip sample app-->
+        <scene sceneID="ftK-BF-abh">
+            <objects>
+                <navigationController title="Loop trip sample app" id="v8S-AO-6vX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vQ9-lG-CPt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Vyz-RU-U12" kind="relationship" relationship="rootViewController" id="i8u-Xe-nCp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q1I-63-EWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-711" y="336.75"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="K0k-KM-r3M"/>
+    </inferredMetricsTieBreakers>
+</document>

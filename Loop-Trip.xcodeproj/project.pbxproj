@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B505DC511D148FD1008646FE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B505DC4F1D148FD1008646FE /* Alamofire.framework */; };
+		B505DC521D148FD1008646FE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B505DC4F1D148FD1008646FE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B55969251D18CB7200895224 /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55969241D18CB7200895224 /* LoopSDK.framework */; };
+		B55969261D18CB7200895224 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B55969241D18CB7200895224 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58887121CF3A6AD00B25BCD /* AppDelegate.swift */; };
+		B58887181CF3A6AD00B25BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58887161CF3A6AD00B25BCD /* Main.storyboard */; };
+		B588871A1CF3A6AD00B25BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58887191CF3A6AD00B25BCD /* Assets.xcassets */; };
+		B588871D1CF3A6AD00B25BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */; };
+		B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */; };
+		B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */; };
+		B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */; };
+		B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* logViewController.swift */; };
+		B5CEFDDC1D062C4F00E0B799 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */; };
+		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B505DC551D148FD2008646FE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B505DC521D148FD1008646FE /* Alamofire.framework in Embed Frameworks */,
+				B55969261D18CB7200895224 /* LoopSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B505DC4F1D148FD1008646FE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		B55568BA1D10D3D1000174F8 /* Keys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Keys.xcconfig; sourceTree = "<group>"; };
+		B55969241D18CB7200895224 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
+		B588870F1CF3A6AD00B25BCD /* Loop Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Loop Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58887121CF3A6AD00B25BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B58887171CF3A6AD00B25BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B58887191CF3A6AD00B25BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B588871C1CF3A6AD00B25BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B588871E1CF3A6AD00B25BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
+		B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
+		B5CEFDC91D024A7600E0B799 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
+		B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
+		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
+		F6E0F6671D1066A8005A13E5 /* Loop Trips.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Loop Trips.xcconfig"; sourceTree = "<group>"; };
+		F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		F6E0F6691D1066BC005A13E5 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		F6E0F66B1D1066EE005A13E5 /* Keys.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Keys.example.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B588870C1CF3A6AD00B25BCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B505DC511D148FD1008646FE /* Alamofire.framework in Frameworks */,
+				B55969251D18CB7200895224 /* LoopSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B58887061CF3A6AD00B25BCD = {
+			isa = PBXGroup;
+			children = (
+				B55969241D18CB7200895224 /* LoopSDK.framework */,
+				B505DC4F1D148FD1008646FE /* Alamofire.framework */,
+				F6E0F6661D10666B005A13E5 /* Config */,
+				B5CEFDE31D07A57300E0B799 /* test.gpx */,
+				B58887111CF3A6AD00B25BCD /* LoopTripIOS */,
+				B58887101CF3A6AD00B25BCD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B58887101CF3A6AD00B25BCD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B588870F1CF3A6AD00B25BCD /* Loop Trip.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B58887111CF3A6AD00B25BCD /* LoopTripIOS */ = {
+			isa = PBXGroup;
+			children = (
+				B58887121CF3A6AD00B25BCD /* AppDelegate.swift */,
+				B5CEFDDB1D062C4F00E0B799 /* menuViewController.swift */,
+				B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */,
+				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
+				B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */,
+				B5CEFDC91D024A7600E0B799 /* logViewController.swift */,
+				B58887161CF3A6AD00B25BCD /* Main.storyboard */,
+				B58887191CF3A6AD00B25BCD /* Assets.xcassets */,
+				B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */,
+				B588871E1CF3A6AD00B25BCD /* Info.plist */,
+			);
+			path = LoopTripIOS;
+			sourceTree = "<group>";
+		};
+		F6E0F6661D10666B005A13E5 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F6E0F6671D1066A8005A13E5 /* Loop Trips.xcconfig */,
+				F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */,
+				F6E0F6691D1066BC005A13E5 /* Release.xcconfig */,
+				F6E0F66B1D1066EE005A13E5 /* Keys.example.xcconfig */,
+				B55568BA1D10D3D1000174F8 /* Keys.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B588870E1CF3A6AD00B25BCD /* Loop-Trip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Loop-Trip" */;
+			buildPhases = (
+				B588870B1CF3A6AD00B25BCD /* Sources */,
+				B588870C1CF3A6AD00B25BCD /* Frameworks */,
+				B588870D1CF3A6AD00B25BCD /* Resources */,
+				B505DC551D148FD2008646FE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Loop-Trip";
+			productName = SimpleTest;
+			productReference = B588870F1CF3A6AD00B25BCD /* Loop Trip.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B58887071CF3A6AD00B25BCD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Microsoft;
+				TargetAttributes = {
+					B588870E1CF3A6AD00B25BCD = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = UBF8T346G9;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Loop-Trip" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B58887061CF3A6AD00B25BCD;
+			productRefGroup = B58887101CF3A6AD00B25BCD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B588870E1CF3A6AD00B25BCD /* Loop-Trip */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B588870D1CF3A6AD00B25BCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B588871D1CF3A6AD00B25BCD /* LaunchScreen.storyboard in Resources */,
+				B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */,
+				B588871A1CF3A6AD00B25BCD /* Assets.xcassets in Resources */,
+				B58887181CF3A6AD00B25BCD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B588870B1CF3A6AD00B25BCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */,
+				B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */,
+				B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */,
+				B5CEFDDC1D062C4F00E0B799 /* menuViewController.swift in Sources */,
+				B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */,
+				B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B58887161CF3A6AD00B25BCD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B58887171CF3A6AD00B25BCD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B588871C1CF3A6AD00B25BCD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B588871F1CF3A6AD00B25BCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6E0F6671D1066A8005A13E5 /* Loop Trips.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		B58887201CF3A6AD00B25BCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6E0F6671D1066A8005A13E5 /* Loop Trips.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		B58887221CF3A6AD00B25BCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ms.loop.Loop-Trip";
+				PRODUCT_NAME = "Loop Trip";
+			};
+			name = Debug;
+		};
+		B58887231CF3A6AD00B25BCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6E0F6691D1066BC005A13E5 /* Release.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ms.loop.Loop-Trip";
+				PRODUCT_NAME = "Loop Trip";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Loop-Trip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B588871F1CF3A6AD00B25BCD /* Debug */,
+				B58887201CF3A6AD00B25BCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Loop-Trip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B58887221CF3A6AD00B25BCD /* Debug */,
+				B58887231CF3A6AD00B25BCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B58887071CF3A6AD00B25BCD /* Project object */;
+}
