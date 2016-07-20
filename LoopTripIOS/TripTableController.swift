@@ -9,6 +9,18 @@
 import UIKit
 import LoopSDK
 
+extension NSDate {
+ public func toSimpleString() -> String {
+	// change to a readable time format and change to local time zone
+	let dateFormatter = NSDateFormatter()
+	dateFormatter.dateFormat = "MM-dd'T'HH:mm"
+	dateFormatter.timeZone = NSTimeZone.localTimeZone()
+	let timeStamp = dateFormatter.stringFromDate(self)
+	
+	return timeStamp
+	}
+}
+
 class TripTableController: UITableViewController {
 	var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = [];
 	var showTrips = true;
@@ -26,7 +38,13 @@ class TripTableController: UITableViewController {
 					self.tableData.append((text: text, shouldShowMap:false, data: nil));
 				} else {
 					loopTrips.forEach { trip in
-						self.tableData.append((text: "started:\(trip.startedAt.toLocalStringWithFormat()) distance:\(trip.distanceTraveledInKilometers)Km", shouldShowMap:true, data:trip));
+						var locales = "";
+						let start = trip.startLocale?.getFriendlyName();
+						let end = trip.endLocale?.getFriendlyName();
+						if start != nil && end != nil {
+							locales = "\(start!)->\(end!)"
+						}
+						self.tableData.append((text: "\(trip.startedAt.toSimpleString()) \(trip.distanceTraveledInKilometers)Km \(locales)", shouldShowMap:true, data:trip));
 					}
 				}
 				
@@ -34,9 +52,9 @@ class TripTableController: UITableViewController {
 		}
 
 		if (showTrips) {
-			LoopSDK.syncManager.getTrips(completion);
+			LoopSDK.syncManager.getTrips(40, callback: completion);
 		} else {
-			LoopSDK.syncManager.getDrives(completion);
+			LoopSDK.syncManager.getDrives(40, callback: completion);
 		}
 		
 	}
