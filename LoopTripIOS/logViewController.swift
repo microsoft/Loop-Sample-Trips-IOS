@@ -11,7 +11,7 @@ import LoopSDK
 
 class logViewController: UIViewController, LogManagerListener {
 	let logManager = LoopSDK.logManager;
-	let locationManager = LoopSDK.locationManager;
+	let locationManager = LoopSDK.loopLocationProvider;
 	var logs = [String]();
 
 	@IBOutlet weak var logView: UITextView!

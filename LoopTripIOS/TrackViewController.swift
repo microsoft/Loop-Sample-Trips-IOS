@@ -10,7 +10,7 @@ import UIKit
 import LoopSDK
 
 class TrackViewController: UIViewController {
-	let locationManager = LoopSDK.locationManager;
+	let locationManager = LoopSDK.loopLocationProvider;
 	
 	@IBOutlet weak var credentialView: UITextView!
 	
@@ -20,9 +20,9 @@ class TrackViewController: UIViewController {
 	
 	@IBAction func trackToggled(sender: UISwitch) {
 		if sender.on {
-			LoopSDK.locationManager.startListener()
+			LoopSDK.loopLocationProvider.startListener()
 		} else {
-			LoopSDK.locationManager.stopListener()
+			LoopSDK.loopLocationProvider.stopListener()
 		}
 	}
 	
@@ -35,7 +35,7 @@ class TrackViewController: UIViewController {
 			credentialView.text = "UserID: \(userId)\nDeviceID: \(deviceId)"
 		}
 
-		if LoopSDK.locationManager.active {
+		if LoopSDK.loopLocationProvider.active {
 			trackSwitch.setOn(true, animated: false);
 		}
 	}
