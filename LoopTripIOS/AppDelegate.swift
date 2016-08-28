@@ -2,9 +2,6 @@
 //  AppDelegate.swift
 //  Loop Trips Sample
 //
-//  Created by Xuwen Cao on 5/23/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
-//
 
 import UIKit
 import LoopSDK
@@ -19,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		var appID = ""
 		var appToken = ""
-		
+        
 		if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"),
 			let dict = NSDictionary(contentsOfFile: path) {
 			

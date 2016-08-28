@@ -7,89 +7,92 @@ import UIKit
 import LoopSDK
 import CoreLocation
 
-class TripTableController: UITableViewController {
-	var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = []
-	let showTrips = true
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
+class TripTableController2: UITableViewController {
+    var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = []
+    let showTrips = true
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         // we have our own separator
         self.tableView.separatorColor = UIColor.clearColor()
         
         self.tableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         
-		let tripsCompletionCallback = {
-				(loopTrips:[LoopTrip]) in
-				
-				self.tableData.removeAll()
-
-                if loopTrips.isEmpty {
-                    // show sample data
-                    let sampleTrips = self.loadSampleTripData()
-                    sampleTrips.forEach { trip in
-                        self.tableData.append((text: "", shouldShowMap: true, data: trip))
-                    }
+        let tripsCompletionCallback = {
+            (loopTrips:[LoopTrip]) in
+            
+            self.tableData.removeAll()
+            
+            if loopTrips.isEmpty {
+                // show sample data
+                let sampleTrips = self.loadSampleTripData()
+                sampleTrips.forEach { trip in
+                    self.tableData.append((text: "", shouldShowMap: true, data: trip))
+                }
                 
-				} else {
-					loopTrips.forEach { trip in
-						var locales = ""
-						let start = trip.startLocale?.getFriendlyName()
-						let end = trip.endLocale?.getFriendlyName()
-						if start != nil && end != nil {
-							locales = "\(start!)->\(end!)"
-						}
-                        
-						self.tableData.append((text: "\(trip.startedAt.toSimpleString()) \(trip.distanceTraveledInKilometers)Km \(locales)", shouldShowMap:true, data:trip))
-					}
-				}
-				
-				self.tableView.reloadData()
-		}
-
-		if (showTrips) {
-			LoopSDK.syncManager.getTrips(40, callback: tripsCompletionCallback)
-		} else {
-			LoopSDK.syncManager.getDrives(40, callback: tripsCompletionCallback)
-		}
-		
-	}
-	
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
-	}
-	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return tableData.count
-	}
+            } else {
+                loopTrips.forEach { trip in
+                    var locales = ""
+                    let start = trip.startLocale?.getFriendlyName()
+                    let end = trip.endLocale?.getFriendlyName()
+                    if start != nil && end != nil {
+                        locales = "\(start!)->\(end!)"
+                    }
+                    
+                    self.tableData.append((text: "\(trip.startedAt.toSimpleString()) \(trip.distanceTraveledInKilometers)Km \(locales)", shouldShowMap:true, data:trip))
+                }
+            }
+            
+            self.tableView.reloadData()
+        }
+        
+        if (showTrips) {
+            LoopSDK.syncManager.getTrips(40, callback: tripsCompletionCallback)
+        } else {
+            LoopSDK.syncManager.getDrives(40, callback: tripsCompletionCallback)
+        }
+        
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
+        
         return 87
     }
-	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
         
         if let trip = tableData[indexPath.row].data {
             cell.initialize(trip)
         }
-		
-		return cell
-	}
-
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		let row = indexPath.row
-
-		if tableData[row].shouldShowMap {
-			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			let vc = storyboard.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
-			vc.tripData = tableData[row].data;
-			(self.parentViewController as! UINavigationController).pushViewController(vc, animated: true)
-		} else {
-			self.tableView.deselectRowAtIndexPath(indexPath, animated:true);
-		}
-	}
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let row = indexPath.row
+        
+        if tableData[row].shouldShowMap {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
+            vc.tripData = tableData[row].data;
+            
+            let containerView = self.parentViewController! as UIViewController
+            let parentNavController = containerView.parentViewController as! UINavigationController
+            parentNavController.pushViewController(vc, animated: true)
+        } else {
+            self.tableView.deselectRowAtIndexPath(indexPath, animated:true);
+        }
+    }
     
     private func loadSampleTripData() -> [LoopTrip] {
         var loopTrips:[LoopTrip] = [LoopTrip]()
