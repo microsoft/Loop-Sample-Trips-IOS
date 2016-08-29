@@ -16,14 +16,16 @@ class LoopPointAnnotation: MKPointAnnotation {
 class MapViewController: UIViewController, MKMapViewDelegate {
 
 	@IBOutlet weak var distLabel: UILabel!
-	
 	@IBOutlet weak var mapView: MKMapView!
 	
-	var tripData:LoopTrip? = nil;
+    var showTrips = true
+	var tripData:LoopTrip? = nil
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        
+        self.title = self.showTrips ? "TRIPS" : "DRIVES"
+
 		if tripData != nil {
 			var transportMode = "on_foot"
 			if let mode = tripData!.transportMode {

@@ -41,7 +41,7 @@
                         <color key="textColor" red="0.45094840376297146" green="0.46968793246812246" blue="0.49691181282722519" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO - drive direction" translatesAutoresizingMaskIntoConstraints="NO" id="52e-ok-Viu">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Direction" translatesAutoresizingMaskIntoConstraints="NO" id="52e-ok-Viu">
                         <rect key="frame" x="101" y="17" width="25" height="8"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="UjJ-GA-E4j"/>
@@ -78,7 +78,7 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO - time" translatesAutoresizingMaskIntoConstraints="NO" id="EdD-W1-rF2">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Time" translatesAutoresizingMaskIntoConstraints="NO" id="EdD-W1-rF2">
                         <rect key="frame" x="369" y="62" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="0M2-hf-oLy"/>
@@ -96,7 +96,7 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO - work" translatesAutoresizingMaskIntoConstraints="NO" id="OP8-yV-vLx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Work" translatesAutoresizingMaskIntoConstraints="NO" id="OP8-yV-vLx">
                         <rect key="frame" x="205" y="12" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="5Ee-mD-8Jn"/>
@@ -211,8 +211,8 @@
     </objects>
     <resources>
         <image name="Dashed Cell Line" width="597" height="4"/>
-        <image name="ICO - drive direction" width="25" height="8"/>
-        <image name="ICO - time" width="24" height="24"/>
-        <image name="ICO - work" width="16" height="16"/>
+        <image name="ICO Cell Time" width="24" height="24"/>
+        <image name="ICO Cell Work" width="16" height="16"/>
+        <image name="ICO Direction" width="25" height="8"/>
     </resources>
 </document>

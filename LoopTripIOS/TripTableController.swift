@@ -8,93 +8,100 @@ import LoopSDK
 import CoreLocation
 
 class TripTableController: UITableViewController {
-	var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = []
-	let showTrips = true
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = []
+    var showTrips = true
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         // we have our own separator
         self.tableView.separatorColor = UIColor.clearColor()
-        
+                
         self.tableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         
-		let tripsCompletionCallback = {
-				(loopTrips:[LoopTrip]) in
-				
-				self.tableData.removeAll()
-
-                if loopTrips.isEmpty {
-                    // show sample data
-                    let sampleTrips = self.loadSampleTripData()
-                    sampleTrips.forEach { trip in
-                        self.tableData.append((text: "", shouldShowMap: true, data: trip))
-                    }
+        let tripsCompletionCallback = {
+            (loopTrips:[LoopTrip]) in
+            
+            self.tableData.removeAll()
+            
+            if loopTrips.isEmpty {
+                // show sample data
+                let sampleTrips = self.loadSampleTripData()
+                sampleTrips.forEach { trip in
+                    self.tableData.append((text: "", shouldShowMap: true, data: trip))
+                }
                 
-				} else {
-					loopTrips.forEach { trip in
-						var locales = ""
-						let start = trip.startLocale?.getFriendlyName()
-						let end = trip.endLocale?.getFriendlyName()
-						if start != nil && end != nil {
-							locales = "\(start!)->\(end!)"
-						}
-                        
-						self.tableData.append((text: "\(trip.startedAt.toSimpleString()) \(trip.distanceTraveledInKilometers)Km \(locales)", shouldShowMap:true, data:trip))
-					}
-				}
-				
-				self.tableView.reloadData()
-		}
-
-		if (showTrips) {
-			LoopSDK.syncManager.getTrips(40, callback: tripsCompletionCallback)
-		} else {
-			LoopSDK.syncManager.getDrives(40, callback: tripsCompletionCallback)
-		}
-		
-	}
-	
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
-	}
-	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return tableData.count
-	}
+            } else {
+                loopTrips.forEach { trip in
+                    var locales = ""
+                    let start = trip.startLocale?.getFriendlyName()
+                    let end = trip.endLocale?.getFriendlyName()
+                    if start != nil && end != nil {
+                        locales = "\(start!)->\(end!)"
+                    }
+                    
+                    self.tableData.append((text: "\(trip.startedAt.toSimpleString()) \(trip.distanceTraveledInKilometers)Km \(locales)", shouldShowMap:true, data:trip))
+                }
+            }
+            
+            self.tableView.reloadData()
+        }
+        
+        if (self.showTrips) {
+            LoopSDK.syncManager.getTrips(40, callback: tripsCompletionCallback)
+        } else {
+            LoopSDK.syncManager.getDrives(40, callback: tripsCompletionCallback)
+        }
+        
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableData.count
+    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
+        
         return 87
     }
-	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
         
-        if let trip = tableData[indexPath.row].data {
+        if let trip = self.tableData[indexPath.row].data {
             cell.initialize(trip)
         }
-		
-		return cell
-	}
-
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		let row = indexPath.row
-
-		if tableData[row].shouldShowMap {
-			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			let vc = storyboard.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
-			vc.tripData = tableData[row].data;
-			(self.parentViewController as! UINavigationController).pushViewController(vc, animated: true)
-		} else {
-			self.tableView.deselectRowAtIndexPath(indexPath, animated:true);
-		}
-	}
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let row = indexPath.row
+        
+        if self.tableData[row].shouldShowMap {
+            self.performSegueWithIdentifier(self.showTrips ? "showMapViewForTrips" : "showMapViewForDrives", sender: indexPath)
+        } else {
+            self.tableView.deselectRowAtIndexPath(indexPath, animated:true)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let segueId = self.showTrips ? "showMapViewForTrips" : "showMapViewForDrives"
+        if segue.identifier == segueId, let mapView = segue.destinationViewController as? MapViewController {
+            if let indexPath = sender as? NSIndexPath {
+                mapView.showTrips = self.showTrips
+                mapView.tripData = self.tableData[indexPath.row].data
+            }
+        }
+    }
     
     private func loadSampleTripData() -> [LoopTrip] {
         var loopTrips:[LoopTrip] = [LoopTrip]()
         
-        let asset = NSDataAsset(name: "SampleTrips", bundle: NSBundle.mainBundle())
+        let asset = NSDataAsset(name: self.showTrips ? "SampleTrips" : "SampleDrives", bundle: NSBundle.mainBundle())
         let jsonData = try? NSJSONSerialization.JSONObjectWithData(asset!.data, options: NSJSONReadingOptions.AllowFragments)
         for jsonTrip in jsonData as! [[String: AnyObject]] {
             loopTrips.append(self.createLoopTripFromJSON(jsonTrip))

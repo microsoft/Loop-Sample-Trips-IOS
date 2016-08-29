@@ -102,7 +102,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Old_Settings" image="ICO - Settings Off" selectedImage="ICO - Settings On" id="U0z-NL-Caz" userLabel="Settings"/>
+                    <tabBarItem key="tabBarItem" title="Old_Settings" image="ICO Settings Off" selectedImage="ICO Settings On" id="U0z-NL-Caz" userLabel="Settings"/>
                     <navigationItem key="navigationItem" id="UNp-vn-CTU"/>
                     <connections>
                         <outlet property="credentialView" destination="Xyu-Rh-NwT" id="GFr-L2-iJr"/>
@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDX-Nh-nsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="185" y="-74"/>
+            <point key="canvasLocation" x="-607" y="630"/>
         </scene>
         <!--SettingsView-->
         <scene sceneID="VG0-68-Xhx">
@@ -156,8 +156,7 @@
         <!--DrivesView-->
         <scene sceneID="qPa-bz-8dY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IdR-Ue-Ye5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="DrivesView" id="4uj-wS-t3e" userLabel="DrivesView" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="drivesViewController" title="DrivesView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4uj-wS-t3e" userLabel="DrivesView" customClass="TripViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nES-qI-QLx"/>
                         <viewControllerLayoutGuide type="bottom" id="vx1-IM-sbB"/>
@@ -190,15 +189,18 @@
                             <constraint firstItem="Bwa-fA-ME7" firstAttribute="top" secondItem="RXw-R2-xia" secondAttribute="bottom" id="nKP-PM-lBw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="DRIVES" id="gXJ-79-bpr"/>
+                    <navigationItem key="navigationItem" title="DRIVES" id="gXJ-79-bpr">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Y07-iO-ls9"/>
+                    </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IdR-Ue-Ye5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2898" y="1359"/>
         </scene>
         <!--DrivesTableView-->
         <scene sceneID="uUs-NU-QJj">
             <objects>
-                <tableViewController id="ViW-oT-i71" userLabel="DrivesTableView" customClass="TripTableController2" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ViW-oT-i71" userLabel="DrivesTableView" customClass="TripTableController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BNI-WU-DaI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="483"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,6 +210,9 @@
                             <outlet property="delegate" destination="ViW-oT-i71" id="pjn-nr-Z5H"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Qep-Yx-TzS" kind="show" identifier="showMapViewForDrives" id="OXN-gG-iZ1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZJ-4T-STz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -302,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcb-Ge-e4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="997" y="782"/>
+            <point key="canvasLocation" x="-475" y="1566"/>
         </scene>
         <!--MapView-->
         <scene sceneID="reX-Ym-vxP">
@@ -313,7 +318,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9Ft-nr-egI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wb2-g8-diJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="483"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5s4-Ad-GeN">
@@ -371,12 +376,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VhR-yd-6OD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="997" y="1517"/>
+            <point key="canvasLocation" x="-2487" y="2917"/>
         </scene>
         <!--DrivesNavController-->
         <scene sceneID="kPG-qG-Nww">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UGS-Z3-f9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="DrivesNavController" automaticallyAdjustsScrollViewInsets="NO" id="Jkh-ul-6qC" userLabel="DrivesNavController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Drives" image="ICO Drives Off" selectedImage="ICO Drives On" id="aJj-79-47k"/>
                     <toolbarItems/>
@@ -384,20 +388,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="4uj-wS-t3e" kind="relationship" relationship="rootViewController" id="l8x-2b-MPJ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UGS-Z3-f9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2898" y="579"/>
         </scene>
         <!--TripsView-->
         <scene sceneID="UnC-pL-Wos">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SUO-fO-1qD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="TripsView" id="VHv-XQ-dfn" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tripsViewController" title="TripsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHv-XQ-dfn" customClass="TripViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zk6-9w-VCk"/>
                         <viewControllerLayoutGuide type="bottom" id="qT6-pp-lUp"/>
@@ -430,15 +437,18 @@
                             <constraint firstItem="gQl-aP-3r4" firstAttribute="leading" secondItem="S1K-gJ-stH" secondAttribute="leading" id="m5R-hC-Z4d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="TRIPS" id="gTX-Uh-Zku"/>
+                    <navigationItem key="navigationItem" title="TRIPS" id="gTX-Uh-Zku">
+                        <barButtonItem key="backBarButtonItem" title=" " id="EwW-Xo-0Rj"/>
+                    </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUO-fO-1qD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2102" y="1359"/>
         </scene>
         <!--TripsTableView-->
         <scene sceneID="16W-ey-SuK">
             <objects>
-                <tableViewController id="xEq-ig-YoM" userLabel="TripsTableView" customClass="TripTableController2" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="xEq-ig-YoM" userLabel="TripsTableView" customClass="TripTableController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ToC-OX-VB6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="483"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -448,6 +458,9 @@
                             <outlet property="delegate" destination="xEq-ig-YoM" id="2kM-3M-5QD"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Qep-Yx-TzS" kind="show" identifier="showMapViewForTrips" id="EEn-EH-nSL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIb-c2-c70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -456,7 +469,6 @@
         <!--TripsNavController-->
         <scene sceneID="g97-tt-V2c">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qea-Oe-GgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="TripsNavController" automaticallyAdjustsScrollViewInsets="NO" id="36a-QK-5y6" userLabel="TripsNavController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Trips" image="ICO Trips Off" selectedImage="ICO Trips On" id="fqA-Jg-bhW" userLabel="Trips"/>
                     <toolbarItems/>
@@ -464,20 +476,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="VHv-XQ-dfn" kind="relationship" relationship="rootViewController" id="SHX-NZ-TYk"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qea-Oe-GgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2102" y="579"/>
         </scene>
     </scenes>
     <resources>
         <image name="Dashed Nav Line" width="375" height="4"/>
-        <image name="ICO - Settings Off" width="25" height="8"/>
-        <image name="ICO - Settings On" width="25" height="25"/>
         <image name="ICO Drives Off" width="24" height="14"/>
         <image name="ICO Drives On" width="24" height="14"/>
         <image name="ICO Settings Off" width="19" height="20"/>
@@ -485,4 +499,7 @@
         <image name="ICO Trips Off" width="20" height="21"/>
         <image name="ICO Trips On" width="20" height="21"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="EEn-EH-nSL"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -13,14 +13,14 @@
 		B58887181CF3A6AD00B25BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58887161CF3A6AD00B25BCD /* Main.storyboard */; };
 		B588871A1CF3A6AD00B25BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58887191CF3A6AD00B25BCD /* Assets.xcassets */; };
 		B588871D1CF3A6AD00B25BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */; };
-		B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */; };
 		B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */; };
 		B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */; };
 		B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* logViewController.swift */; };
 		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
-		F620CD1D1D72CCD80014C26B /* TripTableController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F620CD1C1D72CCD80014C26B /* TripTableController2.swift */; };
+		F620CD1D1D72CCD80014C26B /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F620CD1C1D72CCD80014C26B /* TripTableController.swift */; };
 		F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65A93891D6CCD3C006F5358 /* TripCell.xib */; };
 		F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A938B1D6CD473006F5358 /* TripCell.swift */; };
+		F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825FF11D73DA7B00D6F926 /* TripViewController.swift */; };
 		F68FAC191D6CE9FA004158D7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68FAC181D6CE9FA004158D7 /* Date.swift */; };
 		F68FAC1B1D6CEAA1004158D7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68FAC1A1D6CEAA1004158D7 /* Color.swift */; };
 		F68FAC1D1D6CEAF6004158D7 /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68FAC1C1D6CEAF6004158D7 /* Conversion.swift */; };
@@ -53,14 +53,14 @@
 		B58887191CF3A6AD00B25BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B588871C1CF3A6AD00B25BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B588871E1CF3A6AD00B25BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
 		B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		B5CEFDC91D024A7600E0B799 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
 		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
-		F620CD1C1D72CCD80014C26B /* TripTableController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController2.swift; sourceTree = "<group>"; };
+		F620CD1C1D72CCD80014C26B /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
 		F65A93891D6CCD3C006F5358 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		F65A938B1D6CD473006F5358 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
+		F6825FF11D73DA7B00D6F926 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		F68FAC181D6CE9FA004158D7 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F68FAC1A1D6CEAA1004158D7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F68FAC1C1D6CEAF6004158D7 /* Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				B58887121CF3A6AD00B25BCD /* AppDelegate.swift */,
-				B5CEBD501CFCFAF500EC3F20 /* TripTableController.swift */,
-				F620CD1C1D72CCD80014C26B /* TripTableController2.swift */,
+				F620CD1C1D72CCD80014C26B /* TripTableController.swift */,
+				F6825FF11D73DA7B00D6F926 /* TripViewController.swift */,
 				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
 				F65A938D1D6CD4A0006F5358 /* Trip Cell */,
 				B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */,
@@ -238,12 +238,12 @@
 			files = (
 				F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */,
 				F68FAC211D6FB8ED004158D7 /* JSON.swift in Sources */,
-				F620CD1D1D72CCD80014C26B /* TripTableController2.swift in Sources */,
+				F620CD1D1D72CCD80014C26B /* TripTableController.swift in Sources */,
 				F68FAC1D1D6CEAF6004158D7 /* Conversion.swift in Sources */,
 				B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */,
 				B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */,
+				F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */,
 				F68FAC191D6CE9FA004158D7 /* Date.swift in Sources */,
-				B5CEBD511CFCFAF500EC3F20 /* TripTableController.swift in Sources */,
 				B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */,
 				B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */,
 				F68FAC1B1D6CEAA1004158D7 /* Color.swift in Sources */,
