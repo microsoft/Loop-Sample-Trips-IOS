@@ -8,7 +8,8 @@ import LoopSDK
 import CoreLocation
 
 class TripTableController: UITableViewController {
-    var tableData:[(text: String, shouldShowMap: Bool, data:LoopTrip?)] = []
+    let cellViewHeight: CGFloat = 94.0
+    var tableData:[(text: String, shouldShowMap: Bool, isSampleData: Bool, data:LoopTrip?)] = []
     var showTrips = true
     
     override func viewDidLoad() {
@@ -25,22 +26,16 @@ class TripTableController: UITableViewController {
             self.tableData.removeAll()
             
             if loopTrips.isEmpty {
-                // show sample data
+                // no trips for this user yet, read in
+                // sample data for now
                 let sampleTrips = self.loadSampleTripData()
                 sampleTrips.forEach { trip in
-                    self.tableData.append((text: "", shouldShowMap: true, data: trip))
+                    self.tableData.append((text: "", shouldShowMap: true, isSampleData: true, data: trip))
                 }
                 
             } else {
                 loopTrips.forEach { trip in
-                    var locales = ""
-                    let start = trip.startLocale?.getFriendlyName()
-                    let end = trip.endLocale?.getFriendlyName()
-                    if start != nil && end != nil {
-                        locales = "\(start!)->\(end!)"
-                    }
-                    
-                    self.tableData.append((text: "\(trip.startedAt.toSimpleString()) \(trip.distanceTraveledInKilometers)Km \(locales)", shouldShowMap:true, data:trip))
+                    self.tableData.append((text: "", shouldShowMap:true, isSampleData: false, data:trip))
                 }
             }
             
@@ -64,16 +59,18 @@ class TripTableController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        return 87
+        if (self.tableData[indexPath.row].isSampleData) {
+            return cellViewHeight
+        }
+        else {
+            return cellViewHeight - 24.0
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
-        
-        if let trip = self.tableData[indexPath.row].data {
-            cell.initialize(trip)
-        }
+        let row = self.tableData[indexPath.row]
+        cell.initialize(row.data!, sampleTrip: row.isSampleData)
         
         return cell
     }

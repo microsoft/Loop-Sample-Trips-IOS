@@ -18,24 +18,23 @@ class TripCell: UITableViewCell {
     @IBOutlet weak var locationDistance: UILabel!
     @IBOutlet weak var locationDuration: UILabel!
     @IBOutlet weak var sampleTripIndicator: UILabel!
-
+    
     override func awakeFromNib () {
         super.awakeFromNib()
         
-        self.backgroundColor = UIColor.init(red: 228, green: 228, blue: 228)
+        self.backgroundColor = Colors.tableCellBackgroundColor
     }
     
-    func initialize(trip: LoopTrip) {
+    func initialize(trip: LoopTrip, sampleTrip: Bool) {
+        if (!sampleTrip) {
+            sampleTripIndicator.removeFromSuperview()
+        }
+        
         setLocaleLabel(trip)
         
-        let distanceInMiles = Conversions.kilometersToMiles(trip.distanceTraveledInKilometers)
-        self.locationDistance.text = "\(distanceInMiles.roundToPlaces(2)) mi."
-        
-        let duration: String = trip.endedAt.offsetFrom(trip.startedAt)
-        self.locationDuration.text = duration
-        
-        let relativeDate: String = NSDate.timeAgoSinceDate(trip.startedAt, numericDates: false)
-        self.locationTime.text = relativeDate
+        self.locationDistance.text = " \(Conversions.kilometersToMiles(trip.distanceTraveledInKilometers)) mi. "
+        self.locationDuration.text = trip.endedAt.offsetFrom(trip.startedAt)
+        self.locationTime.text = trip.startedAt.relativeDayAndTime(trip.endedAt)
     }
     
     func setLocaleLabel(trip: LoopTrip) {
