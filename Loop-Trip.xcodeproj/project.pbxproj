@@ -17,9 +17,11 @@
 		B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */; };
 		B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* logViewController.swift */; };
 		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
-		F620CD1D1D72CCD80014C26B /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F620CD1C1D72CCD80014C26B /* TripTableController.swift */; };
 		F657491A1D74257F00F3398B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749191D74257F00F3398B /* SettingsViewController.swift */; };
 		F657491E1D74D32700F3398B /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F657491D1D74D32700F3398B /* TripModel.swift */; };
+		F65749221D75560200F3398B /* DriveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749211D75560200F3398B /* DriveModel.swift */; };
+		F65749241D75599800F3398B /* KnownLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749231D75599800F3398B /* KnownLocationModel.swift */; };
+		F65749261D755D3E00F3398B /* DriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749251D755D3E00F3398B /* DriveViewController.swift */; };
 		F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65A93891D6CCD3C006F5358 /* TripCell.xib */; };
 		F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A938B1D6CD473006F5358 /* TripCell.swift */; };
 		F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825FF11D73DA7B00D6F926 /* TripViewController.swift */; };
@@ -59,9 +61,11 @@
 		B5CEFDC01D0120F800E0B799 /* TrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		B5CEFDC91D024A7600E0B799 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
 		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
-		F620CD1C1D72CCD80014C26B /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
 		F65749191D74257F00F3398B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F657491D1D74D32700F3398B /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
+		F65749211D75560200F3398B /* DriveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveModel.swift; sourceTree = "<group>"; };
+		F65749231D75599800F3398B /* KnownLocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownLocationModel.swift; sourceTree = "<group>"; };
+		F65749251D755D3E00F3398B /* DriveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveViewController.swift; sourceTree = "<group>"; };
 		F65A93891D6CCD3C006F5358 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		F65A938B1D6CD473006F5358 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		F6825FF11D73DA7B00D6F926 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
@@ -114,9 +118,11 @@
 			isa = PBXGroup;
 			children = (
 				B58887121CF3A6AD00B25BCD /* AppDelegate.swift */,
-				F620CD1C1D72CCD80014C26B /* TripTableController.swift */,
 				F657491D1D74D32700F3398B /* TripModel.swift */,
+				F65749211D75560200F3398B /* DriveModel.swift */,
+				F65749231D75599800F3398B /* KnownLocationModel.swift */,
 				F6825FF11D73DA7B00D6F926 /* TripViewController.swift */,
+				F65749251D755D3E00F3398B /* DriveViewController.swift */,
 				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
 				F65749191D74257F00F3398B /* SettingsViewController.swift */,
 				F65A938D1D6CD4A0006F5358 /* Trip Cell */,
@@ -244,12 +250,14 @@
 			files = (
 				F657491E1D74D32700F3398B /* TripModel.swift in Sources */,
 				F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */,
+				F65749261D755D3E00F3398B /* DriveViewController.swift in Sources */,
+				F65749221D75560200F3398B /* DriveModel.swift in Sources */,
 				F68FAC211D6FB8ED004158D7 /* JSON.swift in Sources */,
-				F620CD1D1D72CCD80014C26B /* TripTableController.swift in Sources */,
 				F68FAC1D1D6CEAF6004158D7 /* Conversion.swift in Sources */,
 				B5CEFDC11D0120F800E0B799 /* TrackViewController.swift in Sources */,
 				B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */,
 				F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */,
+				F65749241D75599800F3398B /* KnownLocationModel.swift in Sources */,
 				F68FAC191D6CE9FA004158D7 /* Date.swift in Sources */,
 				B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */,
 				B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */,

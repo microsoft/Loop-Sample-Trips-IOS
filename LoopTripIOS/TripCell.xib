@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripCell" rowHeight="104" id="CJM-1g-qTS" customClass="TripCell" customModule="Loop_Trip" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="111"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripCell" rowHeight="105" id="CJM-1g-qTS" customClass="TripCell" customModule="Loop_Trip" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CJM-1g-qTS" id="ndB-5Z-fWg">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="110.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="111.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="BELLEVUEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89N-BC-108">
@@ -55,7 +55,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0U-mJ-ThW" userLabel="Dashed Line View">
-                        <rect key="frame" x="18" y="108.5" width="339" height="4"/>
+                        <rect key="frame" x="18" y="109" width="339" height="4"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dashed Cell Line" translatesAutoresizingMaskIntoConstraints="NO" id="um2-MK-guK">
                                 <rect key="frame" x="-129" y="0.0" width="597" height="4"/>
@@ -85,8 +85,8 @@
                             <constraint firstAttribute="width" constant="15" id="aZI-Tp-E7F"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000.94 mi." textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-F4-LCx">
-                        <rect key="frame" x="277.5" y="17" width="79.5" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10.94 mi." textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-F4-LCx">
+                        <rect key="frame" x="278" y="17" width="79" height="16"/>
                         <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="NMi-xQ-QKa"/>
@@ -206,13 +206,13 @@
                 <outlet property="sampleTripIndicator" destination="UKm-D3-HnH" id="9xP-kY-6al"/>
                 <outlet property="startLocation" destination="89N-BC-108" id="4Rx-vI-Qmm"/>
             </connections>
-            <point key="canvasLocation" x="1242.5" y="398.5"/>
+            <point key="canvasLocation" x="1242.5" y="398"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="Dashed Cell Line" width="597" height="4"/>
         <image name="ICO Cell Time" width="24" height="24"/>
         <image name="ICO Cell Work" width="16" height="16"/>
-        <image name="ICO Direction" width="25" height="8"/>
+        <image name="ICO Direction" width="31" height="9"/>
     </resources>
 </document>

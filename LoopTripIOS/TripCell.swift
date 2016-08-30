@@ -19,6 +19,8 @@ class TripCell: UITableViewCell {
     @IBOutlet weak var locationDuration: UILabel!
     @IBOutlet weak var sampleTripIndicator: UILabel!
     
+    let knownLocationsModel = KnownLocationModel.sharedInstance
+    
     override func awakeFromNib () {
         super.awakeFromNib()
         
