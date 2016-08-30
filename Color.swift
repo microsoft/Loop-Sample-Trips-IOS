@@ -9,4 +9,5 @@ import UIKit
 
 class Colors {
     static let tableCellBackgroundColor = UIColor.init(red: CGFloat(228) / 255.0, green: CGFloat(228) / 255.0, blue: CGFloat(228) / 255.0, alpha: 1.0)
+    static let tableLinkTextColor = UIColor.init(red: CGFloat(35) / 255.0, green: CGFloat(156) / 255.0, blue: CGFloat(195) / 255.0, alpha: 1.0)
 }

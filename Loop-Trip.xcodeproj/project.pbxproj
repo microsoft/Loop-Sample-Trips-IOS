@@ -19,6 +19,7 @@
 		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
 		F620CD1D1D72CCD80014C26B /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F620CD1C1D72CCD80014C26B /* TripTableController.swift */; };
 		F657491A1D74257F00F3398B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749191D74257F00F3398B /* SettingsViewController.swift */; };
+		F657491E1D74D32700F3398B /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F657491D1D74D32700F3398B /* TripModel.swift */; };
 		F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65A93891D6CCD3C006F5358 /* TripCell.xib */; };
 		F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A938B1D6CD473006F5358 /* TripCell.swift */; };
 		F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825FF11D73DA7B00D6F926 /* TripViewController.swift */; };
@@ -60,6 +61,7 @@
 		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
 		F620CD1C1D72CCD80014C26B /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
 		F65749191D74257F00F3398B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F657491D1D74D32700F3398B /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
 		F65A93891D6CCD3C006F5358 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		F65A938B1D6CD473006F5358 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		F6825FF11D73DA7B00D6F926 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				B58887121CF3A6AD00B25BCD /* AppDelegate.swift */,
 				F620CD1C1D72CCD80014C26B /* TripTableController.swift */,
+				F657491D1D74D32700F3398B /* TripModel.swift */,
 				F6825FF11D73DA7B00D6F926 /* TripViewController.swift */,
 				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
 				F65749191D74257F00F3398B /* SettingsViewController.swift */,
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F657491E1D74D32700F3398B /* TripModel.swift in Sources */,
 				F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */,
 				F68FAC211D6FB8ED004158D7 /* JSON.swift in Sources */,
 				F620CD1D1D72CCD80014C26B /* TripTableController.swift in Sources */,

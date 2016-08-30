@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 
 class TripViewController: UIViewController {
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if self.restorationIdentifier == "drivesViewController", let tableView = segue.destinationViewController as? TripTableController {
             tableView.showTrips = false
