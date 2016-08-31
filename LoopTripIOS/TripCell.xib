@@ -14,43 +14,43 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="111"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="BELLEVUEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89N-BC-108">
-                        <rect key="frame" x="18" y="16" width="90" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="BELLEVUE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89N-BC-108">
+                        <rect key="frame" x="18" y="16" width="78" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="SnB-bT-bUn"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REDMONDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP6-BN-wm6">
-                        <rect key="frame" x="153" y="16" width="90" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BELLEVUE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP6-BN-wm6">
+                        <rect key="frame" x="141" y="16" width="78" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="H5P-ud-8XK"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today 11:32 AM - 1:29 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-0a-efp">
-                        <rect key="frame" x="18" y="38" width="159" height="18"/>
+                        <rect key="frame" x="18" y="39" width="174" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="wcz-12-Ubi"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="11"/>
+                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                         <color key="textColor" red="0.45094840376297146" green="0.46968793246812246" blue="0.49691181282722519" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Direction" translatesAutoresizingMaskIntoConstraints="NO" id="52e-ok-Viu">
-                        <rect key="frame" x="118" y="22" width="25" height="8"/>
+                        <rect key="frame" x="106" y="22" width="25" height="8"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="UjJ-GA-E4j"/>
                             <constraint firstAttribute="height" constant="8" id="gjk-5n-vTV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:56:41" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHB-D1-nML">
-                        <rect key="frame" x="304" y="40" width="53" height="13"/>
-                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="11"/>
+                        <rect key="frame" x="299" y="41" width="58" height="14"/>
+                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                         <color key="textColor" red="0.45094840376297146" green="0.46968793246812246" blue="0.49691181282722519" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -68,7 +68,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="SAMPLE TRIP" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKm-D3-HnH">
-                        <rect key="frame" x="18" y="61" width="92" height="16"/>
+                        <rect key="frame" x="18" y="62" width="92" height="16"/>
                         <color key="backgroundColor" red="0.14117647058823529" green="0.60784313725490191" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="92" id="8cZ-qB-9cb"/>
@@ -79,25 +79,25 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Time" translatesAutoresizingMaskIntoConstraints="NO" id="EdD-W1-rF2">
-                        <rect key="frame" x="286" y="39" width="15" height="15"/>
+                        <rect key="frame" x="281" y="40" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="0M2-hf-oLy"/>
                             <constraint firstAttribute="width" constant="15" id="aZI-Tp-E7F"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.94 mi." textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-F4-LCx">
-                        <rect key="frame" x="297" y="17" width="60" height="16"/>
-                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 10.94 mi. " textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-F4-LCx">
+                        <rect key="frame" x="277" y="17" width="80" height="16"/>
+                        <color key="backgroundColor" red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="NMi-xQ-QKa"/>
                             <constraint firstAttribute="height" constant="16" id="XD6-wf-ZRi"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="11"/>
+                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
+                        <color key="highlightedColor" red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Blank" translatesAutoresizingMaskIntoConstraints="NO" id="OP8-yV-vLx">
-                        <rect key="frame" x="248" y="17" width="16" height="16"/>
+                        <rect key="frame" x="224" y="17" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="5Ee-mD-8Jn"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="FvT-3K-jCu"/>
@@ -128,7 +128,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="u0U-mJ-ThW" secondAttribute="trailing" constant="10" id="F3y-dB-Igr"/>
                     <constraint firstItem="89N-BC-108" firstAttribute="leading" secondItem="ndB-5Z-fWg" secondAttribute="leadingMargin" constant="20" id="H6I-tG-dFc"/>
                     <constraint firstItem="52e-ok-Viu" firstAttribute="leading" secondItem="89N-BC-108" secondAttribute="trailing" constant="10" id="HrU-6d-ccE"/>
-                    <constraint firstItem="EdD-W1-rF2" firstAttribute="top" secondItem="2Wx-F4-LCx" secondAttribute="bottom" constant="6" id="ITR-75-NtA"/>
+                    <constraint firstItem="EdD-W1-rF2" firstAttribute="top" secondItem="2Wx-F4-LCx" secondAttribute="bottom" constant="7" id="ITR-75-NtA"/>
                     <constraint firstItem="rgd-0a-efp" firstAttribute="top" secondItem="89N-BC-108" secondAttribute="bottom" constant="5" id="IYq-m8-Qv3"/>
                     <constraint firstItem="52e-ok-Viu" firstAttribute="leading" secondItem="89N-BC-108" secondAttribute="trailing" constant="10" id="Igv-zS-fVa"/>
                     <constraint firstItem="HHB-D1-nML" firstAttribute="bottom" secondItem="rgd-0a-efp" secondAttribute="bottom" id="LIu-QC-g2o"/>
@@ -158,7 +158,7 @@
                     <constraint firstItem="2Wx-F4-LCx" firstAttribute="top" secondItem="89N-BC-108" secondAttribute="top" id="uUS-N9-yfQ"/>
                     <constraint firstItem="u0U-mJ-ThW" firstAttribute="top" secondItem="UKm-D3-HnH" secondAttribute="bottom" constant="8" id="vhQ-0L-aJL"/>
                     <constraint firstItem="HP6-BN-wm6" firstAttribute="leading" secondItem="52e-ok-Viu" secondAttribute="trailing" priority="900" constant="10" id="vtP-gX-6RB"/>
-                    <constraint firstItem="HHB-D1-nML" firstAttribute="top" secondItem="2Wx-F4-LCx" secondAttribute="bottom" constant="7" id="wa6-LB-y20"/>
+                    <constraint firstItem="HHB-D1-nML" firstAttribute="top" secondItem="2Wx-F4-LCx" secondAttribute="bottom" constant="8" id="wa6-LB-y20"/>
                     <constraint firstItem="HP6-BN-wm6" firstAttribute="leading" secondItem="52e-ok-Viu" secondAttribute="trailing" constant="10" id="web-5R-J1B"/>
                     <constraint firstItem="89N-BC-108" firstAttribute="top" secondItem="ndB-5Z-fWg" secondAttribute="topMargin" constant="8" id="wiA-P3-GbZ"/>
                     <constraint firstItem="UKm-D3-HnH" firstAttribute="leading" secondItem="ndB-5Z-fWg" secondAttribute="leadingMargin" constant="10" id="xYR-ho-KxF"/>

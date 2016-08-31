@@ -27,6 +27,8 @@ class TripCell: UITableViewCell {
     }
     
     func initialize(trip: LoopTrip, sampleTrip: Bool) {
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        
         if (!sampleTrip) {
             sampleTripIndicator.removeFromSuperview()
         }

@@ -57,6 +57,15 @@ class TripViewController: UIViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMapViewForTrips", let mapView = segue.destinationViewController as? MapViewController {
+            if let indexPath = sender as? NSIndexPath {
+                mapView.showTrips = true
+                mapView.tripData = self.tripModel.tableData[indexPath.row].data
+            }
+        }
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -90,12 +99,14 @@ class TripViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showMapViewForTrips", let mapView = segue.destinationViewController as? MapViewController {
-            if let indexPath = sender as? NSIndexPath {
-                mapView.showTrips = true
-                mapView.tripData = self.tripModel.tableData[indexPath.row].data
-            }
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            tripModel.tableData.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
 }

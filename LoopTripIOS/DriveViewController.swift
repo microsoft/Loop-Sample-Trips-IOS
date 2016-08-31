@@ -57,6 +57,15 @@ class DriveViewController: UIViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMapViewForDrives", let mapView = segue.destinationViewController as? MapViewController {
+            if let indexPath = sender as? NSIndexPath {
+                mapView.showTrips = false
+                mapView.tripData = self.driveModel.tableData[indexPath.row].data
+            }
+        }
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -89,13 +98,15 @@ class DriveViewController: UIViewController {
             self.driveTableView.deselectRowAtIndexPath(indexPath, animated:true)
         }
     }
+
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showMapViewForDrives", let mapView = segue.destinationViewController as? MapViewController {
-            if let indexPath = sender as? NSIndexPath {
-                mapView.showTrips = false
-                mapView.tripData = self.driveModel.tableData[indexPath.row].data
-            }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            driveModel.tableData.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
 }
