@@ -8,7 +8,7 @@ import UIKit
 
 class TripViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tripTableView: UITableView!
     
     let cellViewHeight: CGFloat = 94.0
     var tripModel = TripModel.sharedInstance
@@ -25,21 +25,36 @@ class TripViewController: UIViewController {
         super.viewDidLoad()
         
         // turn off the standard separator, we have a custom separator
-        self.tableView.separatorColor = UIColor.clearColor()
-        self.tableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
+        self.tripTableView.separatorColor = UIColor.clearColor()
+        self.tripTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
 
-        self.tripModel.loadData({
-            self.tableView.reloadData()
-        })
+        loadModelDataAsync()
         
-        self.tableView.addSubview(self.refreshControl)
+        self.tripTableView.addSubview(self.refreshControl)
     }
 
     func handleRefresh(refreshControl: UIRefreshControl) {
-        self.tripModel.loadData({
-            self.tableView.reloadData()
-            refreshControl.endRefreshing()
-        })
+        self.loadModelDataAsync()
+        
+        refreshControl.endRefreshing()
+    }
+    
+    func loadModelDataAsync() {
+        dispatch_async(GlobalUserInitiatedQueue) {
+            self.tripModel.loadData({
+                dispatch_async(GlobalMainQueue) {
+                    self.tripTableView.reloadData()
+                }
+            })
+        }
+        
+        dispatch_async(GlobalUserInitiatedQueue) {
+            self.knownLocationsModel.loadData({
+                dispatch_async(GlobalMainQueue) {
+                    self.view.setNeedsDisplay()
+                }
+            })
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -71,7 +86,7 @@ class TripViewController: UIViewController {
         if self.tripModel.tableData[indexPath.row].shouldShowMap {
             self.performSegueWithIdentifier("showMapViewForTrips", sender: indexPath)
         } else {
-            self.tableView.deselectRowAtIndexPath(indexPath, animated:true)
+            self.tripTableView.deselectRowAtIndexPath(indexPath, animated:true)
         }
     }
     

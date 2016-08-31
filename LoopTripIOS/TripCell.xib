@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CJM-1g-qTS" id="ndB-5Z-fWg">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="111.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="111"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="BELLEVUEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89N-BC-108">
@@ -85,8 +85,8 @@
                             <constraint firstAttribute="width" constant="15" id="aZI-Tp-E7F"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10.94 mi." textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-F4-LCx">
-                        <rect key="frame" x="278" y="17" width="79" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.94 mi." textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-F4-LCx">
+                        <rect key="frame" x="297" y="17" width="60" height="16"/>
                         <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="NMi-xQ-QKa"/>
@@ -96,7 +96,7 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Work" translatesAutoresizingMaskIntoConstraints="NO" id="OP8-yV-vLx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Blank" translatesAutoresizingMaskIntoConstraints="NO" id="OP8-yV-vLx">
                         <rect key="frame" x="248" y="17" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="5Ee-mD-8Jn"/>
@@ -201,7 +201,6 @@
                 <outlet property="locationDistance" destination="2Wx-F4-LCx" id="6BQ-DP-Wqg"/>
                 <outlet property="locationDuration" destination="HHB-D1-nML" id="SVv-oB-1Ly"/>
                 <outlet property="locationIcon" destination="OP8-yV-vLx" id="udA-4Y-be3"/>
-                <outlet property="locationIconConstraint" destination="qYP-p9-zh5" id="309-bA-anL"/>
                 <outlet property="locationTime" destination="rgd-0a-efp" id="zuP-yJ-0nT"/>
                 <outlet property="sampleTripIndicator" destination="UKm-D3-HnH" id="9xP-kY-6al"/>
                 <outlet property="startLocation" destination="89N-BC-108" id="4Rx-vI-Qmm"/>
@@ -211,8 +210,8 @@
     </objects>
     <resources>
         <image name="Dashed Cell Line" width="597" height="4"/>
+        <image name="ICO Cell Blank" width="16" height="16"/>
         <image name="ICO Cell Time" width="24" height="24"/>
-        <image name="ICO Cell Work" width="16" height="16"/>
         <image name="ICO Direction" width="31" height="9"/>
     </resources>
 </document>

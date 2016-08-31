@@ -8,7 +8,7 @@ import UIKit
 
 class DriveViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var driveTableView: UITableView!
     
     let cellViewHeight: CGFloat = 94.0
     var driveModel = DriveModel.sharedInstance
@@ -25,21 +25,36 @@ class DriveViewController: UIViewController {
         super.viewDidLoad()
         
         // turn off the standard separator, we have a custom separator
-        self.tableView.separatorColor = UIColor.clearColor()
-        self.tableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
+        self.driveTableView.separatorColor = UIColor.clearColor()
+        self.driveTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         
-        self.driveModel.loadData({
-            self.tableView.reloadData()
-        })
+        self.loadModelDataAsync()
         
-        self.tableView.addSubview(self.refreshControl)
+        self.driveTableView.addSubview(self.refreshControl)
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        self.driveModel.loadData({
-            self.tableView.reloadData()
-            refreshControl.endRefreshing()
-        })
+        self.loadModelDataAsync()
+
+        refreshControl.endRefreshing()
+    }
+    
+    func loadModelDataAsync() {
+        dispatch_async(GlobalUserInitiatedQueue) {
+            self.driveModel.loadData({
+                dispatch_async(GlobalMainQueue) {
+                    self.driveTableView.reloadData()
+                }
+            })
+        }
+        
+        dispatch_async(GlobalUserInitiatedQueue) {
+            self.knownLocationsModel.loadData({
+                dispatch_async(GlobalMainQueue) {
+                    self.view.setNeedsDisplay()
+                }
+            })
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -71,7 +86,7 @@ class DriveViewController: UIViewController {
         if self.driveModel.tableData[indexPath.row].shouldShowMap {
             self.performSegueWithIdentifier("showMapViewForDrives", sender: indexPath)
         } else {
-            self.tableView.deselectRowAtIndexPath(indexPath, animated:true)
+            self.driveTableView.deselectRowAtIndexPath(indexPath, animated:true)
         }
     }
     

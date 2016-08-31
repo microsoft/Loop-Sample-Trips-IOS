@@ -7,8 +7,8 @@
 import Foundation
 import UIKit
 
-class Conversions {
-    static func kilometersToMiles(kilometers:Double) -> Double {
+class ConversionUtils {
+    class func kilometersToMiles(kilometers:Double) -> Double {
         let miles: Double = kilometers / 1.60934
         return miles.roundToPlaces(2)
     }

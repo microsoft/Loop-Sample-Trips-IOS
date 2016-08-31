@@ -10,17 +10,30 @@ public class KnownLocationModel {
     static let sharedInstance = KnownLocationModel()
     private init() {}
     var sampleData = false
-    var tableData:[(text: String, data:LoopLocation?)] = []
+    var locationsEntityIdMap = [String: String]()
     
     public func loadData(loadDataCompletion: () -> Void) {
         LoopSDK.syncManager.getProfileLocations {
             (loopLocations:[LoopLocation]) in
             
-            self.tableData.removeAll()
+            self.locationsEntityIdMap.removeAll()
             
             if !loopLocations.isEmpty {
-                loopLocations.forEach { location in
-                    self.tableData.append(("", data:location))
+                print("Returned \(loopLocations.count) known locations")
+                for location in loopLocations {
+                    var knownLocationName = "ICO Cell Both"
+                    for label in location.labels {
+                        if label.name == "home" {
+                            knownLocationName = "ICO Cell Home"
+                            break;
+                        }
+                        else if (label.name == "work") {
+                            knownLocationName = "ICO Cell Work"
+                            break;
+                        }
+                    }
+                    
+                    self.locationsEntityIdMap[location.entityId] = knownLocationName
                 }
             }
             

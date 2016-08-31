@@ -22,11 +22,12 @@ public class DriveModel {
                 self.sampleData = true
                 
                 let sampleDrives = JSONUtils.loadSampleTripData("SampleDrives")
-                sampleDrives.forEach { drive in
+                for drive in sampleDrives {
                     self.tableData.append((shouldShowMap: true, isSampleData: true, data: drive))
                 }
             } else {
-                loopDrives.forEach { drive in
+                print("Returned \(loopDrives.count) drives")
+                for drive in loopDrives {
                     self.tableData.append((shouldShowMap:true, isSampleData: false, data:drive))
                 }
             }

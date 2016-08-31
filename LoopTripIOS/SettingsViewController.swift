@@ -48,7 +48,7 @@ class SettingsViewController: UIViewController {
         let linkAttributes = [
             NSLinkAttributeName: NSURL(string: linkUrlString)!,
             NSFontAttributeName: UIFont(name: "Menlo", size: fontSize)!,
-            NSForegroundColorAttributeName: Colors.tableLinkTextColor
+            NSForegroundColorAttributeName: UIColor.tableLinkTextColor
         ]
         
         return NSAttributedString.init(string: linkText, attributes: linkAttributes)

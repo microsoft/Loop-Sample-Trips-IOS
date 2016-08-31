@@ -319,8 +319,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Y07-iO-ls9"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="JNO-6O-cVj" id="iXy-fn-cA2"/>
-                        <outlet property="view" destination="JNO-6O-cVj" id="2Ik-cK-san"/>
+                        <outlet property="driveTableView" destination="JNO-6O-cVj" id="FcH-My-uqK"/>
                         <segue destination="Qep-Yx-TzS" kind="show" identifier="showMapViewForDrives" id="axt-Ch-c1I"/>
                     </connections>
                 </viewController>
@@ -514,7 +513,6 @@
         <!--TripsView-->
         <scene sceneID="UnC-pL-Wos">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SUO-fO-1qD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="tripsViewController" title="TripsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHv-XQ-dfn" customClass="TripViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zk6-9w-VCk"/>
@@ -554,11 +552,11 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="EwW-Xo-0Rj"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="arI-dL-N1U" id="381-6a-xSr"/>
-                        <outlet property="view" destination="arI-dL-N1U" id="xdB-j5-WIv"/>
+                        <outlet property="tripTableView" destination="arI-dL-N1U" id="epx-fU-c9b"/>
                         <segue destination="Qep-Yx-TzS" kind="show" identifier="showMapViewForTrips" id="PUQ-tN-pOm"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUO-fO-1qD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2102" y="1359"/>
         </scene>

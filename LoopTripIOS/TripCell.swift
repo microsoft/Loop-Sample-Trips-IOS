@@ -13,7 +13,6 @@ class TripCell: UITableViewCell {
     @IBOutlet weak var destinationArrow: UIImageView!
     @IBOutlet weak var endLocation: UILabel!
     @IBOutlet weak var locationIcon: UIImageView!
-    @IBOutlet weak var locationIconConstraint: NSLayoutConstraint!
     @IBOutlet weak var locationTime: UILabel!
     @IBOutlet weak var locationDistance: UILabel!
     @IBOutlet weak var locationDuration: UILabel!
@@ -24,7 +23,7 @@ class TripCell: UITableViewCell {
     override func awakeFromNib () {
         super.awakeFromNib()
         
-        self.backgroundColor = Colors.tableCellBackgroundColor
+        self.backgroundColor = UIColor.tableCellBackgroundColor
     }
     
     func initialize(trip: LoopTrip, sampleTrip: Bool) {
@@ -34,7 +33,7 @@ class TripCell: UITableViewCell {
         
         setLocaleLabel(trip)
         
-        self.locationDistance.text = " \(Conversions.kilometersToMiles(trip.distanceTraveledInKilometers)) mi. "
+        self.locationDistance.text = " \(ConversionUtils.kilometersToMiles(trip.distanceTraveledInKilometers)) mi. "
         self.locationDuration.text = trip.endedAt.offsetFrom(trip.startedAt)
         self.locationTime.text = trip.startedAt.relativeDayAndTime(trip.endedAt)
     }
@@ -42,6 +41,15 @@ class TripCell: UITableViewCell {
     func setLocaleLabel(trip: LoopTrip) {
         let startLocaleText = trip.startLocale?.getFriendlyName().uppercaseString
         let endLocaleText = trip.endLocale?.getFriendlyName().uppercaseString
+        var locationIconName = "ICO Cell Blank"
+        
+        if knownLocationsModel.locationsEntityIdMap.count > 0 {
+            if let locationEntityId = trip.entityId {
+                if let iconName = knownLocationsModel.locationsEntityIdMap[locationEntityId] {
+                    locationIconName = iconName
+                }
+            }
+        }
         
         if (startLocaleText != nil) {
             setStartLocaleLabelText(startLocaleText!)
@@ -57,6 +65,8 @@ class TripCell: UITableViewCell {
             setStartLocaleLabelText("UNKONWN")
             clearEndLocaleLabelText()
         }
+        
+        locationIcon.image = UIImage(named: locationIconName)
     }
     
     private func setStartLocaleLabelText(text: String) {

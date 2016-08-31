@@ -10,9 +10,9 @@ import LoopSDK
 class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	var window: UIWindow?
-	
 	var loopInitialized = false;
-
+    let knownLocationsModel = KnownLocationModel.sharedInstance
+    
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		var appID = ""
 		var appToken = ""
@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	func applicationDidBecomeActive(application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-	}
+    }
 
 	func applicationWillTerminate(application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

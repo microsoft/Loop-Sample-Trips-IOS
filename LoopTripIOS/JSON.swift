@@ -69,7 +69,9 @@ class JSONUtils {
                 } else {
                     return nil;
                 }
-            }()
+            }(),
+            startLocationEntityId: jsonTrip["startLocationEntityId"] as? String,
+            endLocationEntityId: jsonTrip["endLocationEntityId"] as? String
         );
     }
 }
