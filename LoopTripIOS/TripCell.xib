@@ -197,7 +197,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="destinationArrow" destination="52e-ok-Viu" id="3GB-Wu-ZPs"/>
+                <outlet property="destinationArrowLeadingConstraint" destination="HrU-6d-ccE" id="d3e-8f-xpw"/>
                 <outlet property="endLocation" destination="HP6-BN-wm6" id="uva-Rm-veu"/>
+                <outlet property="endLocationLeadingConstraint" destination="web-5R-J1B" id="xF8-bM-wf1"/>
                 <outlet property="locationDistance" destination="2Wx-F4-LCx" id="6BQ-DP-Wqg"/>
                 <outlet property="locationDuration" destination="HHB-D1-nML" id="SVv-oB-1Ly"/>
                 <outlet property="locationIcon" destination="OP8-yV-vLx" id="udA-4Y-be3"/>

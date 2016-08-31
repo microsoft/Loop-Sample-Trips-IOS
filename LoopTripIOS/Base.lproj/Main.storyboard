@@ -63,7 +63,7 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-LA-9zM">
                                         <rect key="frame" x="531" y="15" width="51" height="31"/>
                                         <color key="tintColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="onTintColor" red="0.13725490200000001" green="0.61176470589999998" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="onTintColor" red="0.13725490200000001" green="0.60784313729999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="onRecordingSwitch:" destination="Edv-4X-ffW" eventType="valueChanged" id="3yH-Hu-Tb7"/>
                                         </connections>
@@ -149,7 +149,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Learn more about Microsoft Location Observation Platform (LOOP)..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ir8-Wi-FXK">
-                                        <rect key="frame" x="16" y="206" width="568" height="32.5"/>
+                                        <rect key="frame" x="16" y="206" width="568" height="33"/>
                                         <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.13725490196078433" green="0.61176470588235299" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>

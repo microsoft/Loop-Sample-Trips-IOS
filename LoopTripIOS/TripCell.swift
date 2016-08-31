@@ -17,7 +17,10 @@ class TripCell: UITableViewCell {
     @IBOutlet weak var locationDistance: UILabel!
     @IBOutlet weak var locationDuration: UILabel!
     @IBOutlet weak var sampleTripIndicator: UILabel!
+    @IBOutlet weak var endLocationLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
     
+    let leadingConstraintConstant: CGFloat = 10.0
     let knownLocationsModel = KnownLocationModel.sharedInstance
     
     override func awakeFromNib () {
@@ -30,7 +33,7 @@ class TripCell: UITableViewCell {
         self.selectionStyle = UITableViewCellSelectionStyle.None
         
         if (!sampleTrip) {
-            sampleTripIndicator.removeFromSuperview()
+            sampleTripIndicator.hidden = true
         }
         
         setLocaleLabel(trip)
@@ -41,8 +44,8 @@ class TripCell: UITableViewCell {
     }
     
     func setLocaleLabel(trip: LoopTrip) {
-        let startLocaleText = trip.startLocale?.getFriendlyName().uppercaseString
-        let endLocaleText = trip.endLocale?.getFriendlyName().uppercaseString
+        //let startLocaleText = trip.startLocale?.getFriendlyName().uppercaseString
+        //let endLocaleText = trip.endLocale?.getFriendlyName().uppercaseString
         var locationIconName = "ICO Cell Blank"
         
         if knownLocationsModel.locationsEntityIdMap.count > 0 {
@@ -53,19 +56,24 @@ class TripCell: UITableViewCell {
             }
         }
         
-        if (startLocaleText != nil) {
-            setStartLocaleLabelText(startLocaleText!)
-            
-            if (endLocaleText != nil && endLocaleText! != startLocaleText!) {
-                // if they're the same we shouldn't display twice
-                setEndLocaleLabelText(endLocaleText!)
-                
-            } else {
-                clearEndLocaleLabelText()
+        if let startLocaleText = trip.startLocale?.getFriendlyName().uppercaseString {
+            setStartLocaleLabelText(startLocaleText)
+
+            if let endLocaleText = trip.endLocale?.getFriendlyName().uppercaseString {
+                if (endLocaleText != startLocaleText) {
+                    adjustEndLocaleLabelText(false)
+                    setEndLocaleLabelText(endLocaleText)
+                }
+                else {
+                    adjustEndLocaleLabelText(true)
+                }
+            }
+            else {
+                adjustEndLocaleLabelText(true)
             }
         } else {
+            adjustEndLocaleLabelText(true)
             setStartLocaleLabelText("UNKONWN")
-            clearEndLocaleLabelText()
         }
         
         locationIcon.image = UIImage(named: locationIconName)
@@ -79,9 +87,14 @@ class TripCell: UITableViewCell {
         self.endLocation.text = text
     }
     
-    private func clearEndLocaleLabelText() {
-        self.destinationArrow.removeFromSuperview()
-        self.endLocation.removeFromSuperview()
+    private func adjustEndLocaleLabelText(removeLabel: Bool) {
+        let adjustConstraintConstant = removeLabel ? 0 : self.leadingConstraintConstant
+        
+        self.endLocation.hidden = removeLabel
+        self.endLocationLeadingConstraint.constant = adjustConstraintConstant
+        
+        self.destinationArrow.hidden = removeLabel
+        self.destinationArrowLeadingConstraint.constant = adjustConstraintConstant
     }
 }
 
