@@ -142,7 +142,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="© 2016 MICROSOFT" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sFg-nF-ahy">
-                                        <rect key="frame" x="240" y="459" width="120" height="14"/>
+                                        <rect key="frame" x="460" y="459" width="120" height="14"/>
                                         <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
@@ -190,6 +190,7 @@
                                     <constraint firstItem="XLa-aQ-zVy" firstAttribute="top" secondItem="wME-yT-cyb" secondAttribute="top" constant="25" id="RFc-a9-Uau"/>
                                     <constraint firstAttribute="trailing" secondItem="eYC-K8-FUR" secondAttribute="trailing" constant="20" id="RSX-sE-Oqg"/>
                                     <constraint firstItem="kDx-9A-iaC" firstAttribute="leading" secondItem="wME-yT-cyb" secondAttribute="leading" constant="20" id="SI1-oK-ePE"/>
+                                    <constraint firstAttribute="trailing" secondItem="sFg-nF-ahy" secondAttribute="trailing" constant="20" id="ShT-Hw-avT"/>
                                     <constraint firstItem="Kim-4C-Bkv" firstAttribute="leading" secondItem="wME-yT-cyb" secondAttribute="leading" constant="20" id="VGn-Ni-INe"/>
                                     <constraint firstItem="rHS-wb-bRH" firstAttribute="leading" secondItem="wME-yT-cyb" secondAttribute="leading" constant="20" id="Wj6-r5-1Gw"/>
                                     <constraint firstItem="XLa-aQ-zVy" firstAttribute="leading" secondItem="wME-yT-cyb" secondAttribute="leading" constant="20" id="b3b-nS-gc9"/>
@@ -227,6 +228,7 @@
                                         <exclude reference="n9p-rO-Wjh"/>
                                         <exclude reference="cAo-IH-47R"/>
                                         <exclude reference="qgq-Xe-nna"/>
+                                        <exclude reference="N19-Na-iyQ"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -431,56 +433,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5s4-Ad-GeN">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="164" width="600" height="387"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance: 0Km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-zk-o7v">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pU8-Jz-rmf" userLabel="Details View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="tqe-je-vaX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="5s4-Ad-GeN" secondAttribute="leading" constant="20" id="RRb-vG-Jf7"/>
-                            <constraint firstItem="9Ft-nr-egI" firstAttribute="top" secondItem="5s4-Ad-GeN" secondAttribute="bottom" constant="8" symbolic="YES" id="UK5-nc-xY0"/>
-                            <constraint firstItem="AZo-zk-o7v" firstAttribute="top" secondItem="orG-w6-nsn" secondAttribute="bottom" constant="5" id="V1t-dJ-AdL"/>
-                            <constraint firstItem="AZo-zk-o7v" firstAttribute="centerX" secondItem="Wb2-g8-diJ" secondAttribute="centerX" id="ekA-FV-2Tw"/>
-                            <constraint firstItem="5s4-Ad-GeN" firstAttribute="top" secondItem="AZo-zk-o7v" secondAttribute="bottom" constant="5" id="vCv-aL-LaB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5s4-Ad-GeN" secondAttribute="trailing" constant="-20" id="zp7-Sw-ZtD"/>
+                            <constraint firstItem="pU8-Jz-rmf" firstAttribute="top" secondItem="orG-w6-nsn" secondAttribute="bottom" id="05A-36-AZp"/>
+                            <constraint firstItem="9Ft-nr-egI" firstAttribute="top" secondItem="5s4-Ad-GeN" secondAttribute="bottom" id="3kH-TQ-cnZ"/>
+                            <constraint firstItem="5s4-Ad-GeN" firstAttribute="top" secondItem="pU8-Jz-rmf" secondAttribute="bottom" id="4DY-5P-WYv"/>
+                            <constraint firstAttribute="trailing" secondItem="5s4-Ad-GeN" secondAttribute="trailing" id="Is4-3C-Eqx"/>
+                            <constraint firstItem="5s4-Ad-GeN" firstAttribute="leading" secondItem="Wb2-g8-diJ" secondAttribute="leading" id="NC6-Wk-lAS"/>
+                            <constraint firstItem="5s4-Ad-GeN" firstAttribute="top" secondItem="pU8-Jz-rmf" secondAttribute="bottom" id="f7j-uv-LD5"/>
+                            <constraint firstAttribute="trailing" secondItem="pU8-Jz-rmf" secondAttribute="trailing" id="iIk-gt-8Zy"/>
+                            <constraint firstItem="pU8-Jz-rmf" firstAttribute="leading" secondItem="Wb2-g8-diJ" secondAttribute="leading" id="r5b-it-ZOG"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="5s4-Ad-GeN"/>
-                                <exclude reference="AZo-zk-o7v"/>
-                            </mask>
                             <mask key="constraints">
-                                <exclude reference="UK5-nc-xY0"/>
-                                <exclude reference="V1t-dJ-AdL"/>
-                                <exclude reference="ekA-FV-2Tw"/>
-                                <exclude reference="RRb-vG-Jf7"/>
-                                <exclude reference="vCv-aL-LaB"/>
-                                <exclude reference="zp7-Sw-ZtD"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="5s4-Ad-GeN"/>
-                                <include reference="AZo-zk-o7v"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="UK5-nc-xY0"/>
-                                <include reference="V1t-dJ-AdL"/>
-                                <include reference="ekA-FV-2Tw"/>
-                                <include reference="RRb-vG-Jf7"/>
-                                <include reference="vCv-aL-LaB"/>
-                                <include reference="zp7-Sw-ZtD"/>
+                                <exclude reference="f7j-uv-LD5"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="distLabel" destination="AZo-zk-o7v" id="P7h-ts-p6f"/>
-                        <outlet property="mapView" destination="5s4-Ad-GeN" id="fi3-Ca-7JU"/>
+                        <outlet property="mapView" destination="5s4-Ad-GeN" id="aXr-sY-438"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VhR-yd-6OD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -595,6 +576,6 @@
         <image name="ICO Trips On" width="20" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PUQ-tN-pOm"/>
+        <segue reference="axt-Ch-c1I"/>
     </inferredMetricsTieBreakers>
 </document>

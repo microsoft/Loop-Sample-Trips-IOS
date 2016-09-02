@@ -8,7 +8,34 @@ import Foundation
 import UIKit
 
 extension NSDate {
-    public func relativeDayAndTime(endDate: NSDate) -> String {
+    public func relativeDayAndTime() -> String {
+        let localDate = NSDate(timeInterval: NSTimeInterval(NSTimeZone.systemTimeZone().secondsFromGMT), sinceDate: self)
+        
+        var startDay = ""
+        let dayDiff = NSCalendar.currentCalendar().components([.Day], fromDate: NSDate(), toDate: localDate, options: [])
+        if (dayDiff == 0) {
+            startDay = "Today"
+        }
+        else if (dayDiff == 1) {
+            startDay = "Yesterday"
+        }
+        
+        if (startDay == "") {
+            let startDayFormatter = NSDateFormatter()
+            startDayFormatter.dateFormat = "MM/dd"
+            startDayFormatter.timeZone = NSTimeZone.localTimeZone()
+            startDay = startDayFormatter.stringFromDate(self)
+        }
+        
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        timeFormatter.timeZone = NSTimeZone.localTimeZone()
+        let startTime = timeFormatter.stringFromDate(self)
+        
+        return startDay + " " + startTime
+    }
+
+    public func relativeDayAndStartEndTime(endDate: NSDate) -> String {
         let localDate = NSDate(timeInterval: NSTimeInterval(NSTimeZone.systemTimeZone().secondsFromGMT), sinceDate: self)
         
         var startDay = ""

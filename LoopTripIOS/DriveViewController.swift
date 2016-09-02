@@ -16,7 +16,7 @@ class DriveViewController: UIViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(DriveViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(DriveViewController.onPullToRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         return refreshControl
     }()
@@ -33,7 +33,7 @@ class DriveViewController: UIViewController {
         self.driveTableView.addSubview(self.refreshControl)
     }
     
-    func handleRefresh(refreshControl: UIRefreshControl) {
+    func onPullToRefresh(refreshControl: UIRefreshControl) {
         self.loadModelDataAsync()
 
         refreshControl.endRefreshing()
@@ -60,8 +60,7 @@ class DriveViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMapViewForDrives", let mapView = segue.destinationViewController as? MapViewController {
             if let indexPath = sender as? NSIndexPath {
-                mapView.showTrips = false
-                mapView.tripData = self.driveModel.tableData[indexPath.row].data
+                mapView.setData((self.driveModel.tableData[indexPath.row].data)!, showTrips: false)
             }
         }
     }
@@ -86,7 +85,7 @@ class DriveViewController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
         let row = self.driveModel.tableData[indexPath.row]
-        cell.initialize(row.data!, sampleTrip: row.isSampleData)
+        cell.setData(row.data!, sampleTrip: row.isSampleData)
         
         return cell
     }

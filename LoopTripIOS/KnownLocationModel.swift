@@ -19,7 +19,7 @@ public class KnownLocationModel {
             self.locationsEntityIdMap.removeAll()
             
             if !loopLocations.isEmpty {
-                print("Returned \(loopLocations.count) known locations")
+                NSLog("Loop SDK returned \(loopLocations.count) known locations")
                 for location in loopLocations {
                     var knownLocationName = "ICO Cell Both"
                     for label in location.labels {

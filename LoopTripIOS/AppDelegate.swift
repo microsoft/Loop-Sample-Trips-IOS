@@ -11,6 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	var window: UIWindow?
 	var loopInitialized = false;
+    var driveModel = DriveModel.sharedInstance
+    var tripModel = TripModel.sharedInstance
     let knownLocationsModel = KnownLocationModel.sharedInstance
     
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -35,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 		
 		LoopSDK.initialize(self, appID: appID, token: appToken);
 		LoopSDK.logManager.logEvent("Launch option \(launchOptions)")
+        
 		return true
 	}
 
@@ -62,13 +65,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 
 	func onLoopInitialized() {
-		print("on initialized")
+		NSLog("Loop SDK successfully initialized")
 
 		loopInitialized = true;
+
+        // let the system prompt for location access
+        if (!LoopSDK.loopLocationProvider.active) {
+            LoopSDK.loopLocationProvider.startListener()
+        }
 	}
 	
 	func onLoopInitializeError(error: String) {
-		print("initialize error \(error)")
+		NSLog("Loop SDK initialization error: \(error)")
 		
 		loopInitialized = false;
 		

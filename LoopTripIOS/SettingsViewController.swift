@@ -21,8 +21,9 @@ class SettingsViewController: UIViewController {
         if (LoopSDK.isInitialized()) {
             userIdText.text = LoopSDK.getUserID()
             deviceIdText.text = LoopSDK.getDeviceID()
-
+            
             recordingSwitch.enabled = true
+            recordingSwitch.setOn(LoopSDK.loopLocationProvider.active, animated: false)
         }
         else {
             userIdText.text = "UNINITIALIZED"

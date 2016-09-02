@@ -9,6 +9,7 @@ import LoopSDK
 public class TripModel {
     static let sharedInstance = TripModel()
     private init() {}
+    let tripDispatchGroup = dispatch_group_create()
     var sampleData = false
     var tableData:[(shouldShowMap: Bool, isSampleData: Bool, data:LoopTrip?)] = []
     
@@ -26,7 +27,7 @@ public class TripModel {
                     self.tableData.append((shouldShowMap: true, isSampleData: true, data: trip))
                 }
             } else {
-                print("Returned \(loopTrips.count) trips")
+                NSLog("Loop SDK returned \(loopTrips.count) trips")
                 for trip in loopTrips {
                     self.tableData.append((shouldShowMap:true, isSampleData: false, data:trip))
                 }

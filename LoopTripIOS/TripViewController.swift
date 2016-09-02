@@ -16,7 +16,7 @@ class TripViewController: UIViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(TripViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(TripViewController.onPullToRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         return refreshControl
     }()
@@ -33,7 +33,7 @@ class TripViewController: UIViewController {
         self.tripTableView.addSubview(self.refreshControl)
     }
 
-    func handleRefresh(refreshControl: UIRefreshControl) {
+    func onPullToRefresh(refreshControl: UIRefreshControl) {
         self.loadModelDataAsync()
         
         refreshControl.endRefreshing()
@@ -60,8 +60,7 @@ class TripViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMapViewForTrips", let mapView = segue.destinationViewController as? MapViewController {
             if let indexPath = sender as? NSIndexPath {
-                mapView.showTrips = true
-                mapView.tripData = self.tripModel.tableData[indexPath.row].data
+                mapView.setData((self.tripModel.tableData[indexPath.row].data)!, showTrips: false)
             }
         }
     }
@@ -86,7 +85,7 @@ class TripViewController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
         let row = self.tripModel.tableData[indexPath.row]
-        cell.initialize(row.data!, sampleTrip: row.isSampleData)
+        cell.setData(row.data!, sampleTrip: row.isSampleData)
         
         return cell
     }

@@ -26,7 +26,7 @@ public class DriveModel {
                     self.tableData.append((shouldShowMap: true, isSampleData: true, data: drive))
                 }
             } else {
-                print("Returned \(loopDrives.count) drives")
+                NSLog("Loop SDK returned \(loopDrives.count) drives")
                 for drive in loopDrives {
                     self.tableData.append((shouldShowMap:true, isSampleData: false, data:drive))
                 }

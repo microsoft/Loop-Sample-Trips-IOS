@@ -29,7 +29,7 @@ class TripCell: UITableViewCell {
         self.backgroundColor = UIColor.tableCellBackgroundColor
     }
     
-    func initialize(trip: LoopTrip, sampleTrip: Bool) {
+    func setData(trip: LoopTrip, sampleTrip: Bool) {
         self.selectionStyle = UITableViewCellSelectionStyle.None
         
         if (!sampleTrip) {
@@ -40,12 +40,10 @@ class TripCell: UITableViewCell {
         
         self.locationDistance.text = " \(ConversionUtils.kilometersToMiles(trip.distanceTraveledInKilometers)) mi. "
         self.locationDuration.text = trip.endedAt.offsetFrom(trip.startedAt)
-        self.locationTime.text = trip.startedAt.relativeDayAndTime(trip.endedAt)
+        self.locationTime.text = trip.startedAt.relativeDayAndStartEndTime(trip.endedAt)
     }
     
     func setLocaleLabel(trip: LoopTrip) {
-        //let startLocaleText = trip.startLocale?.getFriendlyName().uppercaseString
-        //let endLocaleText = trip.endLocale?.getFriendlyName().uppercaseString
         var locationIconName = "ICO Cell Blank"
         
         if knownLocationsModel.locationsEntityIdMap.count > 0 {
