@@ -13,8 +13,8 @@ class DriveViewController: UIViewController {
     private var modelUpdateObserver: NSObjectProtocol!
 
     let cellViewHeight: CGFloat = 94.0
-    var driveModel = DriveModel.sharedInstance
-    var knownLocationsModel = KnownLocationModel.sharedInstance
+    var driveRepository = DriveRepository.sharedInstance
+    var knownLocationsModel = KnownLocationRepository.sharedInstance
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,7 +27,7 @@ class DriveViewController: UIViewController {
         super.viewDidLoad()
         
         modelUpdateObserver = NSNotificationCenter.defaultCenter()
-            .addObserverForName(DriveModelAddedContentNotification,
+            .addObserverForName(DriveRepositoryAddedContentNotification,
                                 object: nil,
                                 queue: NSOperationQueue.mainQueue()) {
                                     notification in
@@ -38,7 +38,7 @@ class DriveViewController: UIViewController {
         self.driveTableView.separatorColor = UIColor.clearColor()
         self.driveTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         
-        self.driveModel.loadData()
+        self.driveRepository.loadData()
         self.knownLocationsModel.loadData()
         
         self.driveTableView.addSubview(self.refreshControl)
@@ -47,7 +47,7 @@ class DriveViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMapViewForDrives", let mapView = segue.destinationViewController as? MapViewController {
             if let indexPath = sender as? NSIndexPath {
-                mapView.setData((self.driveModel.tableData[indexPath.row].data)!, showTrips: false)
+                mapView.setData((self.driveRepository.tableData[indexPath.row].data)!, showTrips: false)
             }
         }
     }
@@ -64,15 +64,15 @@ extension DriveViewController {
     }
     
     private func loadModelDataAsync() {
-        self.driveModel.loadData()
+        self.driveRepository.loadData()
         self.knownLocationsModel.loadData()
     }
     
     private func contentChangedNotification(notification: NSNotification!) {
         switch notification.name {
-        case DriveModelAddedContentNotification:
+        case DriveRepositoryAddedContentNotification:
             self.driveTableView.reloadData()
-        case KnownLocationModelAddedContentNotification:
+        case KnownLocationRepositoryAddedContentNotification:
             self.view.setNeedsDisplay()
         default:
             NSLog("Unknown notification")
@@ -89,11 +89,11 @@ extension DriveViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.driveModel.tableData.count
+        return self.driveRepository.tableData.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (self.driveModel.tableData[indexPath.row].isSampleData) {
+        if (self.driveRepository.tableData[indexPath.row].isSampleData) {
             return cellViewHeight
         }
         else {
@@ -103,7 +103,7 @@ extension DriveViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
-        let row = self.driveModel.tableData[indexPath.row]
+        let row = self.driveRepository.tableData[indexPath.row]
         cell.setData(row.data!, sampleTrip: row.isSampleData)
         
         return cell
@@ -117,7 +117,7 @@ extension DriveViewController {
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {
             (action, indexPath) in
             
-            self.driveModel.removeData(indexPath.row)
+            self.driveRepository.removeData(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         })
         

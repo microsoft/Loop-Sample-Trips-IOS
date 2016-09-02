@@ -7,12 +7,12 @@ import CoreLocation
 import LoopSDK
 
 typealias TripDataModel = [(isSampleData: Bool, data:LoopTrip?)]
-let TripModelAddedContentNotification = "ms.loop.trip.TripModelAddedContentNotification"
+let TripRepositoryAddedContentNotification = "ms.loop.trip.TripRepositoryAddedContentNotification"
 
-public class TripModel {
-    static let sharedInstance = TripModel()
+public class TripRepository {
+    static let sharedInstance = TripRepository()
     private init() {}
-    private let concurrentTripQueue = dispatch_queue_create("ms.loop.trip.TripModelQueue", DISPATCH_QUEUE_CONCURRENT)
+    private let concurrentTripQueue = dispatch_queue_create("ms.loop.trip.TripRepositoryQueue", DISPATCH_QUEUE_CONCURRENT)
     let tripDispatchGroup = dispatch_group_create()
     private var _tableData: TripDataModel = []
     var tableData: TripDataModel {
@@ -47,7 +47,7 @@ public class TripModel {
                 }
             }
             
-            NSNotificationCenter.defaultCenter().postNotificationName(TripModelAddedContentNotification, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(TripRepositoryAddedContentNotification, object: nil)
         }
     }
 

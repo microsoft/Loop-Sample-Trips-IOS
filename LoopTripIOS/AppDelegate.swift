@@ -11,9 +11,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	var window: UIWindow?
 	var loopInitialized = false;
-    var driveModel = DriveModel.sharedInstance
-    var tripModel = TripModel.sharedInstance
-    let knownLocationsModel = KnownLocationModel.sharedInstance
     
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		var appID = ""

@@ -7,12 +7,12 @@ import CoreLocation
 import LoopSDK
 
 typealias KnownLocationDataModel = [String: String]
-let KnownLocationModelAddedContentNotification = "ms.loop.trip.KnownLocationModelAddedContentNotification"
+let KnownLocationRepositoryAddedContentNotification = "ms.loop.trip.KnownLocationRepositoryAddedContentNotification"
 
-public class KnownLocationModel {
-    static let sharedInstance = KnownLocationModel()
+public class KnownLocationRepository {
+    static let sharedInstance = KnownLocationRepository()
     private init() {}
-    private let concurrentKnownLocationQueue = dispatch_queue_create("ms.loop.trip.KnownLocationModelQueue", DISPATCH_QUEUE_CONCURRENT)
+    private let concurrentKnownLocationQueue = dispatch_queue_create("ms.loop.trip.KnownLocationRepositoryQueue", DISPATCH_QUEUE_CONCURRENT)
     var sampleData = false
     private var _locationsEntityIdMap: KnownLocationDataModel = [:]
     var locationsEntityIdMap: KnownLocationDataModel {
@@ -52,7 +52,7 @@ public class KnownLocationModel {
                 }
             }
             
-            NSNotificationCenter.defaultCenter().postNotificationName(KnownLocationModelAddedContentNotification, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(KnownLocationRepositoryAddedContentNotification, object: nil)
         }
     }
 }

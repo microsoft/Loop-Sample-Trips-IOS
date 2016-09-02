@@ -7,12 +7,12 @@ import CoreLocation
 import LoopSDK
 
 typealias DriveDataModel = [(isSampleData: Bool, data:LoopTrip?)]
-let DriveModelAddedContentNotification = "ms.loop.trip.DriveModelAddedContentNotification"
+let DriveRepositoryAddedContentNotification = "ms.loop.trip.DriveRepositoryAddedContentNotification"
 
-public class DriveModel {
-    static let sharedInstance = DriveModel()
+public class DriveRepository {
+    static let sharedInstance = DriveRepository()
     private init() {}
-    private let concurrentDriveQueue = dispatch_queue_create("ms.loop.trip.DriveModelQueue", DISPATCH_QUEUE_CONCURRENT)
+    private let concurrentDriveQueue = dispatch_queue_create("ms.loop.trip.DriveRepositoryQueue", DISPATCH_QUEUE_CONCURRENT)
     private var _tableData: DriveDataModel = []
     var tableData: DriveDataModel {
         var tableDataCopy: DriveDataModel!
@@ -46,7 +46,7 @@ public class DriveModel {
                 }
             }
             
-            NSNotificationCenter.defaultCenter().postNotificationName(DriveModelAddedContentNotification, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(DriveRepositoryAddedContentNotification, object: nil)
         })
     }
     

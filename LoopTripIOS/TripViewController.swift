@@ -13,8 +13,8 @@ class TripViewController: UIViewController {
     private var modelUpdateObserver: NSObjectProtocol!
     
     let cellViewHeight: CGFloat = 94.0
-    var tripModel = TripModel.sharedInstance
-    var knownLocationsModel = KnownLocationModel.sharedInstance
+    var tripRepository = TripRepository.sharedInstance
+    var knownLocationsModel = KnownLocationRepository.sharedInstance
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,7 +27,7 @@ class TripViewController: UIViewController {
         super.viewDidLoad()
         
         modelUpdateObserver = NSNotificationCenter.defaultCenter()
-            .addObserverForName(TripModelAddedContentNotification,
+            .addObserverForName(TripRepositoryAddedContentNotification,
                                 object: nil,
                                 queue: NSOperationQueue.mainQueue()) {
                                     notification in
@@ -46,7 +46,7 @@ class TripViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMapViewForTrips", let mapView = segue.destinationViewController as? MapViewController {
             if let indexPath = sender as? NSIndexPath {
-                mapView.setData((self.tripModel.tableData[indexPath.row].data)!, showTrips: false)
+                mapView.setData((self.tripRepository.tableData[indexPath.row].data)!, showTrips: false)
             }
         }
     }
@@ -63,15 +63,15 @@ extension TripViewController {
     }
     
     private func loadModelDataAsync() {
-        self.tripModel.loadData()
+        self.tripRepository.loadData()
         self.knownLocationsModel.loadData()
     }
     
     private func contentChangedNotification(notification: NSNotification!) {
         switch notification.name {
-        case TripModelAddedContentNotification:
+        case TripRepositoryAddedContentNotification:
             self.tripTableView.reloadData()
-        case KnownLocationModelAddedContentNotification:
+        case KnownLocationRepositoryAddedContentNotification:
             self.view.setNeedsDisplay()
         default:
             NSLog("Unknown notification")
@@ -88,11 +88,11 @@ extension TripViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tripModel.tableData.count
+        return self.tripRepository.tableData.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (self.tripModel.tableData[indexPath.row].isSampleData) {
+        if (self.tripRepository.tableData[indexPath.row].isSampleData) {
             return cellViewHeight
         }
         else {
@@ -102,7 +102,7 @@ extension TripViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
-        let row = self.tripModel.tableData[indexPath.row]
+        let row = self.tripRepository.tableData[indexPath.row]
         cell.setData(row.data!, sampleTrip: row.isSampleData)
         
         return cell
@@ -116,7 +116,7 @@ extension TripViewController {
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {
             (action, indexPath) in
             
-            self.tripModel.removeData(indexPath.row)
+            self.tripRepository.removeData(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         })
         

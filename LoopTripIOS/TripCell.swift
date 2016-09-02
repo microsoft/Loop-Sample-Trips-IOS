@@ -21,7 +21,7 @@ class TripCell: UITableViewCell {
     @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
     
     let leadingConstraintConstant: CGFloat = 10.0
-    let knownLocationsModel = KnownLocationModel.sharedInstance
+    let knownLocationsModel = KnownLocationRepository.sharedInstance
     
     override func awakeFromNib () {
         super.awakeFromNib()

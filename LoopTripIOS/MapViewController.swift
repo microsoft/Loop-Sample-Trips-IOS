@@ -8,6 +8,7 @@ import CoreLocation
 import MapKit
 import LoopSDK
 
+let MapViewPolylineAddedNotificationNotification = "ms.loop.trip.MapViewPolylineAddedNotification"
 
 public enum RouteAnnotationPosition : Int {
     case startPosition
@@ -168,9 +169,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         return paths.count - 1
     }
-    
+}
+
 	//MARK:- MapViewDelegate methods
- 
+extension MapViewController {
 	func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
 		let polylineRenderer = MKPolylineRenderer(overlay: overlay)
 		polylineRenderer.strokeColor = UIColor.mapRouteLineColor
