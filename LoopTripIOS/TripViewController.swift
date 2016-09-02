@@ -1,6 +1,6 @@
 //
 //  TripViewController.swift
-//  Loop-Trip
+//  LoopTrip
 //
 
 import Foundation

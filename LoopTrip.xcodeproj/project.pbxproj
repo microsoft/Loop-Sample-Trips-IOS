@@ -171,9 +171,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B588870E1CF3A6AD00B25BCD /* Loop-Trip */ = {
+		B588870E1CF3A6AD00B25BCD /* LoopTrip */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Loop-Trip" */;
+			buildConfigurationList = B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "LoopTrip" */;
 			buildPhases = (
 				B588870B1CF3A6AD00B25BCD /* Sources */,
 				B588870C1CF3A6AD00B25BCD /* Frameworks */,
@@ -184,7 +184,7 @@
 			);
 			dependencies = (
 			);
-			name = "Loop-Trip";
+			name = LoopTrip;
 			productName = SimpleTest;
 			productReference = B588870F1CF3A6AD00B25BCD /* Loop Trip.app */;
 			productType = "com.apple.product-type.application";
@@ -210,7 +210,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Loop-Trip" */;
+			buildConfigurationList = B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "LoopTrip" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -223,7 +223,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B588870E1CF3A6AD00B25BCD /* Loop-Trip */,
+				B588870E1CF3A6AD00B25BCD /* LoopTrip */,
 			);
 		};
 /* End PBXProject section */
@@ -314,7 +314,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ms.loop.Loop-Trip";
+				PRODUCT_BUNDLE_IDENTIFIER = ms.loop.trip;
 				PRODUCT_NAME = "Loop Trip";
 			};
 			name = Debug;
@@ -331,7 +331,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ms.loop.Loop-Trip";
+				PRODUCT_BUNDLE_IDENTIFIER = ms.loop.trip;
 				PRODUCT_NAME = "Loop Trip";
 			};
 			name = Release;
@@ -339,7 +339,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Loop-Trip" */ = {
+		B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "LoopTrip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B588871F1CF3A6AD00B25BCD /* Debug */,
@@ -348,7 +348,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Loop-Trip" */ = {
+		B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "LoopTrip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58887221CF3A6AD00B25BCD /* Debug */,

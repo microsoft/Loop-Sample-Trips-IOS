@@ -1,6 +1,6 @@
 //
 //  TripCell.swift
-//  Loop-Trip
+//  LoopTrip
 //
 
 import Foundation

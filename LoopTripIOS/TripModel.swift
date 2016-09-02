@@ -1,6 +1,6 @@
 //
 //  TripsModel.swift
-//  Loop-Trip
+//  LoopTrip
 
 import Foundation
 import CoreLocation

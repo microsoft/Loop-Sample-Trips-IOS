@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.swift
-//  Loop-Trip
+//  LoopTrip
 //
 
 import Foundation
