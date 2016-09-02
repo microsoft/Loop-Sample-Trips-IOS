@@ -12,7 +12,6 @@ let RepositoryManagerAddedContentNotification = "ms.loop.trip.RepositoryManagerA
 public class RepositoryManager {
     static let sharedInstance = RepositoryManager()
     private init() {}
-    private let concurrentRepositoryManagerQueue = dispatch_queue_create("ms.loop.trip.RepositoryManagerQueue", DISPATCH_QUEUE_CONCURRENT)
 
     let driveRepository = DriveRepository.sharedInstance
     let tripRepository = TripRepository.sharedInstance

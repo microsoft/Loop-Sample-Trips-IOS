@@ -22,20 +22,29 @@ class LoopPointAnnotation: MKPointAnnotation {
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+
+    private var mapViewUpdateObserver: NSObjectProtocol!
     
     var showTrips = true
-    var tripData:LoopTrip?
+    var tripData: LoopTrip?
+    var transportMode = MKDirectionsTransportType.Walking
     let mapRouteLineCache = MapRouteLineCache.sharedInstance
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
-        self.mapView.delegate = self;
-        
         self.title = self.showTrips ? "TRIP ROUTE" : "DRIVE ROUTE"
+        self.mapView.delegate = self
+        
+        mapViewUpdateObserver = NSNotificationCenter.defaultCenter()
+            .addObserverForName(MapRouteLineCacheAddedContentNotification,
+                                object: nil,
+                                queue: NSOperationQueue.mainQueue()) {
+                                    notification in
+                                    self.contentChangedNotification(notification)
+        }
 
-		if let loopTrip = tripData {
-            var transportMode = MKDirectionsTransportType.Walking
+		if let loopTrip = self.tripData {
             if let loopTripTransportMode = loopTrip.transportMode {
                 switch loopTripTransportMode {
                     case "driving":
@@ -51,53 +60,39 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             NSLog("Trip type: \(transportMode)")
             
-            let paths = loopTrip.path
-            let mapStartEndAnnotations = [
-                self.createAnnotationFromLocation(RouteAnnotationPosition.startPosition, loopTripPoint: paths[0]),
-                self.createAnnotationFromLocation(RouteAnnotationPosition.endPosition, loopTripPoint: paths[paths.count - 1])
-            ]
-
             if (transportMode == MKDirectionsTransportType.Automobile) {
-// throw this into a background queue async
-                // create route segments (and overlays) based on mode, speed, and other attributes
-                createRouteForMode(paths[0].coordinate, destinationLocation: paths[1].coordinate, routeType: transportMode)
-                var index = 0
-                repeat {
-                    let nextIndex = findNextRoutePointIndex(loopTrip, currentIndex: index)
-                    createRouteForMode(paths[index].coordinate, destinationLocation: paths[nextIndex].coordinate, routeType: transportMode)
-                    index = nextIndex
-                } while index < paths.count - 1
+                self.createRoutePathsAsync()
             }
-            
-// put this into a notification handler (on route done notification)
-            // set the map to show start/end annotations
-            mapView.showAnnotations(mapStartEndAnnotations, animated: false)
-
-            // set the map to encompass all of our route points
-            var mapPoints = paths.enumerate().map {
-                index, element in
-                return element.coordinate
-            }
-            let routePolyline = MKPolyline(coordinates: &mapPoints, count: mapPoints.count)
-            self.mapView.setRegion(MKCoordinateRegionForMapRect(routePolyline.boundingMapRect), animated: false)
-            self.mapView.camera.altitude = self.mapView.camera.altitude * 2.0
-
-            // if walking or biking use the basic polyline instead of route-based line
-            if (transportMode != MKDirectionsTransportType.Automobile) {
-                self.mapView.addOverlay(routePolyline)
+            else {
+                self.setMapView()
             }
 		}
         else {
             NSLog("No trip data set for MapView")
         }
 	}
+}
+
     
+// MARK - Privates
+
+extension MapViewController {
     func setData(tripData: LoopTrip, showTrips: Bool) {
         self.tripData = tripData
         self.showTrips = showTrips
     }
     
-    func createAnnotationFromLocation(routePosition: RouteAnnotationPosition, loopTripPoint: LoopTripPoint) -> MKPointAnnotation {
+    private func contentChangedNotification(notification: NSNotification!) {
+        switch notification.name {
+        case MapRouteLineCacheAddedContentNotification:
+            NSLog("Received update notification in MapView")
+            self.setMapView()
+        default:
+            NSLog("Unknown notification")
+        }
+    }
+    
+    private func createAnnotationFromLocation(routePosition: RouteAnnotationPosition, loopTripPoint: LoopTripPoint) -> MKPointAnnotation {
         let annotation = LoopPointAnnotation()
 		
 		annotation.coordinate = loopTripPoint.coordinate
@@ -108,7 +103,39 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 		return annotation;
 	}
     
-    func createRouteForMode(sourceLocation: CLLocationCoordinate2D, destinationLocation: CLLocationCoordinate2D, routeType: MKDirectionsTransportType) {
+    private func createRoutePathsAsync() {
+        if let loopTrip = self.tripData {
+            let paths = loopTrip.path
+            
+            // check in the cache first
+            if let entityId = loopTrip.entityId {
+                if let polylines = mapRouteLineCache.polyLineEntityMap[entityId] {
+                    NSLog("Found cached polylines")
+
+                    for polyline in polylines {
+                        self.mapView.addOverlay(polyline, level: MKOverlayLevel.AboveRoads)
+                    }
+                }
+                else {
+                    NSLog("Creating new route polylines")
+                    
+                    // create route segments (and overlays) based on mode, speed, and other attributes
+                    createRouteForMode(paths[0].coordinate, destinationLocation: paths[1].coordinate, routeType: transportMode)
+                    var index = 0
+                    repeat {
+                        let nextIndex = findNextRoutePointIndex(loopTrip, currentIndex: index)
+                        createRouteForMode(paths[index].coordinate, destinationLocation: paths[nextIndex].coordinate, routeType: transportMode)
+                        index = nextIndex
+                    } while index < paths.count - 1
+                }
+            }
+        }
+        
+        NSLog("Sending update notification for automobile route")
+        NSNotificationCenter.defaultCenter().postNotificationName(MapRouteLineCacheAddedContentNotification, object: nil)
+    }
+    
+    private func createRouteForMode(sourceLocation: CLLocationCoordinate2D, destinationLocation: CLLocationCoordinate2D, routeType: MKDirectionsTransportType) {
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
         
@@ -134,11 +161,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             
             self.mapView.addOverlay(response.routes[0].polyline, level: MKOverlayLevel.AboveRoads)
+            if let loopTrip = self.tripData {
+                if let entityId = loopTrip.entityId {
+                    self.mapRouteLineCache.appendPolyLine(entityId, polyline: response.routes[0].polyline)
+                }
+            }
+            
             NSLog("Created map overlay for new segment")
         }
     }
 
-    func findNextRoutePointIndex(loopTrip: LoopTrip, currentIndex: Int) -> Int {
+    private func findNextRoutePointIndex(loopTrip: LoopTrip, currentIndex: Int) -> Int {
         let timeOffsetLimit = (60 * 2)      // 2 minutes
         let distanceOffsetLimit = (300.0)   // 300 m ~= 900ft (an estimated city block)
         let averageSpeedLimit = (9.0)       // 9 m/s ~= 20 mph
@@ -173,9 +206,46 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         return paths.count - 1
     }
+    
+    private func setMapView() {
+        if let loopTrip = self.tripData {
+            let paths = loopTrip.path
+            
+            // set the map to show start/end annotations
+            let mapStartEndAnnotations = [
+                self.createAnnotationFromLocation(RouteAnnotationPosition.startPosition, loopTripPoint: paths[0]),
+                self.createAnnotationFromLocation(RouteAnnotationPosition.endPosition, loopTripPoint: paths[paths.count - 1])
+            ]
+            
+            self.mapView.showAnnotations(mapStartEndAnnotations, animated: false)
+            
+            // set the map to encompass all of our route points
+            var mapPoints = paths.enumerate().map {
+                index, element in
+                return element.coordinate
+            }
+            let routePolyline = MKPolyline(coordinates: &mapPoints, count: mapPoints.count)
+            
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(routePolyline.boundingMapRect), animated: false)
+            self.mapView.camera.altitude = self.mapView.camera.altitude * 2.0
+            
+            // if walking or biking use the basic polyline instead of route-based line
+            if (self.transportMode != MKDirectionsTransportType.Automobile) {
+                self.mapView.addOverlay(routePolyline)
+            }
+            
+            if let entityId = loopTrip.entityId {
+                if let polylines = mapRouteLineCache.polyLineEntityMap[entityId] {
+                    NSLog("Found \(polylines.count) cached polylines for entityId: \(entityId)")
+                }
+            }
+        }
+    }
 }
 
-	//MARK:- MapViewDelegate methods
+
+//MARK:- MapViewDelegate methods
+
 extension MapViewController {
 	func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
 		let polylineRenderer = MKPolylineRenderer(overlay: overlay)

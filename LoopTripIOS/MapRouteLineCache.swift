@@ -8,9 +8,10 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 import LoopSDK
 
-typealias MapRouteLineCacheDataModel = [String: String]
+typealias MapRouteLineCacheDataModel = [String: [MKPolyline]]
 let MapRouteLineCacheAddedContentNotification = "ms.loop.trip.MapRouteLineCacheAddedContentNotification"
 
 public class MapRouteLineCache {
@@ -26,20 +27,22 @@ public class MapRouteLineCache {
         return polyLineEntityMapCopy
     }
     
-    func addPolyLine() {
+    func appendPolyLine(entityId: String, polyline: MKPolyline) {
         dispatch_barrier_sync(self.concurrentMapRouteLineCacheQueue) {
-            self._polyLineEntityMap["foo"] = "bar"
+            if self._polyLineEntityMap[entityId] == nil {
+                self._polyLineEntityMap[entityId] = [MKPolyline]()
+            }
+            
+            self._polyLineEntityMap[entityId]!.append(polyline)
         }
     }
     
-    func appendPolyLine() {
+    func removeEntityData(entityId: String) {
         dispatch_barrier_sync(self.concurrentMapRouteLineCacheQueue) {
-            self._polyLineEntityMap["foo"] = "bar"
-        }
-    }
-    
-    func removeEntityData() {
-        dispatch_barrier_sync(self.concurrentMapRouteLineCacheQueue) {
+            guard self._polyLineEntityMap[entityId] != nil else {
+                return
+            }
+
             self._polyLineEntityMap.removeAll()
         }
     }
