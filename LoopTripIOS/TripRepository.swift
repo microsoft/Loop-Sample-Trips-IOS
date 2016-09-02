@@ -24,30 +24,28 @@ public class TripRepository {
     }
     
     func loadData() {
-        LoopSDK.syncManager.getTrips(40) {
-            (loopTrips:[LoopTrip]) in
-            
-            dispatch_barrier_sync(self.concurrentTripQueue) {
+        dispatch_barrier_async(self.concurrentTripQueue) {
+            LoopSDK.syncManager.getTrips(40, callback: {
+                (loopTrips:[LoopTrip]) in
+                
                 self._tableData.removeAll()
-            }
-            
-            if loopTrips.isEmpty {
-                let sampleTrips = JSONUtils.loadSampleTripData("SampleTrips")
-                for trip in sampleTrips {
-                    dispatch_barrier_sync(self.concurrentTripQueue) {
+                
+                if loopTrips.isEmpty {
+                    let sampleTrips = JSONUtils.loadSampleTripData("SampleTrips")
+                    for trip in sampleTrips {
                         self._tableData.append((isSampleData: true, data: trip))
                     }
-                }
-            } else {
-                NSLog("Loop SDK returned \(loopTrips.count) trips")
-                for trip in loopTrips {
-                    dispatch_barrier_sync(self.concurrentTripQueue) {
+                } else {
+                    NSLog("Loop SDK returned \(loopTrips.count) trips")
+                    for trip in loopTrips {
                         self._tableData.append((isSampleData: false, data: trip))
                     }
                 }
-            }
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(TripRepositoryAddedContentNotification, object: nil)
+                
+                dispatch_async(GlobalMainQueue) {
+                    NSNotificationCenter.defaultCenter().postNotificationName(TripRepositoryAddedContentNotification, object: nil)
+                }
+            })
         }
     }
 

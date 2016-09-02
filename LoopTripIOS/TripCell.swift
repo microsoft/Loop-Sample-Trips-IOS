@@ -21,7 +21,7 @@ class TripCell: UITableViewCell {
     @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
     
     let leadingConstraintConstant: CGFloat = 10.0
-    let knownLocationsModel = KnownLocationRepository.sharedInstance
+    let knownLocationRepository = KnownLocationRepository.sharedInstance
     
     override func awakeFromNib () {
         super.awakeFromNib()
@@ -46,9 +46,9 @@ class TripCell: UITableViewCell {
     func setLocaleLabel(trip: LoopTrip) {
         var locationIconName = "ICO Cell Blank"
         
-        if knownLocationsModel.locationsEntityIdMap.count > 0 {
+        if knownLocationRepository.locationsEntityIdMap.count > 0 {
             if let locationEntityId = trip.entityId {
-                if let iconName = knownLocationsModel.locationsEntityIdMap[locationEntityId] {
+                if let iconName = knownLocationRepository.locationsEntityIdMap[locationEntityId] {
                     locationIconName = iconName
                 }
             }

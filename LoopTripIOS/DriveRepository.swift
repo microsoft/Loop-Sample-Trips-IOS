@@ -23,31 +23,29 @@ public class DriveRepository {
     }
     
     func loadData() {
-        LoopSDK.syncManager.getDrives(40, callback: {
-            (loopDrives:[LoopTrip]) in
-            
-            dispatch_barrier_sync(self.concurrentDriveQueue) {
+        dispatch_barrier_async(self.concurrentDriveQueue) {
+            LoopSDK.syncManager.getDrives(40, callback: {
+                (loopDrives:[LoopTrip]) in
+                
                 self._tableData.removeAll()
-            }
-
-            if loopDrives.isEmpty {
-                let sampleDrives = JSONUtils.loadSampleTripData("SampleDrives")
-                for drive in sampleDrives {
-                    dispatch_barrier_sync(self.concurrentDriveQueue) {
+                
+                if loopDrives.isEmpty {
+                    let sampleDrives = JSONUtils.loadSampleTripData("SampleDrives")
+                    for drive in sampleDrives {
                         self._tableData.append((isSampleData: true, data: drive))
                     }
-                }
-            } else {
-                NSLog("Loop SDK returned \(loopDrives.count) drives")
-                for drive in loopDrives {
-                    dispatch_barrier_sync(self.concurrentDriveQueue) {
+                } else {
+                    NSLog("Loop SDK returned \(loopDrives.count) drives")
+                    for drive in loopDrives {
                         self._tableData.append((isSampleData: false, data:drive))
                     }
                 }
-            }
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(DriveRepositoryAddedContentNotification, object: nil)
-        })
+                
+                dispatch_async(GlobalMainQueue) {
+                    NSNotificationCenter.defaultCenter().postNotificationName(DriveRepositoryAddedContentNotification, object: nil)
+                }
+            })
+        }
     }
     
     func removeData(index: Int) {

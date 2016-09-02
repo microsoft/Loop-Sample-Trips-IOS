@@ -25,6 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var showTrips = true
     var tripData:LoopTrip?
+    let mapRouteLineCache = MapRouteLineCache.sharedInstance
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -57,6 +58,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             ]
 
             if (transportMode == MKDirectionsTransportType.Automobile) {
+// throw this into a background queue async
                 // create route segments (and overlays) based on mode, speed, and other attributes
                 createRouteForMode(paths[0].coordinate, destinationLocation: paths[1].coordinate, routeType: transportMode)
                 var index = 0
@@ -67,6 +69,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 } while index < paths.count - 1
             }
             
+// put this into a notification handler (on route done notification)
             // set the map to show start/end annotations
             mapView.showAnnotations(mapStartEndAnnotations, animated: false)
 
@@ -76,12 +79,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 return element.coordinate
             }
             let routePolyline = MKPolyline(coordinates: &mapPoints, count: mapPoints.count)
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(routePolyline.boundingMapRect), animated: false)
+            self.mapView.camera.altitude = self.mapView.camera.altitude * 2.0
+
+            // if walking or biking use the basic polyline instead of route-based line
             if (transportMode != MKDirectionsTransportType.Automobile) {
                 self.mapView.addOverlay(routePolyline)
             }
-            
-            self.mapView.setRegion(MKCoordinateRegionForMapRect(routePolyline.boundingMapRect), animated: false)
-            self.mapView.camera.altitude = self.mapView.camera.altitude * 2.0
 		}
         else {
             NSLog("No trip data set for MapView")

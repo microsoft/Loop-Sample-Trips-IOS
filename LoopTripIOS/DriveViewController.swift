@@ -10,11 +10,12 @@ class DriveViewController: UIViewController {
     
     @IBOutlet weak var driveTableView: UITableView!
     
-    private var modelUpdateObserver: NSObjectProtocol!
+    private var driveRepositoryUpdateObserver: NSObjectProtocol!
+    private var knownLocationRepositoryUpdateObserver: NSObjectProtocol!
 
     let cellViewHeight: CGFloat = 94.0
-    var driveRepository = DriveRepository.sharedInstance
-    var knownLocationsModel = KnownLocationRepository.sharedInstance
+    let driveRepository = DriveRepository.sharedInstance
+    let knownLocationRepository = KnownLocationRepository.sharedInstance
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -26,8 +27,15 @@ class DriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        modelUpdateObserver = NSNotificationCenter.defaultCenter()
+        driveRepositoryUpdateObserver = NSNotificationCenter.defaultCenter()
             .addObserverForName(DriveRepositoryAddedContentNotification,
+                                object: nil,
+                                queue: NSOperationQueue.mainQueue()) {
+                                    notification in
+                                    self.contentChangedNotification(notification)
+        }
+        knownLocationRepositoryUpdateObserver = NSNotificationCenter.defaultCenter()
+            .addObserverForName(KnownLocationRepositoryAddedContentNotification,
                                 object: nil,
                                 queue: NSOperationQueue.mainQueue()) {
                                     notification in
@@ -39,7 +47,7 @@ class DriveViewController: UIViewController {
         self.driveTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         
         self.driveRepository.loadData()
-        self.knownLocationsModel.loadData()
+        self.knownLocationRepository.loadData()
         
         self.driveTableView.addSubview(self.refreshControl)
     }
@@ -58,14 +66,14 @@ class DriveViewController: UIViewController {
 
 extension DriveViewController {
     func onPullToRefresh(refreshControl: UIRefreshControl) {
-        self.loadModelDataAsync()
+        self.loadRepositoryDataAsync()
         
         refreshControl.endRefreshing()
     }
     
-    private func loadModelDataAsync() {
+    private func loadRepositoryDataAsync() {
         self.driveRepository.loadData()
-        self.knownLocationsModel.loadData()
+        self.knownLocationRepository.loadData()
     }
     
     private func contentChangedNotification(notification: NSNotification!) {

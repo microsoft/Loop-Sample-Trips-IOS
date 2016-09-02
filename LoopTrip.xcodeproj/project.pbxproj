@@ -29,6 +29,7 @@
 		F65749241D75599800F3398B /* KnownLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749231D75599800F3398B /* KnownLocationRepository.swift */; };
 		F65749261D755D3E00F3398B /* DriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749251D755D3E00F3398B /* DriveViewController.swift */; };
 		F65A89D71D79643C000D1E54 /* MapRouteLineCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A89D61D79643C000D1E54 /* MapRouteLineCache.swift */; };
+		F65A89DB1D79E894000D1E54 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A89DA1D79E894000D1E54 /* RepositoryManager.swift */; };
 		F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65A93891D6CCD3C006F5358 /* TripCell.xib */; };
 		F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A938B1D6CD473006F5358 /* TripCell.swift */; };
 		F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825FF11D73DA7B00D6F926 /* TripViewController.swift */; };
@@ -73,6 +74,7 @@
 		F65749231D75599800F3398B /* KnownLocationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownLocationRepository.swift; sourceTree = "<group>"; };
 		F65749251D755D3E00F3398B /* DriveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveViewController.swift; sourceTree = "<group>"; };
 		F65A89D61D79643C000D1E54 /* MapRouteLineCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRouteLineCache.swift; sourceTree = "<group>"; };
+		F65A89DA1D79E894000D1E54 /* RepositoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryManager.swift; sourceTree = "<group>"; };
 		F65A93891D6CCD3C006F5358 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		F65A938B1D6CD473006F5358 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		F6825FF11D73DA7B00D6F926 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
@@ -119,16 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				B58887121CF3A6AD00B25BCD /* AppDelegate.swift */,
-				F657491D1D74D32700F3398B /* TripRepository.swift */,
-				F65749211D75560200F3398B /* DriveRepository.swift */,
-				F65A89D61D79643C000D1E54 /* MapRouteLineCache.swift */,
-				F65749231D75599800F3398B /* KnownLocationRepository.swift */,
-				F6825FF11D73DA7B00D6F926 /* TripViewController.swift */,
-				F65749251D755D3E00F3398B /* DriveViewController.swift */,
-				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
-				F65749191D74257F00F3398B /* SettingsViewController.swift */,
+				F65A89D91D79E7ED000D1E54 /* Views */,
+				F65A89D81D79E7B2000D1E54 /* Repositories */,
 				B5CEFDC91D024A7600E0B799 /* logViewController.swift */,
-				F65A938D1D6CD4A0006F5358 /* Trip Cell-temp */,
 				F65489821D76A9620005BB9B /* Utilities */,
 				B58887161CF3A6AD00B25BCD /* Main.storyboard */,
 				B58887191CF3A6AD00B25BCD /* Assets.xcassets */,
@@ -150,13 +145,37 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		F65A938D1D6CD4A0006F5358 /* Trip Cell-temp */ = {
+		F65A89D81D79E7B2000D1E54 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F65A89DA1D79E894000D1E54 /* RepositoryManager.swift */,
+				F657491D1D74D32700F3398B /* TripRepository.swift */,
+				F65749211D75560200F3398B /* DriveRepository.swift */,
+				F65749231D75599800F3398B /* KnownLocationRepository.swift */,
+			);
+			name = Repositories;
+			sourceTree = "<group>";
+		};
+		F65A89D91D79E7ED000D1E54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F65A938D1D6CD4A0006F5358 /* TripCell */,
+				F6825FF11D73DA7B00D6F926 /* TripViewController.swift */,
+				F65749251D755D3E00F3398B /* DriveViewController.swift */,
+				F65749191D74257F00F3398B /* SettingsViewController.swift */,
+				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
+				F65A89D61D79643C000D1E54 /* MapRouteLineCache.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F65A938D1D6CD4A0006F5358 /* TripCell */ = {
 			isa = PBXGroup;
 			children = (
 				F65A938B1D6CD473006F5358 /* TripCell.swift */,
 				F65A93891D6CCD3C006F5358 /* TripCell.xib */,
 			);
-			name = "Trip Cell-temp";
+			name = TripCell;
 			sourceTree = "<group>";
 		};
 		F6E0F6661D10666B005A13E5 /* Config */ = {
@@ -252,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F657491E1D74D32700F3398B /* TripRepository.swift in Sources */,
+				F65A89DB1D79E894000D1E54 /* RepositoryManager.swift in Sources */,
 				F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */,
 				F654898A1D76AA760005BB9B /* Color.swift in Sources */,
 				F65749261D755D3E00F3398B /* DriveViewController.swift in Sources */,

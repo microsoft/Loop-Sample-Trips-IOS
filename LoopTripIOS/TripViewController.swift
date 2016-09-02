@@ -10,11 +10,12 @@ class TripViewController: UIViewController {
     
     @IBOutlet weak var tripTableView: UITableView!
 
-    private var modelUpdateObserver: NSObjectProtocol!
+    private var tripRepositoryUpdateObserver: NSObjectProtocol!
+    private var knownLocationRepositoryUpdateObserver: NSObjectProtocol!
     
     let cellViewHeight: CGFloat = 94.0
-    var tripRepository = TripRepository.sharedInstance
-    var knownLocationsModel = KnownLocationRepository.sharedInstance
+    let tripRepository = TripRepository.sharedInstance
+    let knownLocationRepository = KnownLocationRepository.sharedInstance
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -26,8 +27,15 @@ class TripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        modelUpdateObserver = NSNotificationCenter.defaultCenter()
+        tripRepositoryUpdateObserver = NSNotificationCenter.defaultCenter()
             .addObserverForName(TripRepositoryAddedContentNotification,
+                                object: nil,
+                                queue: NSOperationQueue.mainQueue()) {
+                                    notification in
+                                    self.contentChangedNotification(notification)
+        }
+        knownLocationRepositoryUpdateObserver = NSNotificationCenter.defaultCenter()
+            .addObserverForName(KnownLocationRepositoryAddedContentNotification,
                                 object: nil,
                                 queue: NSOperationQueue.mainQueue()) {
                                     notification in
@@ -38,7 +46,7 @@ class TripViewController: UIViewController {
         self.tripTableView.separatorColor = UIColor.clearColor()
         self.tripTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
 
-        self.loadModelDataAsync()
+        self.loadRepositoryDataAsync()
         
         self.tripTableView.addSubview(self.refreshControl)
     }
@@ -57,14 +65,14 @@ class TripViewController: UIViewController {
 
 extension TripViewController {
     func onPullToRefresh(refreshControl: UIRefreshControl) {
-        self.loadModelDataAsync()
+        self.loadRepositoryDataAsync()
         
         refreshControl.endRefreshing()
     }
     
-    private func loadModelDataAsync() {
+    private func loadRepositoryDataAsync() {
         self.tripRepository.loadData()
-        self.knownLocationsModel.loadData()
+        self.knownLocationRepository.loadData()
     }
     
     private func contentChangedNotification(notification: NSNotification!) {
