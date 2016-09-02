@@ -26,7 +26,7 @@ class TripCell: UITableViewCell {
     override func awakeFromNib () {
         super.awakeFromNib()
         
-        self.backgroundColor = UIColor.tableCellBackgroundColor
+        self.backgroundColor = UIColor.tableCellBackgroundColorLight
     }
     
     func setData(trip: LoopTrip, sampleTrip: Bool) {

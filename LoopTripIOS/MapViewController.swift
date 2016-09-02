@@ -52,7 +52,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let paths = loopTrip.path
             let mapStartEndAnnotations = [
                 self.createAnnotationFromLocation(RouteAnnotationPosition.startPosition, loopTripPoint: paths[0]),
-                self.createAnnotationFromLocation(RouteAnnotationPosition.startPosition, loopTripPoint: paths[paths.count - 1])
+                self.createAnnotationFromLocation(RouteAnnotationPosition.endPosition, loopTripPoint: paths[paths.count - 1])
             ]
 
             if (transportMode == MKDirectionsTransportType.Automobile) {
