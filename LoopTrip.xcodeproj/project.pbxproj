@@ -149,8 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				F65A89DA1D79E894000D1E54 /* RepositoryManager.swift */,
-				F657491D1D74D32700F3398B /* TripRepository.swift */,
 				F65749211D75560200F3398B /* DriveRepository.swift */,
+				F657491D1D74D32700F3398B /* TripRepository.swift */,
 				F65749231D75599800F3398B /* KnownLocationRepository.swift */,
 			);
 			name = Repositories;
@@ -159,9 +159,9 @@
 		F65A89D91D79E7ED000D1E54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F65A938D1D6CD4A0006F5358 /* TripCell */,
-				F6825FF11D73DA7B00D6F926 /* TripViewController.swift */,
 				F65749251D755D3E00F3398B /* DriveViewController.swift */,
+				F6825FF11D73DA7B00D6F926 /* TripViewController.swift */,
+				F65A938D1D6CD4A0006F5358 /* TripCell */,
 				F65749191D74257F00F3398B /* SettingsViewController.swift */,
 				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
 				F65A89D61D79643C000D1E54 /* MapRouteLineCache.swift */,

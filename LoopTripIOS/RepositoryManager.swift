@@ -18,13 +18,25 @@ public class RepositoryManager {
     let tripRepository = TripRepository.sharedInstance
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     
-    func loadRepositoryData() {
-        dispatch_barrier_async(self.concurrentRepositoryManagerQueue) {
-            self.driveRepository.loadData()
-            self.tripRepository.loadData()
-            self.knownLocationRepository.loadData()
+    func loadRepositoryDataAsync() {
+        if let dispatchGroupRepositoryManager = dispatch_group_create() {
+            dispatch_group_enter(dispatchGroupRepositoryManager)
+            self.driveRepository.loadData({
+                dispatch_group_leave(dispatchGroupRepositoryManager)
+            })
             
-            dispatch_async(GlobalMainQueue) {
+            dispatch_group_enter(dispatchGroupRepositoryManager)
+            self.tripRepository.loadData({
+                dispatch_group_leave(dispatchGroupRepositoryManager)
+            })
+            
+            dispatch_group_enter(dispatchGroupRepositoryManager)
+            self.knownLocationRepository.loadData({
+                dispatch_group_leave(dispatchGroupRepositoryManager)
+            })
+            
+            dispatch_group_notify(dispatchGroupRepositoryManager, GlobalMainQueue) {
+                NSLog("SENDING UPDATE NOTIFICATION")
                 NSNotificationCenter.defaultCenter().postNotificationName(RepositoryManagerAddedContentNotification, object: nil)
             }
         }

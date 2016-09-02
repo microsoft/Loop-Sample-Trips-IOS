@@ -13,6 +13,7 @@ public class DriveRepository {
     static let sharedInstance = DriveRepository()
     private init() {}
     private let concurrentDriveQueue = dispatch_queue_create("ms.loop.trip.DriveRepositoryQueue", DISPATCH_QUEUE_CONCURRENT)
+    private let driveRepositoryDispatchGroup = dispatch_group_create()
     private var _tableData: DriveDataModel = []
     var tableData: DriveDataModel {
         var tableDataCopy: DriveDataModel!
@@ -22,29 +23,39 @@ public class DriveRepository {
         return tableDataCopy
     }
     
-    func loadData() {
-        dispatch_barrier_async(self.concurrentDriveQueue) {
+    func loadData(loadDataCompletion: () -> Void) {
+        if let dispatchGroupDrive = dispatch_group_create() {
+            dispatch_group_enter(dispatchGroupDrive)
+            
             LoopSDK.syncManager.getDrives(40, callback: {
                 (loopDrives:[LoopTrip]) in
                 
-                self._tableData.removeAll()
+                dispatch_barrier_sync(self.concurrentDriveQueue) {
+                    self._tableData.removeAll()
+                }
                 
                 if loopDrives.isEmpty {
                     let sampleDrives = JSONUtils.loadSampleTripData("SampleDrives")
                     for drive in sampleDrives {
-                        self._tableData.append((isSampleData: true, data: drive))
+                        dispatch_barrier_sync(self.concurrentDriveQueue) {
+                            self._tableData.append((isSampleData: true, data: drive))
+                        }
                     }
                 } else {
                     NSLog("Loop SDK returned \(loopDrives.count) drives")
                     for drive in loopDrives {
-                        self._tableData.append((isSampleData: false, data:drive))
+                        dispatch_barrier_sync(self.concurrentDriveQueue) {
+                            self._tableData.append((isSampleData: false, data:drive))
+                        }
                     }
                 }
                 
-                dispatch_async(GlobalMainQueue) {
-                    NSNotificationCenter.defaultCenter().postNotificationName(DriveRepositoryAddedContentNotification, object: nil)
-                }
+                dispatch_group_leave(dispatchGroupDrive)
             })
+            
+            dispatch_group_notify(dispatchGroupDrive, GlobalMainQueue) {
+                loadDataCompletion()
+            }
         }
     }
     

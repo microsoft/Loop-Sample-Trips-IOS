@@ -10,12 +10,10 @@ class TripViewController: UIViewController {
     
     @IBOutlet weak var tripTableView: UITableView!
 
-    private var tripRepositoryUpdateObserver: NSObjectProtocol!
-    private var knownLocationRepositoryUpdateObserver: NSObjectProtocol!
+    private var repositoryManagerUpdateObserver: NSObjectProtocol!
     
     let cellViewHeight: CGFloat = 94.0
-    let tripRepository = TripRepository.sharedInstance
-    let knownLocationRepository = KnownLocationRepository.sharedInstance
+    let repositoryManager = RepositoryManager.sharedInstance
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,15 +25,8 @@ class TripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tripRepositoryUpdateObserver = NSNotificationCenter.defaultCenter()
-            .addObserverForName(TripRepositoryAddedContentNotification,
-                                object: nil,
-                                queue: NSOperationQueue.mainQueue()) {
-                                    notification in
-                                    self.contentChangedNotification(notification)
-        }
-        knownLocationRepositoryUpdateObserver = NSNotificationCenter.defaultCenter()
-            .addObserverForName(KnownLocationRepositoryAddedContentNotification,
+        repositoryManagerUpdateObserver = NSNotificationCenter.defaultCenter()
+            .addObserverForName(RepositoryManagerAddedContentNotification,
                                 object: nil,
                                 queue: NSOperationQueue.mainQueue()) {
                                     notification in
@@ -46,7 +37,7 @@ class TripViewController: UIViewController {
         self.tripTableView.separatorColor = UIColor.clearColor()
         self.tripTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
 
-        self.loadRepositoryDataAsync()
+        self.repositoryManager.loadRepositoryDataAsync()
         
         self.tripTableView.addSubview(self.refreshControl)
     }
@@ -54,7 +45,7 @@ class TripViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMapViewForTrips", let mapView = segue.destinationViewController as? MapViewController {
             if let indexPath = sender as? NSIndexPath {
-                mapView.setData((self.tripRepository.tableData[indexPath.row].data)!, showTrips: false)
+                mapView.setData((self.repositoryManager.tripRepository.tableData[indexPath.row].data)!, showTrips: false)
             }
         }
     }
@@ -65,22 +56,16 @@ class TripViewController: UIViewController {
 
 extension TripViewController {
     func onPullToRefresh(refreshControl: UIRefreshControl) {
-        self.loadRepositoryDataAsync()
+        self.repositoryManager.loadRepositoryDataAsync()
         
         refreshControl.endRefreshing()
     }
     
-    private func loadRepositoryDataAsync() {
-        self.tripRepository.loadData()
-        self.knownLocationRepository.loadData()
-    }
-    
     private func contentChangedNotification(notification: NSNotification!) {
         switch notification.name {
-        case TripRepositoryAddedContentNotification:
+        case RepositoryManagerAddedContentNotification:
+            NSLog("Received update notification in TripView")
             self.tripTableView.reloadData()
-        case KnownLocationRepositoryAddedContentNotification:
-            self.view.setNeedsDisplay()
         default:
             NSLog("Unknown notification")
         }
@@ -96,11 +81,11 @@ extension TripViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tripRepository.tableData.count
+        return self.repositoryManager.tripRepository.tableData.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (self.tripRepository.tableData[indexPath.row].isSampleData) {
+        if (self.repositoryManager.tripRepository.tableData[indexPath.row].isSampleData) {
             return cellViewHeight
         }
         else {
@@ -110,7 +95,7 @@ extension TripViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
-        let row = self.tripRepository.tableData[indexPath.row]
+        let row = self.repositoryManager.tripRepository.tableData[indexPath.row]
         cell.setData(row.data!, sampleTrip: row.isSampleData)
         
         return cell
@@ -124,7 +109,7 @@ extension TripViewController {
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {
             (action, indexPath) in
             
-            self.tripRepository.removeData(indexPath.row)
+            self.repositoryManager.tripRepository.removeData(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         })
         

@@ -10,12 +10,10 @@ class DriveViewController: UIViewController {
     
     @IBOutlet weak var driveTableView: UITableView!
     
-    private var driveRepositoryUpdateObserver: NSObjectProtocol!
-    private var knownLocationRepositoryUpdateObserver: NSObjectProtocol!
+    private var repositoryManagerUpdateObserver: NSObjectProtocol!
 
     let cellViewHeight: CGFloat = 94.0
-    let driveRepository = DriveRepository.sharedInstance
-    let knownLocationRepository = KnownLocationRepository.sharedInstance
+    let repositoryManager = RepositoryManager.sharedInstance
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,15 +25,8 @@ class DriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        driveRepositoryUpdateObserver = NSNotificationCenter.defaultCenter()
-            .addObserverForName(DriveRepositoryAddedContentNotification,
-                                object: nil,
-                                queue: NSOperationQueue.mainQueue()) {
-                                    notification in
-                                    self.contentChangedNotification(notification)
-        }
-        knownLocationRepositoryUpdateObserver = NSNotificationCenter.defaultCenter()
-            .addObserverForName(KnownLocationRepositoryAddedContentNotification,
+        repositoryManagerUpdateObserver = NSNotificationCenter.defaultCenter()
+            .addObserverForName(RepositoryManagerAddedContentNotification,
                                 object: nil,
                                 queue: NSOperationQueue.mainQueue()) {
                                     notification in
@@ -46,8 +37,7 @@ class DriveViewController: UIViewController {
         self.driveTableView.separatorColor = UIColor.clearColor()
         self.driveTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         
-        self.driveRepository.loadData()
-        self.knownLocationRepository.loadData()
+        self.repositoryManager.loadRepositoryDataAsync()
         
         self.driveTableView.addSubview(self.refreshControl)
     }
@@ -55,7 +45,7 @@ class DriveViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMapViewForDrives", let mapView = segue.destinationViewController as? MapViewController {
             if let indexPath = sender as? NSIndexPath {
-                mapView.setData((self.driveRepository.tableData[indexPath.row].data)!, showTrips: false)
+                mapView.setData((self.repositoryManager.driveRepository.tableData[indexPath.row].data)!, showTrips: false)
             }
         }
     }
@@ -66,22 +56,16 @@ class DriveViewController: UIViewController {
 
 extension DriveViewController {
     func onPullToRefresh(refreshControl: UIRefreshControl) {
-        self.loadRepositoryDataAsync()
+        self.repositoryManager.loadRepositoryDataAsync()
         
         refreshControl.endRefreshing()
     }
     
-    private func loadRepositoryDataAsync() {
-        self.driveRepository.loadData()
-        self.knownLocationRepository.loadData()
-    }
-    
     private func contentChangedNotification(notification: NSNotification!) {
         switch notification.name {
-        case DriveRepositoryAddedContentNotification:
+        case RepositoryManagerAddedContentNotification:
+            NSLog("Received update notification in DriveView")
             self.driveTableView.reloadData()
-        case KnownLocationRepositoryAddedContentNotification:
-            self.view.setNeedsDisplay()
         default:
             NSLog("Unknown notification")
         }
@@ -97,11 +81,11 @@ extension DriveViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.driveRepository.tableData.count
+        return self.repositoryManager.driveRepository.tableData.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (self.driveRepository.tableData[indexPath.row].isSampleData) {
+        if (self.repositoryManager.driveRepository.tableData[indexPath.row].isSampleData) {
             return cellViewHeight
         }
         else {
@@ -111,7 +95,7 @@ extension DriveViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
-        let row = self.driveRepository.tableData[indexPath.row]
+        let row = self.repositoryManager.driveRepository.tableData[indexPath.row]
         cell.setData(row.data!, sampleTrip: row.isSampleData)
         
         return cell
@@ -125,7 +109,7 @@ extension DriveViewController {
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {
             (action, indexPath) in
             
-            self.driveRepository.removeData(indexPath.row)
+            self.repositoryManager.driveRepository.removeData(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         })
         

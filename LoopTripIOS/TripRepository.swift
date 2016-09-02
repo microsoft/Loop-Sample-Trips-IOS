@@ -23,29 +23,39 @@ public class TripRepository {
         return tableDataCopy
     }
     
-    func loadData() {
-        dispatch_barrier_async(self.concurrentTripQueue) {
+    func loadData(loadDataCompletion: () -> Void) {
+        if let dispatchGroupTrip = dispatch_group_create() {
+            dispatch_group_enter(dispatchGroupTrip)
+
             LoopSDK.syncManager.getTrips(40, callback: {
                 (loopTrips:[LoopTrip]) in
                 
-                self._tableData.removeAll()
+                dispatch_barrier_sync(self.concurrentTripQueue) {
+                    self._tableData.removeAll()
+                }
                 
                 if loopTrips.isEmpty {
                     let sampleTrips = JSONUtils.loadSampleTripData("SampleTrips")
                     for trip in sampleTrips {
-                        self._tableData.append((isSampleData: true, data: trip))
+                        dispatch_barrier_sync(self.concurrentTripQueue) {
+                            self._tableData.append((isSampleData: true, data: trip))
+                        }
                     }
                 } else {
                     NSLog("Loop SDK returned \(loopTrips.count) trips")
                     for trip in loopTrips {
-                        self._tableData.append((isSampleData: false, data: trip))
+                        dispatch_barrier_sync(self.concurrentTripQueue) {
+                            self._tableData.append((isSampleData: false, data: trip))
+                        }
                     }
                 }
                 
-                dispatch_async(GlobalMainQueue) {
-                    NSNotificationCenter.defaultCenter().postNotificationName(TripRepositoryAddedContentNotification, object: nil)
-                }
+                dispatch_group_leave(dispatchGroupTrip)
             })
+            
+            dispatch_group_notify(dispatchGroupTrip, GlobalMainQueue) {
+                loadDataCompletion()
+            }
         }
     }
 

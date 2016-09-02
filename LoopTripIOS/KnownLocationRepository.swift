@@ -22,12 +22,16 @@ public class KnownLocationRepository {
         return locationsEntityIdMapCopy
     }
     
-    func loadData() {
-        dispatch_barrier_async(self.concurrentKnownLocationQueue) {
+    func loadData(loadDataCompletion: () -> Void) {
+        if let dispatchGroupKnownLocation = dispatch_group_create() {
+            dispatch_group_enter(dispatchGroupKnownLocation)
+            
             LoopSDK.syncManager.getProfileLocations {
                 (loopLocations:[LoopLocation]) in
                 
-                self._locationsEntityIdMap.removeAll()
+                dispatch_sync(self.concurrentKnownLocationQueue) {
+                    self._locationsEntityIdMap.removeAll()
+                }
                 
                 if !loopLocations.isEmpty {
                     NSLog("Loop SDK returned \(loopLocations.count) known locations")
@@ -44,13 +48,17 @@ public class KnownLocationRepository {
                             }
                         }
                         
-                        self._locationsEntityIdMap[location.entityId] = knownLocationName
+                        dispatch_sync(self.concurrentKnownLocationQueue) {
+                            self._locationsEntityIdMap[location.entityId] = knownLocationName
+                        }
                     }
                 }
                 
-                dispatch_async(GlobalMainQueue) {
-                    NSNotificationCenter.defaultCenter().postNotificationName(KnownLocationRepositoryAddedContentNotification, object: nil)
-                }
+                dispatch_group_leave(dispatchGroupKnownLocation)
+            }
+            
+            dispatch_group_notify(dispatchGroupKnownLocation, GlobalMainQueue) {
+                loadDataCompletion()
             }
         }
     }
