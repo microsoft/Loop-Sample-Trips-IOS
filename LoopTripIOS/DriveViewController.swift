@@ -10,6 +10,8 @@ class DriveViewController: UIViewController {
     
     @IBOutlet weak var driveTableView: UITableView!
     
+    private var modelUpdateObserver: NSObjectProtocol!
+
     let cellViewHeight: CGFloat = 94.0
     var driveModel = DriveModel.sharedInstance
     var knownLocationsModel = KnownLocationModel.sharedInstance
@@ -24,37 +26,22 @@ class DriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        modelUpdateObserver = NSNotificationCenter.defaultCenter()
+            .addObserverForName(DriveModelAddedContentNotification,
+                                object: nil,
+                                queue: NSOperationQueue.mainQueue()) {
+                                    notification in
+                                    self.contentChangedNotification(notification)
+        }
+        
         // turn off the standard separator, we have a custom separator
         self.driveTableView.separatorColor = UIColor.clearColor()
         self.driveTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         
-        self.loadModelDataAsync()
+        self.driveModel.loadData()
+        self.knownLocationsModel.loadData()
         
         self.driveTableView.addSubview(self.refreshControl)
-    }
-    
-    func onPullToRefresh(refreshControl: UIRefreshControl) {
-        self.loadModelDataAsync()
-
-        refreshControl.endRefreshing()
-    }
-    
-    func loadModelDataAsync() {
-        dispatch_async(GlobalUserInitiatedQueue) {
-            self.driveModel.loadData({
-                dispatch_async(GlobalMainQueue) {
-                    self.driveTableView.reloadData()
-                }
-            })
-        }
-        
-        dispatch_async(GlobalUserInitiatedQueue) {
-            self.knownLocationsModel.loadData({
-                dispatch_async(GlobalMainQueue) {
-                    self.view.setNeedsDisplay()
-                }
-            })
-        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -64,7 +51,39 @@ class DriveViewController: UIViewController {
             }
         }
     }
+}
+
+
+// MARK - Privates
+
+extension DriveViewController {
+    func onPullToRefresh(refreshControl: UIRefreshControl) {
+        self.loadModelDataAsync()
+        
+        refreshControl.endRefreshing()
+    }
     
+    private func loadModelDataAsync() {
+        self.driveModel.loadData()
+        self.knownLocationsModel.loadData()
+    }
+    
+    private func contentChangedNotification(notification: NSNotification!) {
+        switch notification.name {
+        case DriveModelAddedContentNotification:
+            self.driveTableView.reloadData()
+        case KnownLocationModelAddedContentNotification:
+            self.view.setNeedsDisplay()
+        default:
+            NSLog("Unknown notification")
+        }
+    }
+}
+
+
+// MARK - UITableView Delegate
+
+extension DriveViewController {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -91,23 +110,19 @@ class DriveViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if self.driveModel.tableData[indexPath.row].shouldShowMap {
-            self.performSegueWithIdentifier("showMapViewForDrives", sender: indexPath)
-        } else {
-            self.driveTableView.deselectRowAtIndexPath(indexPath, animated:true)
-        }
+        self.performSegueWithIdentifier("showMapViewForDrives", sender: indexPath)
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {
             (action, indexPath) in
             
-            self.driveModel.tableData.removeAtIndex(indexPath.row)
+            self.driveModel.removeData(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         })
         
         deleteAction.backgroundColor = UIColor.tableCellDeleteActionColor
-
+        
         return [deleteAction]
     }
     

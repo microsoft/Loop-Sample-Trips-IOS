@@ -5,10 +5,6 @@
 
 import Foundation
 
-let DriveModelAddedContentNotification = "ms.loop.trip.DriveModelAddedContentNotification"
-let TripModelAddedContentNotification = "ms.loop.trip.TripModelAddedContentNotification"
-let KnownLocationModelAddedContentNotification = "ms.loop.trip.KnownLocationModelAddedContentNotification"
-
 var GlobalMainQueue: dispatch_queue_t {
     return dispatch_get_main_queue()
 }

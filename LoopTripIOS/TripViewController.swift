@@ -9,6 +9,8 @@ import UIKit
 class TripViewController: UIViewController {
     
     @IBOutlet weak var tripTableView: UITableView!
+
+    private var modelUpdateObserver: NSObjectProtocol!
     
     let cellViewHeight: CGFloat = 94.0
     var tripModel = TripModel.sharedInstance
@@ -24,39 +26,23 @@ class TripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        modelUpdateObserver = NSNotificationCenter.defaultCenter()
+            .addObserverForName(TripModelAddedContentNotification,
+                                object: nil,
+                                queue: NSOperationQueue.mainQueue()) {
+                                    notification in
+                                    self.contentChangedNotification(notification)
+        }
+        
         // turn off the standard separator, we have a custom separator
         self.tripTableView.separatorColor = UIColor.clearColor()
         self.tripTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
 
-        loadModelDataAsync()
+        self.loadModelDataAsync()
         
         self.tripTableView.addSubview(self.refreshControl)
     }
 
-    func onPullToRefresh(refreshControl: UIRefreshControl) {
-        self.loadModelDataAsync()
-        
-        refreshControl.endRefreshing()
-    }
-    
-    func loadModelDataAsync() {
-        dispatch_async(GlobalUserInitiatedQueue) {
-            self.tripModel.loadData({
-                dispatch_async(GlobalMainQueue) {
-                    self.tripTableView.reloadData()
-                }
-            })
-        }
-        
-        dispatch_async(GlobalUserInitiatedQueue) {
-            self.knownLocationsModel.loadData({
-                dispatch_async(GlobalMainQueue) {
-                    self.view.setNeedsDisplay()
-                }
-            })
-        }
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMapViewForTrips", let mapView = segue.destinationViewController as? MapViewController {
             if let indexPath = sender as? NSIndexPath {
@@ -64,7 +50,39 @@ class TripViewController: UIViewController {
             }
         }
     }
+}
+
+
+// MARK - Privates
+
+extension TripViewController {
+    func onPullToRefresh(refreshControl: UIRefreshControl) {
+        self.loadModelDataAsync()
+        
+        refreshControl.endRefreshing()
+    }
     
+    private func loadModelDataAsync() {
+        self.tripModel.loadData()
+        self.knownLocationsModel.loadData()
+    }
+    
+    private func contentChangedNotification(notification: NSNotification!) {
+        switch notification.name {
+        case TripModelAddedContentNotification:
+            self.tripTableView.reloadData()
+        case KnownLocationModelAddedContentNotification:
+            self.view.setNeedsDisplay()
+        default:
+            NSLog("Unknown notification")
+        }
+    }
+}
+
+
+// MARK - UITableView Delegate
+
+extension TripViewController {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -91,18 +109,14 @@ class TripViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if self.tripModel.tableData[indexPath.row].shouldShowMap {
-            self.performSegueWithIdentifier("showMapViewForTrips", sender: indexPath)
-        } else {
-            self.tripTableView.deselectRowAtIndexPath(indexPath, animated:true)
-        }
+        self.performSegueWithIdentifier("showMapViewForTrips", sender: indexPath)
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {
             (action, indexPath) in
             
-            self.tripModel.tableData.removeAtIndex(indexPath.row)
+            self.tripModel.removeData(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         })
         

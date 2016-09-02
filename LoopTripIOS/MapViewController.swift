@@ -35,7 +35,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 		if let loopTrip = tripData {
             var transportMode = MKDirectionsTransportType.Walking
             if let loopTripTransportMode = loopTrip.transportMode {
-                switch (loopTripTransportMode) {
+                switch loopTripTransportMode {
                     case "driving":
                         transportMode = MKDirectionsTransportType.Automobile
                     case "on_foot":

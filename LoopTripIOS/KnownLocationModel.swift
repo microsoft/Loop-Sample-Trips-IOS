@@ -6,17 +6,30 @@ import Foundation
 import CoreLocation
 import LoopSDK
 
+typealias KnownLocationDataModel = [String: String]
+let KnownLocationModelAddedContentNotification = "ms.loop.trip.KnownLocationModelAddedContentNotification"
+
 public class KnownLocationModel {
     static let sharedInstance = KnownLocationModel()
     private init() {}
+    private let concurrentKnownLocationQueue = dispatch_queue_create("ms.loop.trip.KnownLocationModelQueue", DISPATCH_QUEUE_CONCURRENT)
     var sampleData = false
-    var locationsEntityIdMap = [String: String]()
+    private var _locationsEntityIdMap: KnownLocationDataModel = [:]
+    var locationsEntityIdMap: KnownLocationDataModel {
+        var locationsEntityIdMapCopy: KnownLocationDataModel!
+        dispatch_sync(concurrentKnownLocationQueue) {
+            locationsEntityIdMapCopy = self._locationsEntityIdMap
+        }
+        return locationsEntityIdMapCopy
+    }
     
-    public func loadData(loadDataCompletion: () -> Void) {
+    func loadData() {
         LoopSDK.syncManager.getProfileLocations {
             (loopLocations:[LoopLocation]) in
             
-            self.locationsEntityIdMap.removeAll()
+            dispatch_barrier_sync(self.concurrentKnownLocationQueue) {
+                self._locationsEntityIdMap.removeAll()
+            }
             
             if !loopLocations.isEmpty {
                 NSLog("Loop SDK returned \(loopLocations.count) known locations")
@@ -33,11 +46,13 @@ public class KnownLocationModel {
                         }
                     }
                     
-                    self.locationsEntityIdMap[location.entityId] = knownLocationName
+                    dispatch_barrier_sync(self.concurrentKnownLocationQueue) {
+                        self._locationsEntityIdMap[location.entityId] = knownLocationName
+                    }
                 }
             }
             
-            loadDataCompletion()
+            NSNotificationCenter.defaultCenter().postNotificationName(KnownLocationModelAddedContentNotification, object: nil)
         }
     }
 }
