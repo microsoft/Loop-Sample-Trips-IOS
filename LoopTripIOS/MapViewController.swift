@@ -21,6 +21,17 @@ class LoopPointAnnotation: MKPointAnnotation {
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var detailsView: UIView!
+    @IBOutlet weak var startLocation: UILabel!
+    @IBOutlet weak var endLocation: UILabel!
+    @IBOutlet weak var locationIcon: UIImageView!
+    @IBOutlet weak var destinationArrow: UIImageView!
+    @IBOutlet weak var locationDistance: UILabel!
+    @IBOutlet weak var locationDuration: UILabel!
+    @IBOutlet weak var locationTime: UILabel!
+    @IBOutlet weak var endLocationLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var mapView: MKMapView!
 
     private var mapViewUpdateObserver: NSObjectProtocol!
@@ -29,12 +40,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var tripData: LoopTrip?
     var transportMode = MKDirectionsTransportType.Walking
     let mapRouteLineCache = MapRouteLineCache.sharedInstance
+    let knownLocationRepository = KnownLocationRepository.sharedInstance
+    let leadingConstraintConstant: CGFloat = 10.0
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
+        self.detailsView.layer.shadowOpacity = 0.7
+        self.detailsView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        
         self.title = self.showTrips ? "TRIP ROUTE" : "DRIVE ROUTE"
         self.mapView.delegate = self
+        
+        self.setDetails()
         
         mapViewUpdateObserver = NSNotificationCenter.defaultCenter()
             .addObserverForName(MapRouteLineCacheAddedContentNotification,
@@ -71,6 +89,73 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             NSLog("No trip data set for MapView")
         }
 	}
+}
+
+
+// MARK - Details
+
+extension MapViewController {
+    private func setDetails() {
+        if let loopTrip = self.tripData {
+            self.setLocaleLabels(loopTrip)
+            
+            self.locationDistance.text = " \(ConversionUtils.kilometersToMiles(loopTrip.distanceTraveledInKilometers)) mi. "
+            self.locationDuration.text = loopTrip.endedAt.offsetFrom(loopTrip.startedAt)
+            self.locationTime.text = loopTrip.startedAt.relativeDayAndStartEndTime(loopTrip.endedAt)
+        }
+    }
+    
+    func setLocaleLabels(trip: LoopTrip) {
+        var locationIconName = "ICO Cell Blank"
+        
+        if knownLocationRepository.locationsEntityIdMap.count > 0 {
+            if let locationEntityId = trip.entityId {
+                if let iconName = knownLocationRepository.locationsEntityIdMap[locationEntityId] {
+                    locationIconName = iconName
+                }
+            }
+        }
+        
+        if let startLocaleText = trip.startLocale?.getFriendlyName().uppercaseString {
+            setStartLocaleLabelText(startLocaleText)
+            
+            if let endLocaleText = trip.endLocale?.getFriendlyName().uppercaseString {
+                if (endLocaleText != startLocaleText) {
+                    adjustEndLocaleLabelText(false)
+                    setEndLocaleLabelText(endLocaleText)
+                }
+                else {
+                    adjustEndLocaleLabelText(true)
+                }
+            }
+            else {
+                adjustEndLocaleLabelText(true)
+            }
+        } else {
+            adjustEndLocaleLabelText(true)
+            setStartLocaleLabelText("UNKONWN")
+        }
+        
+        locationIcon.image = UIImage(named: locationIconName)
+    }
+
+    private func setStartLocaleLabelText(text: String) {
+        self.startLocation.text = text
+    }
+    
+    private func setEndLocaleLabelText(text: String) {
+        self.endLocation.text = text
+    }
+    
+    private func adjustEndLocaleLabelText(removeLabel: Bool) {
+        let adjustConstraintConstant = removeLabel ? 0 : self.leadingConstraintConstant
+        
+        self.endLocation.hidden = removeLabel
+        self.endLocationLeadingConstraint.constant = adjustConstraintConstant
+        
+        self.destinationArrow.hidden = removeLabel
+        self.destinationArrowLeadingConstraint.constant = adjustConstraintConstant
+    }
 }
 
     

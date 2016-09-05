@@ -53,7 +53,7 @@
 /* Begin PBXFileReference section */
 		B505DC4F1D148FD1008646FE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		B55568BA1D10D3D1000174F8 /* Keys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Keys.xcconfig; sourceTree = "<group>"; };
-		B588870F1CF3A6AD00B25BCD /* Loop Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Loop Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B588870F1CF3A6AD00B25BCD /* Loop Trips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Loop Trips.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58887121CF3A6AD00B25BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B58887171CF3A6AD00B25BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B58887191CF3A6AD00B25BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		B58887101CF3A6AD00B25BCD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B588870F1CF3A6AD00B25BCD /* Loop Trip.app */,
+				B588870F1CF3A6AD00B25BCD /* Loop Trips.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,7 +208,7 @@
 			);
 			name = LoopTrip;
 			productName = SimpleTest;
-			productReference = B588870F1CF3A6AD00B25BCD /* Loop Trip.app */;
+			productReference = B588870F1CF3A6AD00B25BCD /* Loop Trips.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -330,16 +330,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ms.loop.trip;
-				PRODUCT_NAME = "Loop Trip";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				PROVISIONING_PROFILE = "3de8be19-9e52-496e-90bd-aa05ed74cdcf";
 			};
 			name = Debug;
 		};
@@ -347,16 +339,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6E0F6691D1066BC005A13E5 /* Release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ms.loop.trip;
-				PRODUCT_NAME = "Loop Trip";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				PROVISIONING_PROFILE = "3de8be19-9e52-496e-90bd-aa05ed74cdcf";
 			};
 			name = Release;
 		};

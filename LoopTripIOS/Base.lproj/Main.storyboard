@@ -433,13 +433,130 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5s4-Ad-GeN">
-                                <rect key="frame" x="0.0" y="164" width="600" height="387"/>
+                                <rect key="frame" x="0.0" y="134" width="600" height="417"/>
                             </mapView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pU8-Jz-rmf" userLabel="Details View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="BELLEVUE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyX-3q-bmM">
+                                        <rect key="frame" x="20" y="15" width="78" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="WEb-yi-8Ae"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="pKw-DD-gSR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="WEb-yi-8Ae"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REDMOND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kx2-7Z-xd3">
+                                        <rect key="frame" x="143" y="15" width="68" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="00G-I5-kc0"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="QDT-F3-nnz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="00G-I5-kc0"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Blank" translatesAutoresizingMaskIntoConstraints="NO" id="NpI-gL-5ve">
+                                        <rect key="frame" x="216" y="17" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="9o9-3i-6Kl"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="Jav-RR-NQS"/>
+                                            <constraint firstAttribute="height" constant="16" id="VEr-fq-ifm"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="WKi-yq-Q9V"/>
+                                            <constraint firstAttribute="width" constant="16" id="WnT-rF-GcP"/>
+                                            <constraint firstAttribute="width" constant="16" id="eEf-ia-jfy"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Jav-RR-NQS"/>
+                                                <exclude reference="WKi-yq-Q9V"/>
+                                                <exclude reference="WnT-rF-GcP"/>
+                                                <exclude reference="eEf-ia-jfy"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today 11:32 AM - 1:29 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3B-ga-bDv">
+                                        <rect key="frame" x="20" y="38" width="174" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="BUQ-Lh-TsL"/>
+                                            <constraint firstAttribute="height" constant="18" id="n3o-QH-vMJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                                        <color key="textColor" red="0.45094840380000001" green="0.46968793250000002" blue="0.49691181280000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Direction" translatesAutoresizingMaskIntoConstraints="NO" id="3Qi-AZ-FQe">
+                                        <rect key="frame" x="108" y="21" width="25" height="8"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="efm-m0-h5m"/>
+                                            <constraint firstAttribute="width" constant="25" id="td2-7b-QWf"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:56:41" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0V-6R-2mD">
+                                        <rect key="frame" x="522" y="40" width="58" height="14"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                                        <color key="textColor" red="0.45094840380000001" green="0.46968793250000002" blue="0.49691181280000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Time" translatesAutoresizingMaskIntoConstraints="NO" id="ga6-Ky-nKd">
+                                        <rect key="frame" x="504" y="39" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="H7G-KI-zCK"/>
+                                            <constraint firstAttribute="width" constant="15" id="MwM-i0-R8f"/>
+                                            <constraint firstAttribute="height" constant="15" id="aeO-UZ-1AT"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="h1N-a6-TKB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 10.94 mi. " textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Gl-KQ-GiV">
+                                        <rect key="frame" x="500" y="16" width="80" height="16"/>
+                                        <color key="backgroundColor" red="0.062745098040000002" green="0.062745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="6lr-RA-agb"/>
+                                            <constraint firstAttribute="width" constant="80" id="Cqj-ZX-fae"/>
+                                            <constraint firstAttribute="height" constant="16" id="rYF-Mp-yPQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="0.062745098040000002" green="0.062745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Cqj-ZX-fae"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="tqe-je-vaX"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Gl-KQ-GiV" secondAttribute="trailing" constant="20" id="7fG-H8-Z1f"/>
+                                    <constraint firstItem="Kx2-7Z-xd3" firstAttribute="leading" secondItem="3Qi-AZ-FQe" secondAttribute="trailing" constant="10" id="7jr-vM-iGZ"/>
+                                    <constraint firstItem="i3B-ga-bDv" firstAttribute="top" secondItem="NyX-3q-bmM" secondAttribute="bottom" constant="4" id="80R-S7-uoI"/>
+                                    <constraint firstItem="ga6-Ky-nKd" firstAttribute="top" secondItem="1Gl-KQ-GiV" secondAttribute="bottom" constant="7" id="8M0-Qc-04i"/>
+                                    <constraint firstItem="3Qi-AZ-FQe" firstAttribute="leading" secondItem="NyX-3q-bmM" secondAttribute="trailing" constant="10" id="DEK-K2-tJJ"/>
+                                    <constraint firstItem="NpI-gL-5ve" firstAttribute="top" secondItem="pU8-Jz-rmf" secondAttribute="top" constant="17" id="DQc-Wv-6Ip"/>
+                                    <constraint firstAttribute="trailing" secondItem="f0V-6R-2mD" secondAttribute="trailing" constant="20" id="EVI-3m-au0"/>
+                                    <constraint firstAttribute="height" constant="70" id="JRT-Bl-vp0"/>
+                                    <constraint firstItem="NyX-3q-bmM" firstAttribute="leading" secondItem="pU8-Jz-rmf" secondAttribute="leading" constant="20" id="LWd-Ew-vEj"/>
+                                    <constraint firstItem="1Gl-KQ-GiV" firstAttribute="top" secondItem="pU8-Jz-rmf" secondAttribute="top" constant="16" id="Pn9-3w-Baj"/>
+                                    <constraint firstItem="i3B-ga-bDv" firstAttribute="leading" secondItem="pU8-Jz-rmf" secondAttribute="leading" constant="20" id="QTT-ik-XgB"/>
+                                    <constraint firstItem="f0V-6R-2mD" firstAttribute="leading" secondItem="ga6-Ky-nKd" secondAttribute="trailing" constant="3" id="YZn-cX-w07"/>
+                                    <constraint firstItem="Kx2-7Z-xd3" firstAttribute="top" secondItem="pU8-Jz-rmf" secondAttribute="top" constant="15" id="ZWQ-Au-fLW"/>
+                                    <constraint firstItem="3Qi-AZ-FQe" firstAttribute="top" secondItem="pU8-Jz-rmf" secondAttribute="top" constant="21" id="gzJ-7K-3ec"/>
+                                    <constraint firstItem="NpI-gL-5ve" firstAttribute="leading" secondItem="Kx2-7Z-xd3" secondAttribute="trailing" constant="5" id="lFN-zf-kFS"/>
+                                    <constraint firstItem="f0V-6R-2mD" firstAttribute="top" secondItem="1Gl-KQ-GiV" secondAttribute="bottom" constant="8" id="rxG-Kx-wlA"/>
+                                    <constraint firstItem="NyX-3q-bmM" firstAttribute="top" secondItem="pU8-Jz-rmf" secondAttribute="top" constant="15" id="wcw-ah-1bD"/>
+                                    <constraint firstItem="NpI-gL-5ve" firstAttribute="leading" secondItem="NyX-3q-bmM" secondAttribute="trailing" priority="250" constant="5" id="xqT-9G-Xz1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -453,15 +570,27 @@
                             <constraint firstItem="5s4-Ad-GeN" firstAttribute="top" secondItem="pU8-Jz-rmf" secondAttribute="bottom" id="f7j-uv-LD5"/>
                             <constraint firstAttribute="trailing" secondItem="pU8-Jz-rmf" secondAttribute="trailing" id="iIk-gt-8Zy"/>
                             <constraint firstItem="pU8-Jz-rmf" firstAttribute="leading" secondItem="Wb2-g8-diJ" secondAttribute="leading" id="r5b-it-ZOG"/>
+                            <constraint firstItem="pU8-Jz-rmf" firstAttribute="top" secondItem="orG-w6-nsn" secondAttribute="bottom" id="sSv-fT-oe9"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="sSv-fT-oe9"/>
                                 <exclude reference="f7j-uv-LD5"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="destinationArrow" destination="3Qi-AZ-FQe" id="ZUT-Mf-XM1"/>
+                        <outlet property="destinationArrowLeadingConstraint" destination="DEK-K2-tJJ" id="bSy-wT-kob"/>
+                        <outlet property="detailsView" destination="pU8-Jz-rmf" id="jis-xZ-Saj"/>
+                        <outlet property="endLocation" destination="Kx2-7Z-xd3" id="GAw-nC-FY6"/>
+                        <outlet property="endLocationLeadingConstraint" destination="efm-m0-h5m" id="iPL-xC-UCl"/>
+                        <outlet property="locationDistance" destination="1Gl-KQ-GiV" id="S0c-6Z-3bQ"/>
+                        <outlet property="locationDuration" destination="f0V-6R-2mD" id="o3Y-iS-KTu"/>
+                        <outlet property="locationIcon" destination="NpI-gL-5ve" id="FPg-pg-qiB"/>
+                        <outlet property="locationTime" destination="i3B-ga-bDv" id="ayZ-kf-nOc"/>
                         <outlet property="mapView" destination="5s4-Ad-GeN" id="aXr-sY-438"/>
+                        <outlet property="startLocation" destination="NyX-3q-bmM" id="pT3-14-ZuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VhR-yd-6OD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -568,6 +697,9 @@
     <resources>
         <image name="Dashed Cell Line" width="597" height="4"/>
         <image name="Dashed Nav Line" width="375" height="4"/>
+        <image name="ICO Cell Blank" width="16" height="16"/>
+        <image name="ICO Cell Time" width="24" height="24"/>
+        <image name="ICO Direction" width="31" height="9"/>
         <image name="ICO Drives Off" width="24" height="14"/>
         <image name="ICO Drives On" width="24" height="14"/>
         <image name="ICO Settings Off" width="19" height="20"/>

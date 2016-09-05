@@ -36,14 +36,14 @@ class TripCell: UITableViewCell {
             sampleTripIndicator.hidden = true
         }
         
-        setLocaleLabel(trip)
+        setLocaleLabels(trip)
         
         self.locationDistance.text = " \(ConversionUtils.kilometersToMiles(trip.distanceTraveledInKilometers)) mi. "
         self.locationDuration.text = trip.endedAt.offsetFrom(trip.startedAt)
         self.locationTime.text = trip.startedAt.relativeDayAndStartEndTime(trip.endedAt)
     }
     
-    func setLocaleLabel(trip: LoopTrip) {
+    func setLocaleLabels(trip: LoopTrip) {
         var locationIconName = "ICO Cell Blank"
         
         if knownLocationRepository.locationsEntityIdMap.count > 0 {
