@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>100</string>
 	<key>LOOP_APP_ID_PROP</key>
 	<string>$(LOOP_APP_ID_PROP)</string>
 	<key>LOOP_APP_TOKEN_PROP</key>
@@ -36,8 +36,6 @@
 	<array>
 		<string>location</string>
 	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
