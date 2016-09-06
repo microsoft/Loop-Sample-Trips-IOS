@@ -22,6 +22,12 @@ class DriveViewController: UIViewController {
         return refreshControl
     }()
     
+    override func viewWillDisappear(animated: Bool) {
+        if let repositoryManagerUpdateObserver = repositoryManagerUpdateObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(repositoryManagerUpdateObserver)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

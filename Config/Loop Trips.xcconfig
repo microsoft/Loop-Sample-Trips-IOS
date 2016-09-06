@@ -9,12 +9,14 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) LOOP_APP_ID_PROP=@\"$(LOOP_APP_ID_PR
 
 SDKROOT = iphoneos
 
-PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.loop.ios.sdksample.df
+PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.loop.loop
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
 
 CODE_SIGN_IDENTITY = iPhone Developer
 CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Developer
+
+PROVISIONING_PROFILE = 
 
 INFOPLIST_FILE = LoopTripIOS/Info.plist
 

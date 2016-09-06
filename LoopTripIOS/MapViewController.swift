@@ -43,7 +43,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     let leadingConstraintConstant: CGFloat = 10.0
 	
-	override func viewDidLoad() {
+    override func viewWillDisappear(animated: Bool) {
+        if let mapViewUpdateObserver = mapViewUpdateObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(mapViewUpdateObserver)
+        }
+    }
+
+    override func viewDidLoad() {
 		super.viewDidLoad()
         
         self.detailsView.layer.shadowOpacity = 0.7
@@ -181,7 +187,7 @@ extension MapViewController {
         let annotation = LoopPointAnnotation()
 		
 		annotation.coordinate = loopTripPoint.coordinate
-        annotation.title = routePosition == RouteAnnotationPosition.startPosition ? "Starting Location" : "Ending Loction"
+        annotation.title = routePosition == RouteAnnotationPosition.startPosition ? "Starting Location" : "Ending Location"
 		annotation.subtitle = loopTripPoint.timeAt.relativeDayAndTime()
         annotation.imageName = routePosition == RouteAnnotationPosition.startPosition ? "ICO Pin Start" : "ICO Pin End"
         
@@ -192,8 +198,8 @@ extension MapViewController {
         if let loopTrip = self.tripData {
             let paths = loopTrip.path
             
-            // check in the cache first
             if let entityId = loopTrip.entityId {
+                // check in the cache first
                 if let polylines = mapRouteLineCache.polyLineEntityMap[entityId] {
                     NSLog("Found cached polylines")
 
@@ -257,7 +263,6 @@ extension MapViewController {
     }
 
     private func findNextRoutePointIndex(loopTrip: LoopTrip, currentIndex: Int) -> Int {
-        let timeOffsetLimit = (60 * 2)      // 2 minutes
         let distanceOffsetLimit = (300.0)   // 300 m ~= 900ft (an estimated city block)
         let averageSpeedLimit = (9.0)       // 9 m/s ~= 20 mph
         let paths = loopTrip.path
@@ -317,12 +322,6 @@ extension MapViewController {
             // if walking or biking use the basic polyline instead of route-based line
             if (self.transportMode != MKDirectionsTransportType.Automobile) {
                 self.mapView.addOverlay(routePolyline)
-            }
-            
-            if let entityId = loopTrip.entityId {
-                if let polylines = mapRouteLineCache.polyLineEntityMap[entityId] {
-                    NSLog("Found \(polylines.count) cached polylines for entityId: \(entityId)")
-                }
             }
         }
     }

@@ -331,7 +331,9 @@
 			baseConfigurationReference = F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				PROVISIONING_PROFILE = "3de8be19-9e52-496e-90bd-aa05ed74cdcf";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.loop.trip-df";
+				PROVISIONING_PROFILE = "c7650ae2-14d9-4d20-85ab-84fff77b6fa5";
 			};
 			name = Debug;
 		};
@@ -340,7 +342,9 @@
 			baseConfigurationReference = F6E0F6691D1066BC005A13E5 /* Release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				PROVISIONING_PROFILE = "3de8be19-9e52-496e-90bd-aa05ed74cdcf";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.loop.trip-df";
+				PROVISIONING_PROFILE = "c7650ae2-14d9-4d20-85ab-84fff77b6fa5";
 			};
 			name = Release;
 		};
