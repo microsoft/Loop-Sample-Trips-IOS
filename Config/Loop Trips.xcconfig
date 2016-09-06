@@ -9,7 +9,7 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) LOOP_APP_ID_PROP=@\"$(LOOP_APP_ID_PR
 
 SDKROOT = iphoneos
 
-PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.loop.loop
+PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.loop.loop-df
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
 
