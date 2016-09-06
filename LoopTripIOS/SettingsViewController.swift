@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 import LoopSDK
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var recordingSwitch: UISwitch!
     @IBOutlet weak var userIdText: UITextField!
     @IBOutlet weak var deviceIdText: UITextField!
@@ -17,6 +17,9 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userIdText.delegate = self
+        deviceIdText.delegate = self
         
         if (LoopSDK.isInitialized()) {
             userIdText.text = LoopSDK.getUserID()
@@ -32,7 +35,7 @@ class SettingsViewController: UIViewController {
             recordingSwitch.enabled = false
         }
         
-        learnLoopLink.attributedText = createAttributedStringWithLink("Learn more about Microsoft Location Observation Platform (LOOP)...", linkUrlString: "https://loop.ms", fontSize: 14.0)
+        learnLoopLink.attributedText = createAttributedStringWithLink("Learn more about Microsoft Location Observation Platform (LOOP)...", linkUrlString: "https://www.loop.ms", fontSize: 14.0)
         touLink.attributedText = createAttributedStringWithLink("TERMS", linkUrlString: "http://go.microsoft.com/fwlink/?LinkID=530144", fontSize: 12.0)
         privacyLink.attributedText = createAttributedStringWithLink("PRIVACY", linkUrlString: "http://go.microsoft.com/fwlink/?LinkId=521839", fontSize: 12.0)
     }
@@ -44,7 +47,12 @@ class SettingsViewController: UIViewController {
             LoopSDK.loopLocationProvider.stopListener()
         }
     }
-    
+}
+
+
+// MARK - Private
+
+extension SettingsViewController {
     private func createAttributedStringWithLink(linkText: String, linkUrlString: String, fontSize: CGFloat) -> NSAttributedString {
         let linkAttributes = [
             NSLinkAttributeName: NSURL(string: linkUrlString)!,
@@ -53,5 +61,14 @@ class SettingsViewController: UIViewController {
         ]
         
         return NSAttributedString.init(string: linkText, attributes: linkAttributes)
+    }
+}
+
+
+// MARK - UITextField
+
+extension SettingsViewController {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        return false;
     }
 }

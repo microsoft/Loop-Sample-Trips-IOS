@@ -27,7 +27,7 @@ public class DriveRepository {
         if let dispatchGroupDrive = dispatch_group_create() {
             dispatch_group_enter(dispatchGroupDrive)
             
-            LoopSDK.syncManager.getDrives(40, callback: {
+            LoopSDK.syncManager.getDrives(20, callback: {
                 (loopDrives:[LoopTrip]) in
                 
                 dispatch_barrier_sync(self.concurrentDriveQueue) {

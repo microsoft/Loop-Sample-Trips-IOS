@@ -52,20 +52,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
 		super.viewDidLoad()
         
-        self.detailsView.layer.shadowOpacity = 0.7
-        self.detailsView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        self.initDetailsView()
         
         self.title = self.showTrips ? "TRIP ROUTE" : "DRIVE ROUTE"
         self.mapView.delegate = self
         
-        self.setDetails()
+        self.setDetailsInfo()
         
-        mapViewUpdateObserver = NSNotificationCenter.defaultCenter()
-            .addObserverForName(MapRouteLineCacheAddedContentNotification,
-                                object: nil,
-                                queue: NSOperationQueue.mainQueue()) {
-                                    notification in
-                                    self.contentChangedNotification(notification)
+        mapViewUpdateObserver = NSNotificationCenter.defaultCenter().addObserverForName(MapRouteLineCacheAddedContentNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
+            notification in
+            self.contentChangedNotification(notification)
         }
 
 		if let loopTrip = self.tripData {
@@ -101,7 +97,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 // MARK - Details
 
 extension MapViewController {
-    private func setDetails() {
+    private func initDetailsView() {
+        self.detailsView.layer.shadowOpacity = 0.7
+        self.detailsView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+    }
+    
+    private func setDetailsInfo() {
         if let loopTrip = self.tripData {
             self.setLocaleLabels(loopTrip)
             
@@ -209,15 +210,21 @@ extension MapViewController {
                 }
                 else {
                     NSLog("Creating new route polylines")
+                    var routePaths = [LoopTripPoint]()
                     
                     // create route segments (and overlays) based on mode, speed, and other attributes
                     createRouteForMode(paths[0].coordinate, destinationLocation: paths[1].coordinate, routeType: transportMode)
+                    routePaths.append(paths[0])
+                    routePaths.append(paths[1])
                     var index = 0
                     repeat {
                         let nextIndex = findNextRoutePointIndex(loopTrip, currentIndex: index)
                         createRouteForMode(paths[index].coordinate, destinationLocation: paths[nextIndex].coordinate, routeType: transportMode)
+                        routePaths.append(paths[nextIndex])
                         index = nextIndex
                     } while index < paths.count - 1
+                    
+                    NSLog("Route contains \(routePaths.count) paths")
                 }
             }
         }
@@ -264,37 +271,44 @@ extension MapViewController {
 
     private func findNextRoutePointIndex(loopTrip: LoopTrip, currentIndex: Int) -> Int {
         let distanceOffsetLimit = (300.0)   // 300 m ~= 900ft (an estimated city block)
-        let averageSpeedLimit = (9.0)       // 9 m/s ~= 20 mph
+        let averageSpeedLimit = (13.0)       // 13 m/s ~= 29 mph
         let paths = loopTrip.path
         guard currentIndex < paths.count - 1 else {
             return paths.count - 1
         }
         
         for index in currentIndex + 1 ..< paths.count - 1 {
-            let timeOffset = paths[index].timeAt.timeIntervalSinceDate(paths[currentIndex].timeAt)
-//            if (NSInteger(timeOffset) > timeOffsetLimit) {
-//                NSLog("Using time diff constraint: \(paths[index].timeAt.offsetFrom(paths[currentIndex].timeAt))")
-//                return index
-//            }
-
-            let startLocation = CLLocation.init(latitude: paths[currentIndex].coordinate.latitude, longitude: paths[currentIndex].coordinate.longitude)
-            let endLocation = CLLocation.init(latitude: paths[index].coordinate.latitude, longitude: paths[index].coordinate.longitude)
-            let distanceOffset = startLocation.distanceFromLocation(endLocation)
-            let averageSpeed = distanceOffset / timeOffset
+            let distanceOffset = pathDistanceOffset(paths[index - 1].coordinate, endPoint: paths[index].coordinate)
+            let averageSpeed = distanceOffset / pathTimeOffset(paths[index - 1], endPoint: paths[index])
 
             // ignore segments where travel was less than limit
             if (distanceOffset < distanceOffsetLimit) {
+                NSLog("Ignoring segment based on distance (D: \(distanceOffset) m S: \(averageSpeed) m/s)")
+                continue
+            }
+            
+            // ignore segments where speed is below limit
+            if (averageSpeed < averageSpeedLimit) {
+                NSLog("Ignoring segment based on speed (D: \(distanceOffset) m S: \(averageSpeed) m/s)")
                 continue
             }
             
             // keep segment where average speed is below limit
-            if (averageSpeed < averageSpeedLimit) {
-                NSLog("Using distance diff constraint: \(distanceOffset) m., Speed: \(averageSpeed) m/s.")
-                return index
-            }
+            NSLog("Keeping segment (D: \(distanceOffset) m S: \(averageSpeed) m/s)")
+            return index
         }
         
         return paths.count - 1
+    }
+    
+    private func pathTimeOffset(startPoint: LoopTripPoint, endPoint: LoopTripPoint) -> NSTimeInterval {
+        return endPoint.timeAt.timeIntervalSinceDate(startPoint.timeAt)
+    }
+    
+    private func pathDistanceOffset(startPoint: CLLocationCoordinate2D, endPoint: CLLocationCoordinate2D) -> CLLocationDistance {
+        let startLocation = CLLocation.init(latitude: startPoint.latitude, longitude: startPoint.longitude)
+        let endLocation = CLLocation.init(latitude: endPoint.latitude, longitude: endPoint.longitude)
+        return startLocation.distanceFromLocation(endLocation)
     }
     
     private func setMapView() {
@@ -335,7 +349,7 @@ extension MapViewController {
 		let polylineRenderer = MKPolylineRenderer(overlay: overlay)
 		polylineRenderer.strokeColor = UIColor.mapRouteLineColor
 		polylineRenderer.lineWidth = 4
-        polylineRenderer.alpha = 0.70
+        polylineRenderer.alpha = 0.60
         
 		return polylineRenderer
 	}

@@ -36,7 +36,7 @@
         <!--SettingsView-->
         <scene sceneID="VG0-68-Xhx">
             <objects>
-                <viewController title="SettingsView" id="Edv-4X-ffW" userLabel="SettingsView" customClass="SettingsViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SettingsView" id="Edv-4X-ffW" userLabel="SettingsView" customClass="SettingsViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="awK-UA-9YU"/>
                         <viewControllerLayoutGuide type="bottom" id="HIr-HL-vc4"/>
@@ -129,28 +129,28 @@
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="NOT INITIALIZED" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="08p-DH-LhH">
                                         <rect key="frame" x="20" y="101" width="113" height="14"/>
-                                        <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="NOT INITIALIZED" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-9A-iaC">
                                         <rect key="frame" x="20" y="164" width="113" height="14"/>
-                                        <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="© 2016 MICROSOFT" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sFg-nF-ahy">
                                         <rect key="frame" x="460" y="459" width="120" height="14"/>
-                                        <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Learn more about Microsoft Location Observation Platform (LOOP)..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ir8-Wi-FXK">
                                         <rect key="frame" x="16" y="206" width="568" height="33"/>
-                                        <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.13725490196078433" green="0.61176470588235299" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -158,7 +158,7 @@
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="TERMS" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rHS-wb-bRH">
                                         <rect key="frame" x="20" y="450" width="47" height="30"/>
-                                        <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.61176470589999998" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -166,14 +166,14 @@
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="PRIVACY" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="W13-kU-cNu">
                                         <rect key="frame" x="75" y="450" width="61" height="30"/>
-                                        <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.61176470589999998" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="7qe-LA-9zM" firstAttribute="top" secondItem="wME-yT-cyb" secondAttribute="top" constant="15" id="5hT-5n-wGo"/>
                                     <constraint firstAttribute="bottom" secondItem="sFg-nF-ahy" secondAttribute="bottom" constant="10" id="5zz-Xw-t2k"/>
@@ -233,7 +233,7 @@
                                 </variation>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wME-yT-cyb" secondAttribute="trailing" id="4X5-uX-m6m"/>
                             <constraint firstItem="HIr-HL-vc4" firstAttribute="top" secondItem="wME-yT-cyb" secondAttribute="bottom" id="OaN-UC-a8R"/>
@@ -266,7 +266,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cU5-MY-xN0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                         </textAttributes>
@@ -282,7 +282,7 @@
         <!--DrivesView-->
         <scene sceneID="qPa-bz-8dY">
             <objects>
-                <viewController storyboardIdentifier="drivesViewController" title="DrivesView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4uj-wS-t3e" userLabel="DrivesView" customClass="DriveViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="drivesViewController" title="DrivesView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4uj-wS-t3e" userLabel="DrivesView" customClass="DriveViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nES-qI-QLx"/>
                         <viewControllerLayoutGuide type="bottom" id="vx1-IM-sbB"/>
@@ -306,7 +306,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="RXw-R2-xia" firstAttribute="leading" secondItem="4Fw-8j-ZEJ" secondAttribute="leading" id="2LW-JZ-vHL"/>
                             <constraint firstItem="RXw-R2-xia" firstAttribute="top" secondItem="nES-qI-QLx" secondAttribute="bottom" id="4MV-VL-K1t"/>
@@ -332,7 +332,7 @@
         <!--LogView-->
         <scene sceneID="0Ab-3Z-l1a">
             <objects>
-                <viewController title="Log" id="f98-V6-lX1" userLabel="LogView" customClass="logViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Log" id="f98-V6-lX1" userLabel="LogView" customClass="logViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lE7-th-9r7"/>
                         <viewControllerLayoutGuide type="bottom" id="NTx-w0-J2z"/>
@@ -423,7 +423,7 @@
         <!--MapView-->
         <scene sceneID="reX-Ym-vxP">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" title="mapViewController" id="Qep-Yx-TzS" userLabel="MapView" customClass="MapViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" title="mapViewController" id="Qep-Yx-TzS" userLabel="MapView" customClass="MapViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="orG-w6-nsn"/>
                         <viewControllerLayoutGuide type="bottom" id="9Ft-nr-egI"/>
@@ -623,7 +623,7 @@
         <!--TripsView-->
         <scene sceneID="UnC-pL-Wos">
             <objects>
-                <viewController storyboardIdentifier="tripsViewController" title="TripsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHv-XQ-dfn" customClass="TripViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tripsViewController" title="TripsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHv-XQ-dfn" customClass="TripViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zk6-9w-VCk"/>
                         <viewControllerLayoutGuide type="bottom" id="qT6-pp-lUp"/>
@@ -640,14 +640,14 @@
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="arI-dL-N1U">
                                 <rect key="frame" x="0.0" y="68" width="600" height="483"/>
-                                <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="VHv-XQ-dfn" id="854-us-atd"/>
                                     <outlet property="delegate" destination="VHv-XQ-dfn" id="S4F-eg-zPF"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gQl-aP-3r4" secondAttribute="trailing" id="8Nf-jy-3nN"/>
                             <constraint firstItem="qT6-pp-lUp" firstAttribute="top" secondItem="arI-dL-N1U" secondAttribute="bottom" id="Lwh-4K-cNE"/>
@@ -708,6 +708,6 @@
         <image name="ICO Trips On" width="20" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="axt-Ch-c1I"/>
+        <segue reference="PUQ-tN-pOm"/>
     </inferredMetricsTieBreakers>
 </document>
