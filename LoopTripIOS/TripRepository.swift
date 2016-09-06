@@ -27,7 +27,7 @@ public class TripRepository {
         if let dispatchGroupTrip = dispatch_group_create() {
             dispatch_group_enter(dispatchGroupTrip)
 
-            LoopSDK.syncManager.getTrips(40, callback: {
+            LoopSDK.syncManager.getTrips(20, callback: {
                 (loopTrips:[LoopTrip]) in
                 
                 dispatch_barrier_sync(self.concurrentTripQueue) {

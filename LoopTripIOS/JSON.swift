@@ -21,6 +21,14 @@ class JSONUtils {
         return loopTrips
     }
     
+    class func testTripData() -> LoopTrip {
+        let jsonString = ""
+        let jsonData = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
+        let loopTripJson = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.AllowFragments)
+        let loopTrip = createLoopTripFromJSON(loopTripJson as! [String: AnyObject])
+        return loopTrip
+    }
+    
     internal class func createLoopTripFromJSON(jsonTrip: [String: AnyObject]) -> LoopTrip {
         return LoopTrip(
             entityId: jsonTrip["entityId"] as? String,
