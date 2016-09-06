@@ -1,3 +1,4 @@
 github "Alamofire/Alamofire" ~> 3.0
+github "bitstadium/HockeySDK-iOS"
 github "LpDevBuilder/Loop-iOS-SDK-Framework" ~>2.0
 
