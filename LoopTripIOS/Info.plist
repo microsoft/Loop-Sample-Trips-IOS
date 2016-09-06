@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.5</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>100</string>
+	<string>105</string>
 	<key>LOOP_APP_ID_PROP</key>
 	<string>$(LOOP_APP_ID_PROP)</string>
 	<key>LOOP_APP_TOKEN_PROP</key>

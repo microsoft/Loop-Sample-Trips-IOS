@@ -36,7 +36,7 @@
         <!--SettingsView-->
         <scene sceneID="VG0-68-Xhx">
             <objects>
-                <viewController title="SettingsView" id="Edv-4X-ffW" userLabel="SettingsView" customClass="SettingsViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SettingsView" id="Edv-4X-ffW" userLabel="SettingsView" customClass="SettingsViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="awK-UA-9YU"/>
                         <viewControllerLayoutGuide type="bottom" id="HIr-HL-vc4"/>
@@ -282,7 +282,7 @@
         <!--DrivesView-->
         <scene sceneID="qPa-bz-8dY">
             <objects>
-                <viewController storyboardIdentifier="drivesViewController" title="DrivesView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4uj-wS-t3e" userLabel="DrivesView" customClass="DriveViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="drivesViewController" title="DrivesView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4uj-wS-t3e" userLabel="DrivesView" customClass="DriveViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nES-qI-QLx"/>
                         <viewControllerLayoutGuide type="bottom" id="vx1-IM-sbB"/>
@@ -332,7 +332,7 @@
         <!--LogView-->
         <scene sceneID="0Ab-3Z-l1a">
             <objects>
-                <viewController title="Log" id="f98-V6-lX1" userLabel="LogView" customClass="logViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Log" id="f98-V6-lX1" userLabel="LogView" customClass="logViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lE7-th-9r7"/>
                         <viewControllerLayoutGuide type="bottom" id="NTx-w0-J2z"/>
@@ -423,7 +423,7 @@
         <!--MapView-->
         <scene sceneID="reX-Ym-vxP">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" title="mapViewController" id="Qep-Yx-TzS" userLabel="MapView" customClass="MapViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" title="mapViewController" id="Qep-Yx-TzS" userLabel="MapView" customClass="MapViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="orG-w6-nsn"/>
                         <viewControllerLayoutGuide type="bottom" id="9Ft-nr-egI"/>
@@ -623,7 +623,7 @@
         <!--TripsView-->
         <scene sceneID="UnC-pL-Wos">
             <objects>
-                <viewController storyboardIdentifier="tripsViewController" title="TripsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHv-XQ-dfn" customClass="TripViewController" customModule="Loop_Trip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tripsViewController" title="TripsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHv-XQ-dfn" customClass="TripViewController" customModule="Loop_Trips" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zk6-9w-VCk"/>
                         <viewControllerLayoutGuide type="bottom" id="qT6-pp-lUp"/>
