@@ -79,13 +79,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             
             NSLog("Trip type: \(transportMode)")
+
+            // for now we're going to just draw the raw data polylines
+            self.setMapView()
             
-            if (transportMode == MKDirectionsTransportType.Automobile) {
-                self.createRoutePathsAsync()
-            }
-            else {
-                self.setMapView()
-            }
+//            if (transportMode == MKDirectionsTransportType.Automobile) {
+//                self.createRoutePathsAsync()
+//            }
+//            else {
+//                self.setMapView()
+//            }
 		}
         else {
             NSLog("No trip data set for MapView")
@@ -210,21 +213,15 @@ extension MapViewController {
                 }
                 else {
                     NSLog("Creating new route polylines")
-                    var routePaths = [LoopTripPoint]()
                     
                     // create route segments (and overlays) based on mode, speed, and other attributes
                     createRouteForMode(paths[0].coordinate, destinationLocation: paths[1].coordinate, routeType: transportMode)
-                    routePaths.append(paths[0])
-                    routePaths.append(paths[1])
                     var index = 0
                     repeat {
                         let nextIndex = findNextRoutePointIndex(loopTrip, currentIndex: index)
                         createRouteForMode(paths[index].coordinate, destinationLocation: paths[nextIndex].coordinate, routeType: transportMode)
-                        routePaths.append(paths[nextIndex])
                         index = nextIndex
                     } while index < paths.count - 1
-                    
-                    NSLog("Route contains \(routePaths.count) paths")
                 }
             }
         }
@@ -334,9 +331,9 @@ extension MapViewController {
             self.mapView.camera.altitude = self.mapView.camera.altitude * 2.0
             
             // if walking or biking use the basic polyline instead of route-based line
-            if (self.transportMode != MKDirectionsTransportType.Automobile) {
+            //if (self.transportMode != MKDirectionsTransportType.Automobile) {
                 self.mapView.addOverlay(routePolyline)
-            }
+            //}
         }
     }
 }
@@ -349,7 +346,7 @@ extension MapViewController {
 		let polylineRenderer = MKPolylineRenderer(overlay: overlay)
 		polylineRenderer.strokeColor = UIColor.mapRouteLineColor
 		polylineRenderer.lineWidth = 4
-        polylineRenderer.alpha = 0.60
+        polylineRenderer.alpha = 0.80
         
 		return polylineRenderer
 	}
@@ -377,7 +374,7 @@ extension MapViewController {
         // Set annotation-specific properties **AFTER** the view is dequeued or created...
         let loopPointAnnotation = annotation as! LoopPointAnnotation
         annotationView!.image = UIImage(named: loopPointAnnotation.imageName)
-        annotationView!.centerOffset = CGPointMake(0, -15);
+        annotationView!.centerOffset = CGPointMake(0, -18);
         
         return annotationView
     }
