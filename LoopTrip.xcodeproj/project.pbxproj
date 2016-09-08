@@ -16,6 +16,8 @@
 		B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */; };
 		B5CEFDCA1D024A7600E0B799 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* logViewController.swift */; };
 		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
+		F60A2FAD1D80D19D00E297B0 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A2FAC1D80D19D00E297B0 /* Text.swift */; };
+		F60A2FAF1D81357500E297B0 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A2FAE1D81357500E297B0 /* Alert.swift */; };
 		F65489771D7641310005BB9B /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65489761D7641310005BB9B /* LoopSDK.framework */; };
 		F65489781D7641310005BB9B /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F65489761D7641310005BB9B /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F654898A1D76AA760005BB9B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489851D76AA760005BB9B /* Color.swift */; };
@@ -62,6 +64,8 @@
 		B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B5CEFDC91D024A7600E0B799 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
 		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
+		F60A2FAC1D80D19D00E297B0 /* Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		F60A2FAE1D81357500E297B0 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F65489761D7641310005BB9B /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
 		F65489851D76AA760005BB9B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F65489861D76AA760005BB9B /* Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			children = (
 				F65489851D76AA760005BB9B /* Color.swift */,
 				F65489861D76AA760005BB9B /* Conversion.swift */,
+				F60A2FAC1D80D19D00E297B0 /* Text.swift */,
+				F60A2FAE1D81357500E297B0 /* Alert.swift */,
 				F65489871D76AA760005BB9B /* Date.swift */,
 				F65489881D76AA760005BB9B /* Dispatch.swift */,
 				F65489891D76AA760005BB9B /* JSON.swift */,
@@ -223,7 +229,7 @@
 				TargetAttributes = {
 					B588870E1CF3A6AD00B25BCD = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = UBF8T346G9;
+						DevelopmentTeam = 9KBH5RKYEW;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -274,6 +280,8 @@
 				F65A89DB1D79E894000D1E54 /* RepositoryManager.swift in Sources */,
 				F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */,
 				F654898A1D76AA760005BB9B /* Color.swift in Sources */,
+				F60A2FAD1D80D19D00E297B0 /* Text.swift in Sources */,
+				F60A2FAF1D81357500E297B0 /* Alert.swift in Sources */,
 				F65749261D755D3E00F3398B /* DriveViewController.swift in Sources */,
 				F65749221D75560200F3398B /* DriveRepository.swift in Sources */,
 				B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */,
@@ -332,6 +340,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.loop.trip-df";
 				PROVISIONING_PROFILE = "c7650ae2-14d9-4d20-85ab-84fff77b6fa5";
 			};
@@ -343,6 +352,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.loop.trip-df";
 				PROVISIONING_PROFILE = "c7650ae2-14d9-4d20-85ab-84fff77b6fa5";
 			};

@@ -5,32 +5,34 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 import LoopSDK
 
-class SettingsViewController: UIViewController, UITextFieldDelegate {
+class SettingsViewController: UIViewController {
     @IBOutlet weak var recordingSwitch: UISwitch!
-    @IBOutlet weak var userIdText: UITextField!
-    @IBOutlet weak var deviceIdText: UITextField!
+    @IBOutlet weak var userIdTextButton: UIButton!
+    @IBOutlet weak var deviceIdTextButton: UIButton!
     @IBOutlet weak var learnLoopLink: UITextView!
     @IBOutlet weak var touLink: UITextView!
     @IBOutlet weak var privacyLink: UITextView!
+    @IBOutlet weak var versionString: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userIdText.delegate = self
-        deviceIdText.delegate = self
+        let buildVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as? String
+        versionString.text = "v" + buildVersion!
         
         if (LoopSDK.isInitialized()) {
-            userIdText.text = LoopSDK.getUserID()
-            deviceIdText.text = LoopSDK.getDeviceID()
+            userIdTextButton.setTitle(LoopSDK.getUserID(), forState: .Normal)
+            deviceIdTextButton.setTitle(LoopSDK.getDeviceID(), forState: .Normal)
             
             recordingSwitch.enabled = true
             recordingSwitch.setOn(LoopSDK.loopLocationProvider.active, animated: false)
         }
         else {
-            userIdText.text = "UNINITIALIZED"
-            deviceIdText.text = "UNINITIALIZED"
+            userIdTextButton.setTitle("UNINITIALIZED", forState: .Normal)
+            deviceIdTextButton.setTitle("UNINITIALIZED", forState: .Normal)
 
             recordingSwitch.enabled = false
         }
@@ -42,7 +44,30 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func onRecordingSwitch(sender: UISwitch) {
         if sender.on {
-            LoopSDK.loopLocationProvider.startListener()
+            let listenerStatus = LoopSDK.loopLocationProvider.listenerStatus
+            if  (listenerStatus == CLAuthorizationStatus.AuthorizedAlways
+                    || listenerStatus == CLAuthorizationStatus.AuthorizedWhenInUse) {
+                LoopSDK.loopLocationProvider.startListener()
+            }
+            else {
+                // set the button to off and ask for permission
+                sender.setOn(false, animated: false)
+                
+                let alertController: UIAlertController = UIAlertController(title: "Authorization Required", message: "You need to allow this app to to access Location in Settings.", preferredStyle: .Alert)
+                
+                let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                }
+                alertController.addAction(cancelAction)
+                
+                let settingsAction: UIAlertAction = UIAlertAction(title: "Go to Settings", style: .Default) { action -> Void in
+                    dispatch_async(GlobalMainQueue) {
+                        UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                    }
+                }
+                alertController.addAction(settingsAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
         } else {
             LoopSDK.loopLocationProvider.stopListener()
         }
@@ -65,10 +90,17 @@ extension SettingsViewController {
 }
 
 
-// MARK - UITextField
-
+// MARK - UIButton
 extension SettingsViewController {
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        return false;
+    @IBAction func userIdButton(sender: AnyObject) {
+        UIPasteboard.generalPasteboard().string = userIdTextButton.titleLabel!.text
+        
+        AlertUtils.Alert(self, title: "Copied to Clipboard", message: userIdTextButton.titleLabel!.text!)
+    }
+    
+    @IBAction func deviceIdButton(sender: AnyObject) {
+        UIPasteboard.generalPasteboard().string = deviceIdTextButton.titleLabel!.text
+
+        AlertUtils.Alert(self, title: "Copied to Clipboard", message: deviceIdTextButton.titleLabel!.text!)
     }
 }

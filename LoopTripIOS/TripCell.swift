@@ -19,8 +19,9 @@ class TripCell: UITableViewCell {
     @IBOutlet weak var sampleTripIndicator: UILabel!
     @IBOutlet weak var endLocationLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var startLocationWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var endLocationWidthConstraint: NSLayoutConstraint!
     
-    let leadingConstraintConstant: CGFloat = 10.0
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     
     override func awakeFromNib () {
@@ -74,6 +75,8 @@ class TripCell: UITableViewCell {
             setStartLocaleLabelText("UNKONWN")
         }
         
+        adjustLocationLabelConstraints()
+        
         locationIcon.image = UIImage(named: locationIconName)
     }
     
@@ -86,7 +89,11 @@ class TripCell: UITableViewCell {
     }
     
     private func adjustEndLocaleLabelText(removeLabel: Bool) {
-        let adjustConstraintConstant = removeLabel ? 0 : self.leadingConstraintConstant
+        var adjustConstraintConstant = CGFloat.init(10)
+        
+        if (removeLabel) {
+            adjustConstraintConstant = CGFloat.init(0)
+        }
         
         self.endLocation.hidden = removeLabel
         self.endLocationLeadingConstraint.constant = adjustConstraintConstant
@@ -94,5 +101,43 @@ class TripCell: UITableViewCell {
         self.destinationArrow.hidden = removeLabel
         self.destinationArrowLeadingConstraint.constant = adjustConstraintConstant
     }
+    
+    private func adjustLocationLabelConstraints() {
+        let totalLabelsWidth = CGFloat.init(200)
+        let singleLabelWidth = (totalLabelsWidth / 2)
+        let startLabelWidth = createAttributedString(self.startLocation.text!).widthWithConstrainedHeight(18.0)
+        let endLabelWidth = createAttributedString(self.endLocation.text!).widthWithConstrainedHeight(18.0)
+        
+        if (self.endLocation.hidden == true) {
+            startLocationWidthConstraint.constant = totalLabelsWidth
+        }
+        else {
+            if (startLabelWidth + endLabelWidth <= totalLabelsWidth) {
+                startLocationWidthConstraint.constant = startLabelWidth
+                endLocationWidthConstraint.constant = endLabelWidth
+            }
+            else {
+                if (startLabelWidth < singleLabelWidth) {
+                    startLocationWidthConstraint.constant = startLabelWidth
+                    endLocationWidthConstraint.constant = totalLabelsWidth - startLabelWidth
+                }
+                else if (endLabelWidth < singleLabelWidth) {
+                    endLocationWidthConstraint.constant = endLabelWidth
+                    startLocationWidthConstraint.constant = totalLabelsWidth - endLabelWidth
+                }
+                else {
+                    endLocationWidthConstraint.constant = singleLabelWidth
+                    startLocationWidthConstraint.constant = singleLabelWidth
+                }
+            }
+        }
+    }
+    
+    private func createAttributedString(text: String) -> NSAttributedString {
+        let linkAttributes = [
+            NSFontAttributeName: UIFont(name: "Menlo", size: 16.0)!,
+        ]
+        
+        return NSAttributedString.init(string: text, attributes: linkAttributes)
+    }
 }
-

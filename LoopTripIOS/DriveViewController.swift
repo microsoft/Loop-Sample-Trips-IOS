@@ -39,11 +39,9 @@ class DriveViewController: UIViewController {
                                     self.contentChangedNotification(notification)
         }
         
-        // turn off the standard separator, we have a custom separator
-        self.driveTableView.separatorColor = UIColor.clearColor()
         self.driveTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         
-        self.repositoryManager.loadRepositoryDataAsync()
+        self.repositoryManager.loadRepositoryDataAsync(true)
         
         self.driveTableView.addSubview(self.refreshControl)
     }
@@ -62,8 +60,8 @@ class DriveViewController: UIViewController {
 
 extension DriveViewController {
     func onPullToRefresh(refreshControl: UIRefreshControl) {
-        self.repositoryManager.loadRepositoryDataAsync()
-        
+        self.repositoryManager.loadRepositoryDataAsync(false)
+        self.driveTableView.reloadData()
         refreshControl.endRefreshing()
     }
     
@@ -91,7 +89,7 @@ extension DriveViewController {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (self.repositoryManager.driveRepository.tableData[indexPath.row].isSampleData) {
+        if self.repositoryManager.driveRepository.tableData.count > indexPath.row && self.repositoryManager.driveRepository.tableData[indexPath.row].isSampleData {
             return cellViewHeight
         }
         else {
