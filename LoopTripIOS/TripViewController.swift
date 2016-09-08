@@ -39,11 +39,9 @@ class TripViewController: UIViewController {
                                     self.contentChangedNotification(notification)
         }
         
-        // turn off the standard separator, we have a custom separator
-        self.tripTableView.separatorColor = UIColor.clearColor()
         self.tripTableView.registerNib(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
 
-        self.repositoryManager.loadRepositoryDataAsync()
+        self.repositoryManager.loadRepositoryDataAsync(true)
         
         self.tripTableView.addSubview(self.refreshControl)
     }
@@ -62,8 +60,8 @@ class TripViewController: UIViewController {
 
 extension TripViewController {
     func onPullToRefresh(refreshControl: UIRefreshControl) {
-        self.repositoryManager.loadRepositoryDataAsync()
-        
+        self.repositoryManager.loadRepositoryDataAsync(false)
+        self.tripTableView.reloadData()
         refreshControl.endRefreshing()
     }
     
