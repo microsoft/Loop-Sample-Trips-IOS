@@ -3,6 +3,22 @@
 //  Date utilities
 //  Loop Trips Sample
 //
+//  Copyright (c) Microsoft Corporation
+//
+//  All rights reserved.
+//
+//  Licensed under the Apache License, Version 2.0 (the License); you may not 
+//  use this file except in compliance with the License. You may obtain a copy 
+//  of the License at http://www.apache.org/licenses/LICENSE-2.0
+//
+//  THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+//  OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
+//  IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, 
+//  MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+//  See the Apache Version 2.0 License for specific language governing permissions 
+//  and limitations under the License.
+//
 
 import Foundation
 import UIKit
@@ -36,21 +52,21 @@ extension NSDate {
     }
 
     public func relativeDayAndStartEndTime(endDate: NSDate) -> String {
-        let dayOfWeek: [String] = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+        let dayOfWeek: [String] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         
         let localDate = NSDate(timeInterval: NSTimeInterval(NSTimeZone.systemTimeZone().secondsFromGMT), sinceDate: self)
         
         var startDay = ""
         let dayDiff = NSCalendar.currentCalendar().components([.Day], fromDate: localDate, toDate: NSDate(), options: []).day
-        let weekday = NSCalendar.currentCalendar().components([.Weekday], fromDate: NSDate()).weekday
+        let weekday = NSCalendar.currentCalendar().components([.Weekday], fromDate: endDate).weekday - 1
         if (dayDiff == 0) {
             startDay = "Today"
         }
         else if (dayDiff == 1) {
             startDay = "Yesterday"
         }
-        else if (dayDiff >= 2 && dayDiff <= 4) {
-            startDay = dayOfWeek[(weekday - dayDiff) % 7]
+        else if (dayDiff < 7) {
+            startDay = dayOfWeek[weekday]
         }
 
         if (startDay == "") {
