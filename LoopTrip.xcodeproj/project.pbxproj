@@ -18,6 +18,8 @@
 		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
 		F60A2FAD1D80D19D00E297B0 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A2FAC1D80D19D00E297B0 /* Text.swift */; };
 		F60A2FAF1D81357500E297B0 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A2FAE1D81357500E297B0 /* Alert.swift */; };
+		F60A2FA81D7E80EF00E297B0 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F60A2FA71D7E80EF00E297B0 /* HockeySDK.framework */; };
+		F60A2FA91D7E80EF00E297B0 /* HockeySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F60A2FA71D7E80EF00E297B0 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F65489771D7641310005BB9B /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65489761D7641310005BB9B /* LoopSDK.framework */; };
 		F65489781D7641310005BB9B /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F65489761D7641310005BB9B /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F654898A1D76AA760005BB9B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489851D76AA760005BB9B /* Color.swift */; };
@@ -44,6 +46,7 @@
 			files = (
 				B505DC521D148FD1008646FE /* Alamofire.framework in Embed Frameworks */,
 				F65489781D7641310005BB9B /* LoopSDK.framework in Embed Frameworks */,
+				F60A2FA91D7E80EF00E297B0 /* HockeySDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +67,7 @@
 		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
 		F60A2FAC1D80D19D00E297B0 /* Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		F60A2FAE1D81357500E297B0 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		F60A2FA71D7E80EF00E297B0 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = Carthage/Build/iOS/HockeySDK.framework; sourceTree = "<group>"; };
 		F65489761D7641310005BB9B /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
 		F65489851D76AA760005BB9B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F65489861D76AA760005BB9B /* Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			files = (
 				B505DC511D148FD1008646FE /* Alamofire.framework in Frameworks */,
 				F65489771D7641310005BB9B /* LoopSDK.framework in Frameworks */,
+				F60A2FA81D7E80EF00E297B0 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +105,7 @@
 		B58887061CF3A6AD00B25BCD = {
 			isa = PBXGroup;
 			children = (
+				F60A2FA71D7E80EF00E297B0 /* HockeySDK.framework */,
 				F65489761D7641310005BB9B /* LoopSDK.framework */,
 				B505DC4F1D148FD1008646FE /* Alamofire.framework */,
 				F6E0F6661D10666B005A13E5 /* Config */,

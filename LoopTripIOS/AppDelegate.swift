@@ -21,6 +21,7 @@
 
 import UIKit
 import LoopSDK
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
@@ -29,7 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 	var loopInitialized = false;
     
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		var appID = ""
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("fd8801c521a8498caa4f093c4a782f45")
+        BITHockeyManager.sharedHockeyManager().startManager()
+        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation() // This line is obsolete in the crash only builds
+        
+        var appID = ""
 		var appToken = ""
         
 		if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"),
