@@ -29,8 +29,6 @@ import LoopSDK
 
 class SettingsViewController: UIViewController {
     @IBOutlet weak var recordingSwitch: UISwitch!
-    @IBOutlet weak var userIdTextButton: UIButton!
-    @IBOutlet weak var deviceIdTextButton: UIButton!
     @IBOutlet weak var learnLoopLink: UITextView!
     @IBOutlet weak var touLink: UITextView!
     @IBOutlet weak var privacyLink: UITextView!
@@ -43,16 +41,10 @@ class SettingsViewController: UIViewController {
         versionString.text = "v" + buildVersion!
         
         if (LoopSDK.isInitialized()) {
-            userIdTextButton.setTitle(LoopSDK.getUserID(), forState: .Normal)
-            deviceIdTextButton.setTitle(LoopSDK.getDeviceID(), forState: .Normal)
-            
             recordingSwitch.enabled = true
             recordingSwitch.setOn(LoopSDK.loopLocationProvider.active, animated: false)
         }
         else {
-            userIdTextButton.setTitle("UNINITIALIZED", forState: .Normal)
-            deviceIdTextButton.setTitle("UNINITIALIZED", forState: .Normal)
-
             recordingSwitch.enabled = false
         }
         
@@ -105,21 +97,5 @@ extension SettingsViewController {
         ]
         
         return NSAttributedString.init(string: linkText, attributes: linkAttributes)
-    }
-}
-
-
-// MARK - UIButton
-extension SettingsViewController {
-    @IBAction func userIdButton(sender: AnyObject) {
-        UIPasteboard.generalPasteboard().string = userIdTextButton.titleLabel!.text
-        
-        AlertUtils.Alert(self, title: "Copied to Clipboard", message: userIdTextButton.titleLabel!.text!)
-    }
-    
-    @IBAction func deviceIdButton(sender: AnyObject) {
-        UIPasteboard.generalPasteboard().string = deviceIdTextButton.titleLabel!.text
-
-        AlertUtils.Alert(self, title: "Copied to Clipboard", message: deviceIdTextButton.titleLabel!.text!)
     }
 }
