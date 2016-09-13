@@ -27,9 +27,7 @@
 		F654898E1D76AA760005BB9B /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489891D76AA760005BB9B /* JSON.swift */; };
 		F657491A1D74257F00F3398B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749191D74257F00F3398B /* SettingsViewController.swift */; };
 		F657491E1D74D32700F3398B /* TripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F657491D1D74D32700F3398B /* TripRepository.swift */; };
-		F65749221D75560200F3398B /* DriveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749211D75560200F3398B /* DriveRepository.swift */; };
 		F65749241D75599800F3398B /* KnownLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749231D75599800F3398B /* KnownLocationRepository.swift */; };
-		F65749261D755D3E00F3398B /* DriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749251D755D3E00F3398B /* DriveViewController.swift */; };
 		F65A89D71D79643C000D1E54 /* MapRouteLineCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A89D61D79643C000D1E54 /* MapRouteLineCache.swift */; };
 		F65A89DB1D79E894000D1E54 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A89DA1D79E894000D1E54 /* RepositoryManager.swift */; };
 		F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65A93891D6CCD3C006F5358 /* TripCell.xib */; };
@@ -74,9 +72,7 @@
 		F65489891D76AA760005BB9B /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		F65749191D74257F00F3398B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F657491D1D74D32700F3398B /* TripRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRepository.swift; sourceTree = "<group>"; };
-		F65749211D75560200F3398B /* DriveRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveRepository.swift; sourceTree = "<group>"; };
 		F65749231D75599800F3398B /* KnownLocationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownLocationRepository.swift; sourceTree = "<group>"; };
-		F65749251D755D3E00F3398B /* DriveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveViewController.swift; sourceTree = "<group>"; };
 		F65A89D61D79643C000D1E54 /* MapRouteLineCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRouteLineCache.swift; sourceTree = "<group>"; };
 		F65A89DA1D79E894000D1E54 /* RepositoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryManager.swift; sourceTree = "<group>"; };
 		F65A93891D6CCD3C006F5358 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
@@ -155,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				F65A89DA1D79E894000D1E54 /* RepositoryManager.swift */,
-				F65749211D75560200F3398B /* DriveRepository.swift */,
 				F657491D1D74D32700F3398B /* TripRepository.swift */,
 				F65749231D75599800F3398B /* KnownLocationRepository.swift */,
 			);
@@ -165,7 +160,6 @@
 		F65A89D91D79E7ED000D1E54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F65749251D755D3E00F3398B /* DriveViewController.swift */,
 				F6825FF11D73DA7B00D6F926 /* TripViewController.swift */,
 				F65A938D1D6CD4A0006F5358 /* TripCell */,
 				F65749191D74257F00F3398B /* SettingsViewController.swift */,
@@ -282,8 +276,6 @@
 				F654898A1D76AA760005BB9B /* Color.swift in Sources */,
 				F60A2FAD1D80D19D00E297B0 /* Text.swift in Sources */,
 				F60A2FAF1D81357500E297B0 /* Alert.swift in Sources */,
-				F65749261D755D3E00F3398B /* DriveViewController.swift in Sources */,
-				F65749221D75560200F3398B /* DriveRepository.swift in Sources */,
 				B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */,
 				F654898E1D76AA760005BB9B /* JSON.swift in Sources */,
 				F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */,

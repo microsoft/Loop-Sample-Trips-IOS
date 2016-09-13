@@ -32,17 +32,11 @@ public class RepositoryManager {
     static let sharedInstance = RepositoryManager()
     private init() {}
 
-    let driveRepository = DriveRepository.sharedInstance
     let tripRepository = TripRepository.sharedInstance
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     
     func loadRepositoryDataAsync(sendUpdateNotification: Bool) {
         if let dispatchGroupRepositoryManager = dispatch_group_create() {
-            dispatch_group_enter(dispatchGroupRepositoryManager)
-            self.driveRepository.loadData({
-                dispatch_group_leave(dispatchGroupRepositoryManager)
-            })
-            
             dispatch_group_enter(dispatchGroupRepositoryManager)
             self.tripRepository.loadData({
                 dispatch_group_leave(dispatchGroupRepositoryManager)
