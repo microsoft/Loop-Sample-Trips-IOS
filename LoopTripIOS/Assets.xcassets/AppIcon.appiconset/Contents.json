@@ -3,38 +3,68 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Loop@29-2x.png",
+      "filename" : "ICO - Trips 29x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "ICO - Trips 29x@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Loop@29-3x.png",
+      "filename" : "ICO - Trips 29x@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Loop@40-2x.png",
+      "filename" : "ICO - Trips 40x@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Loop@40-3x.png",
+      "filename" : "ICO - Trips 40x@3x.png",
       "scale" : "3x"
     },
     {
-      "size" : "60x60",
+      "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "Loop@60-2x.png",
+      "filename" : "ICO - Trips 57x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "ICO - Trips 57x@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Loop@60-3x.png",
+      "filename" : "ICO - Trips 60x@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "ICO - Trips 60x@3x.png",
       "scale" : "3x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "ICO - Trips 29x-1.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "ICO - Trips 29x@2x-1.png",
+      "scale" : "2x"
     }
   ],
   "info" : {

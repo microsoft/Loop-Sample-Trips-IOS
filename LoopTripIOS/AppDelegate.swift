@@ -2,8 +2,21 @@
 //  AppDelegate.swift
 //  Loop Trips Sample
 //
-//  Created by Xuwen Cao on 5/23/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
+//  Copyright (c) Microsoft Corporation
+//
+//  All rights reserved.
+//
+//  Licensed under the Apache License, Version 2.0 (the License); you may not 
+//  use this file except in compliance with the License. You may obtain a copy 
+//  of the License at http://www.apache.org/licenses/LICENSE-2.0
+//
+//  THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+//  OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
+//  IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, 
+//  MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+//  See the Apache Version 2.0 License for specific language governing permissions 
+//  and limitations under the License.
 //
 
 import UIKit
@@ -13,13 +26,12 @@ import LoopSDK
 class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	var window: UIWindow?
-	
 	var loopInitialized = false;
-
+    
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		var appID = ""
 		var appToken = ""
-		
+        
 		if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"),
 			let dict = NSDictionary(contentsOfFile: path) {
 			
@@ -38,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 		
 		LoopSDK.initialize(self, appID: appID, token: appToken);
 		LoopSDK.logManager.logEvent("Launch option \(launchOptions)")
+        
 		return true
 	}
 
@@ -57,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 	func applicationDidBecomeActive(application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-	}
+    }
 
 	func applicationWillTerminate(application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
@@ -65,13 +78,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoopSDKListener {
 
 
 	func onLoopInitialized() {
-		print("on initialized")
+		NSLog("Loop SDK successfully initialized")
 
 		loopInitialized = true;
+
+        // let the system prompt for location access
+        if (!LoopSDK.loopLocationProvider.active) {
+            LoopSDK.loopLocationProvider.startListener()
+        }
 	}
 	
 	func onLoopInitializeError(error: String) {
-		print("initialize error \(error)")
+		NSLog("Loop SDK initialization error: \(error)")
 		
 		loopInitialized = false;
 		
