@@ -1,10 +1,7 @@
 //
 //  Text.swift
 //  Text utilities
-//  Loop Trips Sample
-//
-//  Created by Xuwen Cao on 6/3/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
+//  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //
@@ -28,10 +25,16 @@ import UIKit
 
 extension NSAttributedString {
     func widthWithConstrainedHeight(height: CGFloat) -> CGFloat {
-        let constraintRect = CGSize(width: CGFloat.max, height: height)
+        let constraintRect = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
         
-        let boundingBox = self.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil)
         
         return ceil(boundingBox.width)
+    }
+}
+
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
 }

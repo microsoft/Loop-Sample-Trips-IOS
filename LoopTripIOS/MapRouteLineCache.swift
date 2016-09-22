@@ -1,9 +1,6 @@
 //
 //  MapRouteLineCache.swift
-//  Loop Trips Sample
-//
-//  Created by Xuwen Cao on 6/3/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
+//  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //
@@ -33,18 +30,18 @@ let MapRouteLineCacheAddedContentNotification = "ms.loop.trip.MapRouteLineCacheA
 public class MapRouteLineCache {
     static let sharedInstance = MapRouteLineCache()
     private init() {}
-    private let concurrentMapRouteLineCacheQueue = dispatch_queue_create("ms.loop.trip.MapRouteLineCacheQueue", DISPATCH_QUEUE_CONCURRENT)
+    private let concurrentMapRouteLineCacheQueue = DispatchQueue(label: "ms.loop.trip.MapRouteLineCacheQueue", attributes: .concurrent)
     private var _polyLineEntityMap: MapRouteLineCacheDataModel = [:]
     var polyLineEntityMap: MapRouteLineCacheDataModel {
         var polyLineEntityMapCopy: MapRouteLineCacheDataModel!
-        dispatch_sync(concurrentMapRouteLineCacheQueue) {
+        concurrentMapRouteLineCacheQueue.sync {
             polyLineEntityMapCopy = self._polyLineEntityMap
         }
         return polyLineEntityMapCopy
     }
     
     func appendPolyLine(entityId: String, polyline: MKPolyline) {
-        dispatch_barrier_sync(self.concurrentMapRouteLineCacheQueue) {
+        self.concurrentMapRouteLineCacheQueue.sync {
             if self._polyLineEntityMap[entityId] == nil {
                 self._polyLineEntityMap[entityId] = [MKPolyline]()
             }
@@ -54,7 +51,7 @@ public class MapRouteLineCache {
     }
     
     func removeEntityData(entityId: String) {
-        dispatch_barrier_sync(self.concurrentMapRouteLineCacheQueue) {
+        self.concurrentMapRouteLineCacheQueue.sync {
             guard self._polyLineEntityMap[entityId] != nil else {
                 return
             }

@@ -1,7 +1,7 @@
 //
 //  JSON.swift
 //  JSON utilities
-//  Loop Trips Sample
+//  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //
@@ -28,10 +28,10 @@ class JSONUtils {
     class func loadSampleTripData(sampleName: String) -> [LoopTrip] {
         var loopTrips:[LoopTrip] = [LoopTrip]()
         
-        let asset = NSDataAsset(name: sampleName, bundle: NSBundle.mainBundle())
-        let jsonData = try? NSJSONSerialization.JSONObjectWithData(asset!.data, options: NSJSONReadingOptions.AllowFragments)
+        let asset = NSDataAsset(name: sampleName, bundle: Bundle.main)
+        let jsonData = try? JSONSerialization.jsonObject(with: asset!.data, options: JSONSerialization.ReadingOptions.allowFragments)
         for jsonTrip in jsonData as! [[String: AnyObject]] {
-            loopTrips.append(self.createLoopTripFromJSON(jsonTrip))
+            loopTrips.append(self.createLoopTripFromJSON(jsonTrip: jsonTrip))
         }
         
         return loopTrips
@@ -39,9 +39,9 @@ class JSONUtils {
     
     class func testTripData() -> LoopTrip {
         let jsonString = ""
-        let jsonData = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
-        let loopTripJson = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.AllowFragments)
-        let loopTrip = createLoopTripFromJSON(loopTripJson as! [String: AnyObject])
+        let jsonData = jsonString.data(using: String.Encoding.utf8)
+        let loopTripJson = try? JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.allowFragments)
+        let loopTrip = createLoopTripFromJSON(jsonTrip: loopTripJson as! [String: AnyObject])
         return loopTrip
     }
     

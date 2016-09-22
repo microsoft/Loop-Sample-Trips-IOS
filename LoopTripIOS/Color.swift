@@ -1,7 +1,7 @@
 //
 //  Color.swift
 //  Color utilities
-//  Loop Trips Sample
+//  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //

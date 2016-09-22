@@ -1,7 +1,7 @@
 //
 //  Alert.swift
 //  Alert utilities
-//  Loop Trips Sample
+//  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //
@@ -25,14 +25,31 @@ import UIKit
 
 class AlertUtils {
     class func Alert(uiView: UIViewController, title: String, message: String) {
-        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
-            alertController.dismissViewControllerAnimated(true, completion: {
+        let okAction: UIAlertAction = UIAlertAction(title: "OK".localized, style: .default) { action -> Void in
+            alertController.dismiss(animated: true, completion: {
             })
         }
         alertController.addAction(okAction)
         
-        uiView.presentViewController(alertController, animated: true, completion: nil)
+        uiView.present(alertController, animated: true, completion: nil)
+    }
+    
+    class func AlertWithCallback(uiView: UIViewController, title: String, message: String, confirmButtonText: String, callback: @escaping (Void) -> Void) {
+        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel".localized, style: .cancel) { action -> Void in
+        }
+        alertController.addAction(cancelAction)
+        
+        let settingsAction: UIAlertAction = UIAlertAction(title: confirmButtonText, style: .default) { action -> Void in
+            DispatchQueue.main.async {
+                callback()
+            }
+        }
+        alertController.addAction(settingsAction)
+        
+        uiView.present(alertController, animated: true, completion: nil)
     }
 }

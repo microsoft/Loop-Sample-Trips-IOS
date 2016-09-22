@@ -1,9 +1,6 @@
 //
 //  SettingsViewController.swift
-//  Loop Trips Sample
-//
-//  Created by Xuwen Cao on 6/3/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
+//  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //
@@ -32,64 +29,79 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var learnLoopLink: UITextView!
     @IBOutlet weak var touLink: UITextView!
     @IBOutlet weak var privacyLink: UITextView!
-    @IBOutlet weak var versionString: UITextField!
+    @IBOutlet weak var versionString: UILabel!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (!LoopSDK.isInitialized()) {
+            recordingSwitch.isEnabled = false
+        }
+        else {
+            recordingSwitch.isEnabled = true
+            
+            recordingSwitch.setOn((LoopSDK.loopLocationProvider.active && LoopSDK.loopLocationProvider.listenerStatus == CLAuthorizationStatus.authorizedAlways), animated: false)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let buildVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as? String
+        let buildVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
         versionString.text = "v" + buildVersion!
         
-        if (LoopSDK.isInitialized()) {
-            recordingSwitch.enabled = true
-            recordingSwitch.setOn(LoopSDK.loopLocationProvider.active, animated: false)
-        }
-        else {
-            recordingSwitch.enabled = false
-        }
-        
-        learnLoopLink.attributedText = createAttributedStringWithLink("Learn more about Microsoft Location Observation Platform (LOOP)...", linkUrlString: "https://www.loop.ms", fontSize: 14.0)
-        touLink.attributedText = createAttributedStringWithLink("TERMS", linkUrlString: "http://go.microsoft.com/fwlink/?LinkID=530144", fontSize: 12.0)
-        privacyLink.attributedText = createAttributedStringWithLink("PRIVACY", linkUrlString: "http://go.microsoft.com/fwlink/?LinkId=521839", fontSize: 12.0)
+        learnLoopLink.attributedText = createAttributedStringWithLink(linkText: "LEARN_ABOUT_LOOP".localized, linkUrlString: "https://www.loop.ms", fontSize: 14.0)
+        touLink.attributedText = createAttributedStringWithLink(linkText: "TERMS".localized, linkUrlString: "http://go.microsoft.com/fwlink/?LinkID=530144", fontSize: 12.0)
+        privacyLink.attributedText = createAttributedStringWithLink(linkText: "PRIVACY".localized, linkUrlString: "http://go.microsoft.com/fwlink/?LinkId=521839", fontSize: 12.0)
     }
     
-    @IBAction func onRecordingSwitch(sender: UISwitch) {
-        if sender.on {
+// MARK - Actions
+    
+    @IBAction func onRecordingSwitch(_ sender: UISwitch) {
+        if sender.isOn {
             let listenerStatus = LoopSDK.loopLocationProvider.listenerStatus
-            if  (listenerStatus == CLAuthorizationStatus.AuthorizedAlways
-                    || listenerStatus == CLAuthorizationStatus.AuthorizedWhenInUse) {
+            if  (listenerStatus == CLAuthorizationStatus.authorizedAlways) {
                 LoopSDK.loopLocationProvider.startListener()
             } 
             else {
                 // set the button to off and ask for permission
                 sender.setOn(false, animated: false)
                 
-                let alertController: UIAlertController = UIAlertController(title: "Authorization Required", message: "You need to allow this app to to access Location in Settings.", preferredStyle: .Alert)
-                
-                let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-                }
-                alertController.addAction(cancelAction)
-                
-                let settingsAction: UIAlertAction = UIAlertAction(title: "Go to Settings", style: .Default) { action -> Void in
-                    dispatch_async(GlobalMainQueue) {
-                        UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-                    }
-                }
-                alertController.addAction(settingsAction)
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
+                AlertUtils.AlertWithCallback(uiView: self, title: "Authorization Required".localized,
+                                                            message: "AUTH_REQUIRED_MESSAGE".localized,
+                                                            confirmButtonText: "Go to Settings".localized, callback: {
+                    UIApplication.shared.openURL(NSURL(string: UIApplicationOpenSettingsURLString)! as URL)
+                })
             }
         } else {
             LoopSDK.loopLocationProvider.stopListener()
         }
     }
+    
+    @IBAction func deleteUserData(_ sender: AnyObject) {
+        AlertUtils.AlertWithCallback(uiView: self, title: "Delete All Trip Data".localized,
+                                                    message: "DELETE_USERDATA_MESSAGE".localized,
+                                                    confirmButtonText: "Delete".localized,
+                                                    callback: {
+                                                        self.recordingSwitch.setOn(false, animated: false)
+                                                        
+                                                        LoopSDK.deleteUser({
+                                                            error, response, JSON in
+                                                            if let status = response?.statusCode, status < 300 {
+                                                                AlertUtils.Alert(uiView: self, title: "Delete Successfull".localized, message: "BEGIN_RECORDING_TRIPS_MESSAGE".localized)
+                                                            }
+                                                            else {
+                                                                AlertUtils.Alert(uiView: self, title: "Error".localized, message: "DELETE_USERDATA_ERROR_MESSAGE".localized)
+                                                            }
+                                                        })
+                                                    })
+
+    }
 }
 
 
-// MARK - Private
+// MARK - Privates
 
 extension SettingsViewController {
-    private func createAttributedStringWithLink(linkText: String, linkUrlString: String, fontSize: CGFloat) -> NSAttributedString {
+    fileprivate func createAttributedStringWithLink(linkText: String, linkUrlString: String, fontSize: CGFloat) -> NSAttributedString {
         let linkAttributes = [
             NSLinkAttributeName: NSURL(string: linkUrlString)!,
             NSFontAttributeName: UIFont(name: "Menlo", size: fontSize)!,

@@ -1,43 +1,48 @@
 //
-//  TripCell.swift
+//  MapDetails.swift
 //  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //
 //  All rights reserved.
 //
-//  Licensed under the Apache License, Version 2.0 (the License); you may not 
-//  use this file except in compliance with the License. You may obtain a copy 
+//  Licensed under the Apache License, Version 2.0 (the License); you may not
+//  use this file except in compliance with the License. You may obtain a copy
 //  of the License at http://www.apache.org/licenses/LICENSE-2.0
 //
-//  THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS 
-//  OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
-//  IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, 
+//  THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS
+//  OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY
+//  IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
 //  MERCHANTABLITY OR NON-INFRINGEMENT.
 //
-//  See the Apache Version 2.0 License for specific language governing permissions 
+//  See the Apache Version 2.0 License for specific language governing permissions
 //  and limitations under the License.
 //
+
+// This implementation was duplicated directly from this project's TripCell.swift
+// implementation vs. creating a common shared class. It was originally thought the
+// map details view could change significantly from the table cell view.
 
 import Foundation
 import UIKit
 import LoopSDK
 
-class TripCell: UITableViewCell {
-        
+class MapDetailsView: UIView {
+    @IBOutlet var contentView: UIView!
+    
     @IBOutlet weak var startLocationLabel: UILabel!
     @IBOutlet weak var startLocationWidthConstraint: NSLayoutConstraint!
-
+    
     @IBOutlet weak var startLocationIcon: UIImageView!
     @IBOutlet weak var startLocationIconLeadingConstraint: NSLayoutConstraint!
-
+    
     @IBOutlet weak var destinationArrow: UIImageView!
     @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
-
+    
     @IBOutlet weak var endLocationLabel: UILabel!
     @IBOutlet weak var endLocationWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var endLocationLeadingConstraint: NSLayoutConstraint!
-
+    
     @IBOutlet weak var endLocationIcon: UIImageView!
     @IBOutlet weak var endLocationIconLeadingConstraint: NSLayoutConstraint!
     
@@ -46,25 +51,37 @@ class TripCell: UITableViewCell {
     @IBOutlet weak var locationDuration: UILabel!
     @IBOutlet weak var sampleTripIndicator: UILabel!
     
-    
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     
-    override func awakeFromNib () {
-        super.awakeFromNib()
-        
-        self.backgroundColor = UIColor.tableCellBackgroundColorLight
-        self.selectionStyle = UITableViewCellSelectionStyle.none
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
     }
     
-    func setData(trip: LoopTrip, isSample: Bool) {
-        if (!isSample) {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+    
+    private func commonInit() {
+        //self.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 50)
+        
+        Bundle.main.loadNibNamed("MapDetailsView", owner: self, options: nil)
+        guard let content = contentView else { return }
+        content.frame = self.bounds
+        content.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        self.addSubview(content)
+    }
+    
+    func setData(trip: LoopTrip, sampleTrip: Bool) {
+        if (!sampleTrip) {
             sampleTripIndicator.isHidden = true
         }
         
         self.locationDistance.text = " \(ConversionUtils.kilometersToMiles(kilometers: trip.distanceTraveledInKilometers)) mi. "
         self.locationDuration.text = trip.endedAt.offsetFrom(endDate: trip.startedAt)
         self.locationTime.text = trip.startedAt.relativeDayAndStartEndTime(endDate: trip.endedAt)
-
+        
         setLocationLabels(trip: trip)
     }
     
@@ -104,7 +121,7 @@ class TripCell: UITableViewCell {
             
             if let locationEntityId = trip.endLocationEntityId {
                 let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
-
+                
                 if (locationIconName != "unknown") {
                     endLocationIcon.image = UIImage(named: locationIconName)
                 }
@@ -123,7 +140,7 @@ class TripCell: UITableViewCell {
     private func removeEndLocationLabel() {
         self.endLocationIcon.isHidden = true
         self.endLocationIconLeadingConstraint.constant = CGFloat(0)
-
+        
         self.endLocationLabel.isHidden = true
         self.endLocationLeadingConstraint.constant = CGFloat(0)
         
@@ -170,7 +187,7 @@ class TripCell: UITableViewCell {
     
     private func getIconNameFromLocationEntityId(locationEntityId: String) -> String {
         var locationIconName = "unknown"
-
+        
         let knownLocation = self.knownLocationRepository.getKnownLocationForTripDestination(locationEntityId: locationEntityId)
         switch knownLocation {
         case "both":
@@ -192,7 +209,7 @@ class TripCell: UITableViewCell {
     private func createAttributedString(text: String, textSize: CGFloat) -> NSAttributedString {
         let linkAttributes = [
             NSFontAttributeName: UIFont(name: "Menlo", size: textSize)!,
-        ]
+            ]
         
         return NSAttributedString.init(string: text, attributes: linkAttributes)
     }

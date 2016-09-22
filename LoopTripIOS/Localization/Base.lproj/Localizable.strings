@@ -1,0 +1,52 @@
+//
+//  Localizable.strings
+//  Trips App
+//
+//  Copyright (c) Microsoft Corporation
+//
+//  All rights reserved.
+//
+//  Licensed under the Apache License, Version 2.0 (the License); you may not
+//  use this file except in compliance with the License. You may obtain a copy
+//  of the License at http://www.apache.org/licenses/LICENSE-2.0
+//
+//  THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS
+//  OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY
+//  IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+//  MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+//  See the Apache Version 2.0 License for specific language governing permissions
+//  and limitations under the License.
+//
+
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Unknown" = "Unknown";
+"Today" = "Today";
+"Yesterday" = "Yesterday";
+"Sunday" = "Sunday";
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"TRIP ROUTE" = "TRIP ROUTE";
+"Starting Location" = "Starting Location";
+"Ending Location" = "Ending Location";
+"LEARN_ABOUT_LOOP" = "Learn more about Microsoft Location Observation Platform (LOOP)...";
+"TERMS" = "TERMS";
+"PRIVACY" = "PRIVACY";
+"Authorization Required" = "Authorization Required";
+"AUTH_REQUIRED_MESSAGE" = "You need to allow this app to to access Location in Settings.";
+"Go to Settings" = "Go to Settings";
+"Delete All Trip Data" = "Delete All Trip Data";
+"DELETE_USERDATA_MESSAGE" = "This will delete all trip data on your mobile device and on the Loop service. Click OK to proceed.";
+"Delete" = "Delete";
+"Delete Successfull" = "Delete Successfull";
+"BEGIN_RECORDING_TRIPS_MESSAGE" = "To begin recording trips, turn on the Trip Recording switch.";
+"Error" = "Error";
+"DELETE_USERDATA_ERROR_MESSAGE" = "Unable to delete all trip data. Please try again shortly.";
+"Trip Recording Off" = "Trip Recording Off";
+"TURN_ON_TRIP_RECORDING_MESSAGE" = "Please turn on Trip Recording in Settings to start recording new trips.";
+"Go to Settings" = "Go to Settings";

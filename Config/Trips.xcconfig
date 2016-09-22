@@ -1,6 +1,6 @@
 //
-//  Loop Trips.xcconfig
-//  Loop Trips
+//  Trips.xcconfig
+//  Trips
 //
 
 // include developer specific keys from the keys config file
@@ -11,16 +11,21 @@ SDKROOT = iphoneos
 
 PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.loop.trip-df
 
+CODE_SIGN_IDENTITY = iPhone Distribution: Microsoft Corporation
+
+DEVELOPMENT_TEAM = 9KBH5RKYEW
+
+PROVISIONING_PROFILE_SPECIFIER = Microsoft Dogfood Provisioning Profile
+PROVISIONING_PROFILE = 9d5ad481-1f6a-4cd2-8077-963f0ec267ad
+
+
+ENABLE_BITCODE = NO
+
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
-
-CODE_SIGN_IDENTITY = iPhone Developer
-CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Developer
-
-PROVISIONING_PROFILE =
 
 INFOPLIST_FILE = LoopTripIOS/Info.plist
 
-PRODUCT_NAME = Loop Trips
+PRODUCT_NAME = Trips
 
 FRAMEWORK_SEARCH_PATHS = $(inherited) $(PROJECT_DIR) $(PROJECT_DIR)/Carthage/Build/iOS
 
@@ -80,3 +85,10 @@ CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR
 
 CLANG_ANALYZER_NONNULL = YES
 
+SWIFT_VERSION = 3.0
+
+SWIFT_OPTIMIZATION_LEVEL = -Owholemodule
+
+CLANG_WARN_SUSPICIOUS_MOVE = YES
+
+CLANG_WARN_INFINITE_RECURSION = YES

@@ -1,9 +1,6 @@
 //
 //  RepositoryManager.swift
-//  Loop Trips Sample
-//
-//  Created by Xuwen Cao on 6/3/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
+//  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //
@@ -36,23 +33,22 @@ public class RepositoryManager {
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     
     func loadRepositoryDataAsync(sendUpdateNotification: Bool) {
-        if let dispatchGroupRepositoryManager = dispatch_group_create() {
-            dispatch_group_enter(dispatchGroupRepositoryManager)
-            self.tripRepository.loadData({
-                dispatch_group_leave(dispatchGroupRepositoryManager)
-            })
-            
-            dispatch_group_enter(dispatchGroupRepositoryManager)
-            self.knownLocationRepository.loadData({
-                dispatch_group_leave(dispatchGroupRepositoryManager)
-            })
-            
-            dispatch_group_notify(dispatchGroupRepositoryManager, GlobalMainQueue) {
-                if (sendUpdateNotification) {
-                    NSLog("SENDING UPDATE NOTIFICATION")
-                    NSNotificationCenter.defaultCenter().postNotificationName(RepositoryManagerAddedContentNotification, object: nil)
-                }
+        let dispatchGroupRepositoryManager = DispatchGroup()
+        dispatchGroupRepositoryManager.enter()
+        self.tripRepository.loadData(loadDataCompletion: {
+            dispatchGroupRepositoryManager.leave()
+        })
+        
+        dispatchGroupRepositoryManager.enter()
+        self.knownLocationRepository.loadData(loadDataCompletion: {
+            dispatchGroupRepositoryManager.leave()
+        })
+        
+        dispatchGroupRepositoryManager.notify(queue: DispatchQueue.main, execute: {
+            if (sendUpdateNotification) {
+                NSLog("SENDING UPDATE NOTIFICATION")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: RepositoryManagerAddedContentNotification), object: nil)
             }
-        }
+        })
     }
 }

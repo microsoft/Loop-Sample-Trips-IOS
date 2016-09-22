@@ -1,9 +1,6 @@
 //
 //  Logger.swift
-//  Loop Trips Sample
-//
-//  Created by Xuwen Cao on 6/3/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
+//  Trips App
 //
 //  Copyright (c) Microsoft Corporation
 //
@@ -33,17 +30,17 @@ class Logger: UIViewController, LogManagerListener {
 	@IBOutlet weak var logView: UITextView!
 	
 	@IBAction func copyClicked(sender: AnyObject) {
-		UIPasteboard.generalPasteboard().string = cleanText();
+		UIPasteboard.general.string = cleanText();
 	}
 
 	@IBAction func clearClicked(sender: AnyObject) {
-		logManager.clearLog()
+		logManager?.clearLog()
 	}
 	
 	override func viewDidLoad() {
-		logManager.addListener(self);
+		logManager?.addListener(self);
 		
-		logs = logManager.logs;
+		logs = (logManager?.logs)!;
 		
 		//display
 		logView.text = cleanText()
@@ -51,14 +48,14 @@ class Logger: UIViewController, LogManagerListener {
 	
 	func onApplicationBecameActive() {
 		//app did re-enter active state
-		logs = logManager.logs;
+		logs = (logManager?.logs)!;
 		
 		//refresh log ui
 		logView.text = cleanText()
 	}
 	
 	func onLogChanged() {
-		logs = logManager.logs;
+		logs = (logManager?.logs)!;
 		
 		//refresh log ui
 		logView.text = cleanText()
