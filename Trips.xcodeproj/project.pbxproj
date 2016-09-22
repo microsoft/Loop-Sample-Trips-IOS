@@ -31,7 +31,6 @@
 		F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65A93891D6CCD3C006F5358 /* TripCell.xib */; };
 		F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A938B1D6CD473006F5358 /* TripCell.swift */; };
 		F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825FF11D73DA7B00D6F926 /* TripViewController.swift */; };
-		F69E72B31D93B42E00127752 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F69E72B11D93B28300127752 /* Info.plist */; };
 		F6A0ABFF1D90E776007637CE /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A0ABFE1D90E776007637CE /* LoopSDK.framework */; };
 		F6A0AC001D90E776007637CE /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6A0ABFE1D90E776007637CE /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F6A483311D8937BD00B885D0 /* MapDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A483301D8937BD00B885D0 /* MapDetailsView.xib */; };
@@ -286,7 +285,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F69E72B31D93B42E00127752 /* Info.plist in Resources */,
 				F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */,
 				F6A483311D8937BD00B885D0 /* MapDetailsView.xib in Resources */,
 				B588871D1CF3A6AD00B25BCD /* LaunchScreen.storyboard in Resources */,
