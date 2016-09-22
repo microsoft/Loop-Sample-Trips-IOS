@@ -9,15 +9,14 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) LOOP_APP_ID_PROP=@\"$(LOOP_APP_ID_PR
 
 SDKROOT = iphoneos
 
-PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.loop.trip-df
+PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.loop.trip-test
 
-CODE_SIGN_IDENTITY = iPhone Distribution: Microsoft Corporation
+CODE_SIGN_IDENTITY = iPhone Developer
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Developer
 
-DEVELOPMENT_TEAM = 9KBH5RKYEW
+PROVISIONING_PROFILE_SPECIFIER =
 
-PROVISIONING_PROFILE_SPECIFIER = Microsoft Dogfood Provisioning Profile
-
-PROVISIONING_PROFILE = 9d5ad481-1f6a-4cd2-8077-963f0ec267ad
+PROVISIONING_PROFILE =
 
 ENABLE_BITCODE = NO
 
