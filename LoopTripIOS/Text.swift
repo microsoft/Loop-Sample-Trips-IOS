@@ -1,6 +1,6 @@
 //
-//  Conversion.swift
-//  Conversion utilities
+//  Text.swift
+//  Text utilities
 //  Trips App
 //
 //  Copyright (c) 2016 Microsoft Corporation
@@ -27,16 +27,18 @@
 import Foundation
 import UIKit
 
-class ConversionUtils {
-    class func kilometersToMiles(kilometers:Double) -> Double {
-        let miles: Double = kilometers / 1.60934
-        return miles.roundToPlaces(places: 2)
+extension NSAttributedString {
+    func widthWithConstrainedHeight(height: CGFloat) -> CGFloat {
+        let constraintRect = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
+        
+        let boundingBox = self.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil)
+        
+        return ceil(boundingBox.width)
     }
 }
 
-extension Double {
-    public func roundToPlaces(places: Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
 }

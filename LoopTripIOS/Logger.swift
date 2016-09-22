@@ -1,6 +1,5 @@
 //
-//  Conversion.swift
-//  Conversion utilities
+//  Logger.swift
 //  Trips App
 //
 //  Copyright (c) 2016 Microsoft Corporation
@@ -24,19 +23,49 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
 import UIKit
+import LoopSDK
 
-class ConversionUtils {
-    class func kilometersToMiles(kilometers:Double) -> Double {
-        let miles: Double = kilometers / 1.60934
-        return miles.roundToPlaces(places: 2)
-    }
-}
+class Logger: UIViewController, LogManagerListener {
+	let logManager = LoopSDK.logManager
+	let locationManager = LoopSDK.loopLocationProvider
+	var logs = [String]()
 
-extension Double {
-    public func roundToPlaces(places: Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
-    }
+	@IBOutlet weak var logView: UITextView!
+	
+	@IBAction func copyClicked(sender: AnyObject) {
+		UIPasteboard.general.string = cleanText()
+	}
+
+	@IBAction func clearClicked(sender: AnyObject) {
+		logManager?.clearLog()
+	}
+	
+	override func viewDidLoad() {
+		logManager?.addListener(self)
+		
+		logs = (logManager?.logs)!
+		
+		//display
+		logView.text = cleanText()
+	}
+	
+	func onApplicationBecameActive() {
+		//app did re-enter active state
+		logs = (logManager?.logs)!
+		
+		//refresh log ui
+		logView.text = cleanText()
+	}
+	
+	func onLogChanged() {
+		logs = (logManager?.logs)!
+		
+		//refresh log ui
+		logView.text = cleanText()
+	}
+	
+	func cleanText() -> String {
+		return logs.reduce("") { return $1+"\n"+$0}
+	}
 }

@@ -1,0 +1,54 @@
+
+/* Class = "UINavigationController"; title = "SettingsNavController"; ObjectID = "2PJ-ok-y49"; */
+"2PJ-ok-y49.title" = "SettingsNavController";
+
+/* Class = "UINavigationController"; title = "TripsNavController"; ObjectID = "36a-QK-5y6"; */
+"36a-QK-5y6.title" = "TripsNavController";
+
+/* Class = "UILabel"; text = "Version"; ObjectID = "7PA-0r-lRT"; */
+"7PA-0r-lRT.text" = "Version";
+
+/* Class = "UIViewController"; title = "SettingsView"; ObjectID = "Edv-4X-ffW"; */
+"Edv-4X-ffW.title" = "SettingsView";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "EwW-Xo-0Rj"; */
+"EwW-Xo-0Rj.title" = " ";
+
+/* Class = "UINavigationItem"; title = "SETTINGS"; ObjectID = "LFa-dT-Bg4"; */
+"LFa-dT-Bg4.title" = "SETTINGS";
+
+/* Class = "UILabel"; text = "© 2016 MICROSOFT"; ObjectID = "QJl-KS-o7c"; */
+"QJl-KS-o7c.text" = "© 2016 MICROSOFT";
+
+/* Class = "UIViewController"; title = "mapViewController"; ObjectID = "Qep-Yx-TzS"; */
+"Qep-Yx-TzS.title" = "mapViewController";
+
+/* Class = "UIViewController"; title = "TripsView"; ObjectID = "VHv-XQ-dfn"; */
+"VHv-XQ-dfn.title" = "TripsView";
+
+/* Class = "UITextView"; text = "PRIVACY"; ObjectID = "W13-kU-cNu"; */
+"W13-kU-cNu.text" = "PRIVACY";
+
+/* Class = "UILabel"; text = "TRIPS RECORDING"; ObjectID = "XLa-aQ-zVy"; */
+"XLa-aQ-zVy.text" = "TRIPS RECORDING";
+
+/* Class = "UITextView"; text = "Learn more about Microsoft Location Observation Platform (LOOP)"; ObjectID = "bcu-nF-TPf"; */
+"bcu-nF-TPf.text" = "Learn more about Microsoft Location Observation Platform (LOOP)";
+
+/* Class = "UITabBarItem"; title = "Trips"; ObjectID = "fqA-Jg-bhW"; */
+"fqA-Jg-bhW.title" = "Trips";
+
+/* Class = "UINavigationItem"; title = "TRIPS"; ObjectID = "gTX-Uh-Zku"; */
+"gTX-Uh-Zku.title" = "TRIPS";
+
+/* Class = "UITextView"; text = "Learn more about Microsoft Location Observation Platform (LOOP)..."; ObjectID = "ir8-Wi-FXK"; */
+"ir8-Wi-FXK.text" = "Learn more about Microsoft Location Observation Platform (LOOP)...";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "k70-zP-loU"; */
+"k70-zP-loU.title" = "Settings";
+
+/* Class = "UIButton"; normalTitle = "DELETE USER TRIP DATA"; ObjectID = "q0g-qb-Qmg"; */
+"q0g-qb-Qmg.normalTitle" = "DELETE USER TRIP DATA";
+
+/* Class = "UITextView"; text = "TERMS"; ObjectID = "rHS-wb-bRH"; */
+"rHS-wb-bRH.text" = "TERMS";

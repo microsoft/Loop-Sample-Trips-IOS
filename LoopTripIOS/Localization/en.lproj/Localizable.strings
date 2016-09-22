@@ -1,0 +1,56 @@
+//
+//  Localizable.strings
+//  Trips App
+//
+//  Copyright (c) 2016 Microsoft Corporation
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Unknown" = "Unknown";
+"Today" = "Today";
+"Yesterday" = "Yesterday";
+"Sunday" = "Sunday";
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"TRIP ROUTE" = "TRIP ROUTE";
+"Starting Location" = "Starting Location";
+"Ending Location" = "Ending Location";
+"LEARN_ABOUT_LOOP" = "Learn more about Microsoft Location Observation Platform (LOOP)...";
+"TERMS" = "TERMS";
+"PRIVACY" = "PRIVACY";
+"Authorization Required" = "Authorization Required";
+"AUTH_REQUIRED_MESSAGE" = "You need to allow this app to to access Location in Settings.";
+"Go to Settings" = "Go to Settings";
+"Delete All Trip Data" = "Delete All Trip Data";
+"DELETE_USERDATA_MESSAGE" = "This will delete all trip data on your mobile device and on the Loop service. Click OK to proceed.";
+"Delete" = "Delete";
+"Delete Successfull" = "Delete Successfull";
+"BEGIN_RECORDING_TRIPS_MESSAGE" = "To begin recording trips, turn on the Trip Recording switch.";
+"Error" = "Error";
+"DELETE_USERDATA_ERROR_MESSAGE" = "Unable to delete all trip data. Please try again shortly.";
+"Trip Recording Off" = "Trip Recording Off";
+"TURN_ON_TRIP_RECORDING_MESSAGE" = "Please turn on Trip Recording in Settings to start recording new trips.";
+"Go to Settings" = "Go to Settings";

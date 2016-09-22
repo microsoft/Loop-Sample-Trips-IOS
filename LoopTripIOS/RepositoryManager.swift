@@ -1,6 +1,26 @@
 //
 //  RepositoryManager.swift
-//  LoopTrip
+//  Trips App
+//
+//  Copyright (c) 2016 Microsoft Corporation
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 
 import Foundation
@@ -13,31 +33,26 @@ public class RepositoryManager {
     static let sharedInstance = RepositoryManager()
     private init() {}
 
-    let driveRepository = DriveRepository.sharedInstance
     let tripRepository = TripRepository.sharedInstance
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     
-    func loadRepositoryDataAsync() {
-        if let dispatchGroupRepositoryManager = dispatch_group_create() {
-            dispatch_group_enter(dispatchGroupRepositoryManager)
-            self.driveRepository.loadData({
-                dispatch_group_leave(dispatchGroupRepositoryManager)
-            })
-            
-            dispatch_group_enter(dispatchGroupRepositoryManager)
-            self.tripRepository.loadData({
-                dispatch_group_leave(dispatchGroupRepositoryManager)
-            })
-            
-            dispatch_group_enter(dispatchGroupRepositoryManager)
-            self.knownLocationRepository.loadData({
-                dispatch_group_leave(dispatchGroupRepositoryManager)
-            })
-            
-            dispatch_group_notify(dispatchGroupRepositoryManager, GlobalMainQueue) {
+    func loadRepositoryDataAsync(sendUpdateNotification: Bool) {
+        let dispatchGroupRepositoryManager = DispatchGroup()
+        dispatchGroupRepositoryManager.enter()
+        self.tripRepository.loadData(loadDataCompletion: {
+            dispatchGroupRepositoryManager.leave()
+        })
+        
+        dispatchGroupRepositoryManager.enter()
+        self.knownLocationRepository.loadData(loadDataCompletion: {
+            dispatchGroupRepositoryManager.leave()
+        })
+        
+        dispatchGroupRepositoryManager.notify(queue: DispatchQueue.main, execute: {
+            if (sendUpdateNotification) {
                 NSLog("SENDING UPDATE NOTIFICATION")
-                NSNotificationCenter.defaultCenter().postNotificationName(RepositoryManagerAddedContentNotification, object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: RepositoryManagerAddedContentNotification), object: nil)
             }
-        }
+        })
     }
 }
