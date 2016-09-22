@@ -7,23 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B505DC511D148FD1008646FE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B505DC4F1D148FD1008646FE /* Alamofire.framework */; };
-		B505DC521D148FD1008646FE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B505DC4F1D148FD1008646FE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58887121CF3A6AD00B25BCD /* AppDelegate.swift */; };
 		B58887181CF3A6AD00B25BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58887161CF3A6AD00B25BCD /* Main.storyboard */; };
 		B588871A1CF3A6AD00B25BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58887191CF3A6AD00B25BCD /* Assets.xcassets */; };
 		B588871D1CF3A6AD00B25BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */; };
 		B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */; };
 		B5CEFDCA1D024A7600E0B799 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* Logger.swift */; };
-		B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B5CEFDE31D07A57300E0B799 /* test.gpx */; };
 		F60A2FAD1D80D19D00E297B0 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A2FAC1D80D19D00E297B0 /* Text.swift */; };
 		F60A2FAF1D81357500E297B0 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A2FAE1D81357500E297B0 /* Alert.swift */; };
-		F65489771D7641310005BB9B /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65489761D7641310005BB9B /* LoopSDK.framework */; };
-		F65489781D7641310005BB9B /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F65489761D7641310005BB9B /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F654898A1D76AA760005BB9B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489851D76AA760005BB9B /* Color.swift */; };
 		F654898B1D76AA760005BB9B /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489861D76AA760005BB9B /* Conversion.swift */; };
 		F654898C1D76AA760005BB9B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489871D76AA760005BB9B /* Date.swift */; };
-		F654898D1D76AA760005BB9B /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489881D76AA760005BB9B /* Dispatch.swift */; };
 		F654898E1D76AA760005BB9B /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489891D76AA760005BB9B /* JSON.swift */; };
 		F657491A1D74257F00F3398B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65749191D74257F00F3398B /* SettingsViewController.swift */; };
 		F657491E1D74D32700F3398B /* TripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F657491D1D74D32700F3398B /* TripRepository.swift */; };
@@ -33,6 +27,13 @@
 		F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65A93891D6CCD3C006F5358 /* TripCell.xib */; };
 		F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A938B1D6CD473006F5358 /* TripCell.swift */; };
 		F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825FF11D73DA7B00D6F926 /* TripViewController.swift */; };
+		F6A483311D8937BD00B885D0 /* MapDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A483301D8937BD00B885D0 /* MapDetailsView.xib */; };
+		F6A483331D89381800B885D0 /* MapDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A483321D89381800B885D0 /* MapDetailsView.swift */; };
+		F6E517801D948F280032A699 /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6E5177F1D948F280032A699 /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F6E517821D948F350032A699 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6E517811D948F350032A699 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F6E517831D948F430032A699 /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E5177F1D948F280032A699 /* LoopSDK.framework */; };
+		F6E517841D948F570032A699 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E517811D948F350032A699 /* Alamofire.framework */; };
+		F6F13F661D93A56B000DD3EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6F13F681D93A56B000DD3EF /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,8 +43,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B505DC521D148FD1008646FE /* Alamofire.framework in Embed Frameworks */,
-				F65489781D7641310005BB9B /* LoopSDK.framework in Embed Frameworks */,
+				F6E517821D948F350032A699 /* Alamofire.framework in Embed Frameworks */,
+				F6E517801D948F280032A699 /* LoopSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,24 +52,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B505DC4F1D148FD1008646FE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		B55568BA1D10D3D1000174F8 /* Keys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Keys.xcconfig; sourceTree = "<group>"; };
-		B588870F1CF3A6AD00B25BCD /* Loop Trips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Loop Trips.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B588870F1CF3A6AD00B25BCD /* Trips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58887121CF3A6AD00B25BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B58887171CF3A6AD00B25BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B58887191CF3A6AD00B25BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B588871C1CF3A6AD00B25BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B588871E1CF3A6AD00B25BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B5CEFDC91D024A7600E0B799 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		B5CEFDE31D07A57300E0B799 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
 		F60A2FAC1D80D19D00E297B0 /* Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		F60A2FAE1D81357500E297B0 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		F65489761D7641310005BB9B /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
 		F65489851D76AA760005BB9B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F65489861D76AA760005BB9B /* Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
 		F65489871D76AA760005BB9B /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		F65489881D76AA760005BB9B /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		F65489891D76AA760005BB9B /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		F65749191D74257F00F3398B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F657491D1D74D32700F3398B /* TripRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRepository.swift; sourceTree = "<group>"; };
@@ -78,10 +74,19 @@
 		F65A93891D6CCD3C006F5358 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		F65A938B1D6CD473006F5358 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		F6825FF11D73DA7B00D6F926 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
-		F6E0F6671D1066A8005A13E5 /* Loop Trips.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Loop Trips.xcconfig"; sourceTree = "<group>"; };
+		F69E72B11D93B28300127752 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LoopTripIOS/Info.plist; sourceTree = "<group>"; };
+		F6A483301D8937BD00B885D0 /* MapDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapDetailsView.xib; sourceTree = "<group>"; };
+		F6A483321D89381800B885D0 /* MapDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailsView.swift; sourceTree = "<group>"; };
+		F6E0F6671D1066A8005A13E5 /* Trips.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Trips.xcconfig; sourceTree = "<group>"; };
 		F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		F6E0F6691D1066BC005A13E5 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		F6E0F66B1D1066EE005A13E5 /* Keys.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Keys.example.xcconfig; sourceTree = "<group>"; };
+		F6E5177F1D948F280032A699 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
+		F6E517811D948F350032A699 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		F6F13F671D93A56B000DD3EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6F13F6C1D93AB1C000DD3EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		F6F13F6E1D93AB23000DD3EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F6F13F6F1D93AB2B000DD3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B505DC511D148FD1008646FE /* Alamofire.framework in Frameworks */,
-				F65489771D7641310005BB9B /* LoopSDK.framework in Frameworks */,
+				F6E517841D948F570032A699 /* Alamofire.framework in Frameworks */,
+				F6E517831D948F430032A699 /* LoopSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,11 +105,11 @@
 		B58887061CF3A6AD00B25BCD = {
 			isa = PBXGroup;
 			children = (
-				F65489761D7641310005BB9B /* LoopSDK.framework */,
-				B505DC4F1D148FD1008646FE /* Alamofire.framework */,
+				F6E517811D948F350032A699 /* Alamofire.framework */,
+				F6E5177F1D948F280032A699 /* LoopSDK.framework */,
 				F6E0F6661D10666B005A13E5 /* Config */,
 				B58887111CF3A6AD00B25BCD /* LoopTripIOS */,
-				B5CEFDE31D07A57300E0B799 /* test.gpx */,
+				F6F13F631D939685000DD3EF /* Supporting Files */,
 				B58887101CF3A6AD00B25BCD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,7 +117,7 @@
 		B58887101CF3A6AD00B25BCD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B588870F1CF3A6AD00B25BCD /* Loop Trips.app */,
+				B588870F1CF3A6AD00B25BCD /* Trips.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,10 +129,7 @@
 				F65A89D91D79E7ED000D1E54 /* Views */,
 				F65A89D81D79E7B2000D1E54 /* Repositories */,
 				F65489821D76A9620005BB9B /* Utilities */,
-				B58887161CF3A6AD00B25BCD /* Main.storyboard */,
 				B58887191CF3A6AD00B25BCD /* Assets.xcassets */,
-				B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */,
-				B588871E1CF3A6AD00B25BCD /* Info.plist */,
 			);
 			path = LoopTripIOS;
 			sourceTree = "<group>";
@@ -140,7 +142,6 @@
 				F60A2FAC1D80D19D00E297B0 /* Text.swift */,
 				F60A2FAE1D81357500E297B0 /* Alert.swift */,
 				F65489871D76AA760005BB9B /* Date.swift */,
-				F65489881D76AA760005BB9B /* Dispatch.swift */,
 				F65489891D76AA760005BB9B /* JSON.swift */,
 				B5CEFDC91D024A7600E0B799 /* Logger.swift */,
 			);
@@ -164,6 +165,7 @@
 				F65A938D1D6CD4A0006F5358 /* TripCell */,
 				F65749191D74257F00F3398B /* SettingsViewController.swift */,
 				B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */,
+				F6A483341D893FA300B885D0 /* MapDetails */,
 				F65A89D61D79643C000D1E54 /* MapRouteLineCache.swift */,
 			);
 			name = Views;
@@ -178,10 +180,19 @@
 			name = TripCell;
 			sourceTree = "<group>";
 		};
+		F6A483341D893FA300B885D0 /* MapDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F6A483321D89381800B885D0 /* MapDetailsView.swift */,
+				F6A483301D8937BD00B885D0 /* MapDetailsView.xib */,
+			);
+			name = MapDetails;
+			sourceTree = "<group>";
+		};
 		F6E0F6661D10666B005A13E5 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				F6E0F6671D1066A8005A13E5 /* Loop Trips.xcconfig */,
+				F6E0F6671D1066A8005A13E5 /* Trips.xcconfig */,
 				F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */,
 				F6E0F6691D1066BC005A13E5 /* Release.xcconfig */,
 				F6E0F66B1D1066EE005A13E5 /* Keys.example.xcconfig */,
@@ -190,12 +201,23 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		F6F13F631D939685000DD3EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F69E72B11D93B28300127752 /* Info.plist */,
+				B58887161CF3A6AD00B25BCD /* Main.storyboard */,
+				B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */,
+				F6F13F681D93A56B000DD3EF /* Localizable.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B588870E1CF3A6AD00B25BCD /* LoopTrip */ = {
+		B588870E1CF3A6AD00B25BCD /* Trips */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "LoopTrip" */;
+			buildConfigurationList = B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Trips" */;
 			buildPhases = (
 				B588870B1CF3A6AD00B25BCD /* Sources */,
 				B588870C1CF3A6AD00B25BCD /* Frameworks */,
@@ -206,9 +228,9 @@
 			);
 			dependencies = (
 			);
-			name = LoopTrip;
+			name = Trips;
 			productName = SimpleTest;
-			productReference = B588870F1CF3A6AD00B25BCD /* Loop Trips.app */;
+			productReference = B588870F1CF3A6AD00B25BCD /* Trips.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -218,12 +240,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					B588870E1CF3A6AD00B25BCD = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 9KBH5RKYEW;
+						DevelopmentTeam = 586WTGM8MR;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -232,7 +256,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "LoopTrip" */;
+			buildConfigurationList = B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Trips" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -245,7 +269,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B588870E1CF3A6AD00B25BCD /* LoopTrip */,
+				B588870E1CF3A6AD00B25BCD /* Trips */,
 			);
 		};
 /* End PBXProject section */
@@ -256,8 +280,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */,
+				F6A483311D8937BD00B885D0 /* MapDetailsView.xib in Resources */,
 				B588871D1CF3A6AD00B25BCD /* LaunchScreen.storyboard in Resources */,
-				B5CEFDE41D07A57300E0B799 /* test.gpx in Resources */,
+				F6F13F661D93A56B000DD3EF /* Localizable.strings in Resources */,
 				B588871A1CF3A6AD00B25BCD /* Assets.xcassets in Resources */,
 				B58887181CF3A6AD00B25BCD /* Main.storyboard in Resources */,
 			);
@@ -281,12 +306,12 @@
 				F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */,
 				F65749241D75599800F3398B /* KnownLocationRepository.swift in Sources */,
 				B5CEFDCA1D024A7600E0B799 /* Logger.swift in Sources */,
+				F6A483331D89381800B885D0 /* MapDetailsView.swift in Sources */,
 				F654898B1D76AA760005BB9B /* Conversion.swift in Sources */,
 				F65A89D71D79643C000D1E54 /* MapRouteLineCache.swift in Sources */,
 				B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */,
 				F654898C1D76AA760005BB9B /* Date.swift in Sources */,
 				F657491A1D74257F00F3398B /* SettingsViewController.swift in Sources */,
-				F654898D1D76AA760005BB9B /* Dispatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,16 +322,30 @@
 			isa = PBXVariantGroup;
 			children = (
 				B58887171CF3A6AD00B25BCD /* Base */,
+				F6F13F6C1D93AB1C000DD3EF /* en */,
 			);
 			name = Main.storyboard;
+			path = LoopTripIOS/Localization;
 			sourceTree = "<group>";
 		};
 		B588871B1CF3A6AD00B25BCD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B588871C1CF3A6AD00B25BCD /* Base */,
+				F6F13F6E1D93AB23000DD3EF /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			path = LoopTripIOS/Localization;
+			sourceTree = "<group>";
+		};
+		F6F13F681D93A56B000DD3EF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6F13F671D93A56B000DD3EF /* en */,
+				F6F13F6F1D93AB2B000DD3EF /* Base */,
+			);
+			name = Localizable.strings;
+			path = LoopTripIOS/Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -314,14 +353,14 @@
 /* Begin XCBuildConfiguration section */
 		B588871F1CF3A6AD00B25BCD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6E0F6671D1066A8005A13E5 /* Loop Trips.xcconfig */;
+			baseConfigurationReference = F6E0F6671D1066A8005A13E5 /* Trips.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		B58887201CF3A6AD00B25BCD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6E0F6671D1066A8005A13E5 /* Loop Trips.xcconfig */;
+			baseConfigurationReference = F6E0F6671D1066A8005A13E5 /* Trips.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -330,11 +369,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.loop.trip-df";
-				PROVISIONING_PROFILE = "c7650ae2-14d9-4d20-85ab-84fff77b6fa5";
+				DEVELOPMENT_TEAM = 586WTGM8MR;
 			};
 			name = Debug;
 		};
@@ -342,34 +377,30 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6E0F6691D1066BC005A13E5 /* Release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.loop.trip-df";
-				PROVISIONING_PROFILE = "c7650ae2-14d9-4d20-85ab-84fff77b6fa5";
+				DEVELOPMENT_TEAM = 586WTGM8MR;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "LoopTrip" */ = {
+		B588870A1CF3A6AD00B25BCD /* Build configuration list for PBXProject "Trips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B588871F1CF3A6AD00B25BCD /* Debug */,
 				B58887201CF3A6AD00B25BCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "LoopTrip" */ = {
+		B58887211CF3A6AD00B25BCD /* Build configuration list for PBXNativeTarget "Trips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58887221CF3A6AD00B25BCD /* Debug */,
 				B58887231CF3A6AD00B25BCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

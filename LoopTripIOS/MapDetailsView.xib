@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapDetailsView" customModule="Trips" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="KeS-5C-yd8" id="7L5-IC-Ezz"/>
+                <outlet property="destinationArrow" destination="BV7-0P-xpE" id="aAu-PJ-EVS"/>
+                <outlet property="destinationArrowLeadingConstraint" destination="K8T-ur-kyz" id="hgl-Z7-sno"/>
+                <outlet property="endLocationIcon" destination="ryJ-gb-rGs" id="rAD-Wo-pWd"/>
+                <outlet property="endLocationIconLeadingConstraint" destination="1zE-OA-Sjj" id="Lij-fg-Wjf"/>
+                <outlet property="endLocationLabel" destination="VIi-77-QO4" id="UOK-Lc-yTy"/>
+                <outlet property="endLocationLeadingConstraint" destination="UP0-Qu-0YB" id="MFP-Dc-Lb9"/>
+                <outlet property="endLocationWidthConstraint" destination="xQc-rN-vCR" id="DPb-c9-pXt"/>
+                <outlet property="locationDistance" destination="LmN-jh-sub" id="Cjv-p1-9Vr"/>
+                <outlet property="locationDuration" destination="zUv-Sv-qhX" id="eVh-SG-0cx"/>
+                <outlet property="locationTime" destination="W2X-PT-dY0" id="KR6-vw-Nex"/>
+                <outlet property="sampleTripIndicator" destination="6uy-3l-udz" id="JVk-Ks-tlv"/>
+                <outlet property="startLocationIcon" destination="QLA-4n-woE" id="zi3-Gq-G69"/>
+                <outlet property="startLocationIconLeadingConstraint" destination="nFR-We-g5d" id="qnn-9R-ysz"/>
+                <outlet property="startLocationLabel" destination="kcs-P7-uXT" id="4Yi-cy-s25"/>
+                <outlet property="startLocationWidthConstraint" destination="EU0-o2-8Fb" id="jY8-yy-EvT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="KeS-5C-yd8" userLabel="MapDetailsView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4TR-zF-wbQ" userLabel="Content View">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="UNKNOWN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcs-P7-uXT" userLabel="Start Location Label">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="115" id="EU0-o2-8Fb"/>
+                                <constraint firstAttribute="height" constant="18" id="y21-OK-k4C"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNKNOWN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIi-77-QO4" userLabel="End Location Label">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="wYQ-Qe-Kju"/>
+                                <constraint firstAttribute="width" constant="115" id="xQc-rN-vCR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today 11:32 AM - 1:29 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2X-PT-dY0" userLabel="Location Time">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="Wzf-PX-8C5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                            <color key="textColor" red="0.45094840380000001" green="0.46968793250000002" blue="0.49691181280000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Direction" translatesAutoresizingMaskIntoConstraints="NO" id="BV7-0P-xpE" userLabel="Destination Arrow">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="31" id="6tU-7n-B8x"/>
+                                <constraint firstAttribute="height" constant="9" id="ySM-8y-B8C"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:56:41" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUv-Sv-qhX" userLabel="Location Duration">
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                            <color key="textColor" red="0.45094840380000001" green="0.46968793250000002" blue="0.49691181280000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="SAMPLE TRIP" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uy-3l-udz" userLabel="Sample Trip Indicator">
+                            <color key="backgroundColor" red="0.14117647059999999" green="0.60784313729999995" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="92" id="WPJ-5T-gZL"/>
+                                <constraint firstAttribute="height" constant="16" id="k5h-Gq-e1M"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Time" translatesAutoresizingMaskIntoConstraints="NO" id="bpF-ZV-Knq">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="Atn-LQ-1Sz"/>
+                                <constraint firstAttribute="width" constant="15" id="ecO-1t-7H6"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 10.94 mi. " textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmN-jh-sub" userLabel="Location Distance">
+                            <color key="backgroundColor" red="0.062745098040000002" green="0.062745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="oge-nf-Xg0"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="uiM-hM-rKj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="highlightedColor" red="0.062745098040000002" green="0.062745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Blank" translatesAutoresizingMaskIntoConstraints="NO" id="ryJ-gb-rGs" userLabel="End Location Icon">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="bNt-fY-xcp"/>
+                                <constraint firstAttribute="width" constant="16" id="ctX-Dv-Xgj"/>
+                                <constraint firstAttribute="width" constant="16" id="iSg-TG-Zbd"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="j1G-gM-T7H"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="ctX-Dv-Xgj"/>
+                                    <exclude reference="j1G-gM-T7H"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICO Cell Blank" translatesAutoresizingMaskIntoConstraints="NO" id="QLA-4n-woE" userLabel="Start Location Icon">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="0cf-Fk-2ag"/>
+                                <constraint firstAttribute="height" constant="16" id="5dM-dx-swD"/>
+                                <constraint firstAttribute="width" constant="16" id="cRv-xl-m78"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="yLC-WL-zCq"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="0cf-Fk-2ag"/>
+                                    <exclude reference="yLC-WL-zCq"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="ryJ-gb-rGs" firstAttribute="leading" secondItem="VIi-77-QO4" secondAttribute="trailing" constant="5" id="1zE-OA-Sjj"/>
+                        <constraint firstItem="ryJ-gb-rGs" firstAttribute="top" secondItem="4TR-zF-wbQ" secondAttribute="top" constant="14" id="3bn-SD-PDK"/>
+                        <constraint firstItem="QLA-4n-woE" firstAttribute="top" secondItem="4TR-zF-wbQ" secondAttribute="top" constant="14" id="DE4-Kt-G0g"/>
+                        <constraint firstItem="zUv-Sv-qhX" firstAttribute="top" secondItem="LmN-jh-sub" secondAttribute="bottom" constant="8" id="EOT-qa-Te1"/>
+                        <constraint firstAttribute="height" constant="200" id="Fg5-kV-tUJ"/>
+                        <constraint firstItem="LmN-jh-sub" firstAttribute="top" secondItem="4TR-zF-wbQ" secondAttribute="top" constant="14" id="HU8-6N-fnB"/>
+                        <constraint firstItem="BV7-0P-xpE" firstAttribute="leading" secondItem="kcs-P7-uXT" secondAttribute="trailing" priority="250" constant="10" id="IWY-YI-w15"/>
+                        <constraint firstItem="W2X-PT-dY0" firstAttribute="top" secondItem="kcs-P7-uXT" secondAttribute="bottom" constant="4" id="JAo-oS-M1q"/>
+                        <constraint firstItem="kcs-P7-uXT" firstAttribute="top" secondItem="4TR-zF-wbQ" secondAttribute="top" constant="13" id="K3q-xh-Pdg"/>
+                        <constraint firstItem="BV7-0P-xpE" firstAttribute="leading" secondItem="QLA-4n-woE" secondAttribute="trailing" constant="10" id="K8T-ur-kyz"/>
+                        <constraint firstItem="kcs-P7-uXT" firstAttribute="leading" secondItem="4TR-zF-wbQ" secondAttribute="leading" constant="15" id="L1A-tn-DL8"/>
+                        <constraint firstItem="zUv-Sv-qhX" firstAttribute="leading" secondItem="bpF-ZV-Knq" secondAttribute="trailing" constant="3" id="LLl-Pi-VhC"/>
+                        <constraint firstAttribute="trailing" secondItem="LmN-jh-sub" secondAttribute="trailing" constant="15" id="MpV-eA-R9E"/>
+                        <constraint firstItem="VIi-77-QO4" firstAttribute="top" secondItem="4TR-zF-wbQ" secondAttribute="top" constant="13" id="QLx-Ut-xlb"/>
+                        <constraint firstItem="6uy-3l-udz" firstAttribute="leading" secondItem="4TR-zF-wbQ" secondAttribute="leading" constant="15" id="QaP-4G-Ejd"/>
+                        <constraint firstItem="VIi-77-QO4" firstAttribute="leading" secondItem="BV7-0P-xpE" secondAttribute="trailing" constant="10" id="UP0-Qu-0YB"/>
+                        <constraint firstItem="BV7-0P-xpE" firstAttribute="top" secondItem="4TR-zF-wbQ" secondAttribute="top" constant="19" id="VQI-Re-P2T"/>
+                        <constraint firstItem="bpF-ZV-Knq" firstAttribute="top" secondItem="LmN-jh-sub" secondAttribute="bottom" constant="7" id="chf-yU-i0q"/>
+                        <constraint firstAttribute="trailing" secondItem="zUv-Sv-qhX" secondAttribute="trailing" constant="15" id="hSt-1M-maN"/>
+                        <constraint firstAttribute="width" constant="200" id="jO5-S3-c3x"/>
+                        <constraint firstItem="W2X-PT-dY0" firstAttribute="leading" secondItem="4TR-zF-wbQ" secondAttribute="leading" constant="15" id="lso-Dc-xjd"/>
+                        <constraint firstItem="6uy-3l-udz" firstAttribute="top" secondItem="W2X-PT-dY0" secondAttribute="bottom" constant="5" id="mBg-Ve-1tb"/>
+                        <constraint firstItem="QLA-4n-woE" firstAttribute="leading" secondItem="kcs-P7-uXT" secondAttribute="trailing" constant="5" id="nFR-We-g5d"/>
+                        <constraint firstAttribute="width" secondItem="4TR-zF-wbQ" secondAttribute="height" multiplier="1:1" id="r5q-8R-sAH"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Fg5-kV-tUJ"/>
+                            <exclude reference="jO5-S3-c3x"/>
+                            <exclude reference="r5q-8R-sAH"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="4TR-zF-wbQ" firstAttribute="leading" secondItem="KeS-5C-yd8" secondAttribute="leading" id="779-ZU-DNn"/>
+                <constraint firstItem="4TR-zF-wbQ" firstAttribute="top" secondItem="KeS-5C-yd8" secondAttribute="top" id="IKH-hX-jMA"/>
+                <constraint firstAttribute="bottom" secondItem="4TR-zF-wbQ" secondAttribute="bottom" id="aMG-hR-Sbn"/>
+                <constraint firstAttribute="trailing" secondItem="4TR-zF-wbQ" secondAttribute="trailing" id="fBz-vP-mw4"/>
+                <constraint firstItem="4TR-zF-wbQ" firstAttribute="centerY" secondItem="KeS-5C-yd8" secondAttribute="centerY" id="moA-yC-2Vb"/>
+                <constraint firstItem="4TR-zF-wbQ" firstAttribute="centerX" secondItem="KeS-5C-yd8" secondAttribute="centerX" id="vfY-f6-uyE"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="moA-yC-2Vb"/>
+                    <exclude reference="vfY-f6-uyE"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="405.5" y="18.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ICO Cell Blank" width="16" height="16"/>
+        <image name="ICO Cell Time" width="24" height="24"/>
+        <image name="ICO Direction" width="31" height="9"/>
+    </resources>
+</document>

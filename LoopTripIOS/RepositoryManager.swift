@@ -1,25 +1,26 @@
 //
 //  RepositoryManager.swift
-//  Loop Trips Sample
+//  Trips App
 //
-//  Created by Xuwen Cao on 6/3/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
+//  Copyright (c) 2016 Microsoft Corporation
 //
-//  Copyright (c) Microsoft Corporation
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-//  All rights reserved.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-//  Licensed under the Apache License, Version 2.0 (the License); you may not 
-//  use this file except in compliance with the License. You may obtain a copy 
-//  of the License at http://www.apache.org/licenses/LICENSE-2.0
-//
-//  THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS 
-//  OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
-//  IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, 
-//  MERCHANTABLITY OR NON-INFRINGEMENT.
-//
-//  See the Apache Version 2.0 License for specific language governing permissions 
-//  and limitations under the License.
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 
 import Foundation
@@ -36,23 +37,22 @@ public class RepositoryManager {
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     
     func loadRepositoryDataAsync(sendUpdateNotification: Bool) {
-        if let dispatchGroupRepositoryManager = dispatch_group_create() {
-            dispatch_group_enter(dispatchGroupRepositoryManager)
-            self.tripRepository.loadData({
-                dispatch_group_leave(dispatchGroupRepositoryManager)
-            })
-            
-            dispatch_group_enter(dispatchGroupRepositoryManager)
-            self.knownLocationRepository.loadData({
-                dispatch_group_leave(dispatchGroupRepositoryManager)
-            })
-            
-            dispatch_group_notify(dispatchGroupRepositoryManager, GlobalMainQueue) {
-                if (sendUpdateNotification) {
-                    NSLog("SENDING UPDATE NOTIFICATION")
-                    NSNotificationCenter.defaultCenter().postNotificationName(RepositoryManagerAddedContentNotification, object: nil)
-                }
+        let dispatchGroupRepositoryManager = DispatchGroup()
+        dispatchGroupRepositoryManager.enter()
+        self.tripRepository.loadData(loadDataCompletion: {
+            dispatchGroupRepositoryManager.leave()
+        })
+        
+        dispatchGroupRepositoryManager.enter()
+        self.knownLocationRepository.loadData(loadDataCompletion: {
+            dispatchGroupRepositoryManager.leave()
+        })
+        
+        dispatchGroupRepositoryManager.notify(queue: DispatchQueue.main, execute: {
+            if (sendUpdateNotification) {
+                NSLog("SENDING UPDATE NOTIFICATION")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: RepositoryManagerAddedContentNotification), object: nil)
             }
-        }
+        })
     }
 }

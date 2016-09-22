@@ -1,7 +1,7 @@
 # LOOP iOS Sample - Trips
 
 ## Prerequisites:
-  * You will need the latest version of XCode (7.3.1 or greater) to run this sample app.
+  * You will need the latest version of XCode (8.x or greater) to run this sample app.
   * You will need to install [Carthage](https://github.com/Carthage/Carthage)
 
 ## Build instructions:

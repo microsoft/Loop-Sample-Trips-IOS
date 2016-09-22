@@ -1,108 +1,126 @@
 //
 //  Date.swift
 //  Date utilities
-//  Loop Trips Sample
+//  Trips App
 //
-//  Copyright (c) Microsoft Corporation
+//  Copyright (c) 2016 Microsoft Corporation
 //
-//  All rights reserved.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-//  Licensed under the Apache License, Version 2.0 (the License); you may not 
-//  use this file except in compliance with the License. You may obtain a copy 
-//  of the License at http://www.apache.org/licenses/LICENSE-2.0
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-//  THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS 
-//  OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
-//  IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, 
-//  MERCHANTABLITY OR NON-INFRINGEMENT.
-//
-//  See the Apache Version 2.0 License for specific language governing permissions 
-//  and limitations under the License.
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 
 import Foundation
 import UIKit
 
-extension NSDate {
+extension Date {
     public func relativeDayAndTime() -> String {
-        let localDate = NSDate(timeInterval: NSTimeInterval(NSTimeZone.systemTimeZone().secondsFromGMT), sinceDate: self)
+        let localDate = Date(timeInterval: TimeInterval(TimeZone.ReferenceType.system.secondsFromGMT()), since: self)
         
         var startDay = ""
-        let dayDiff = NSCalendar.currentCalendar().components([.Day], fromDate: NSDate(), toDate: localDate, options: [])
+        guard let dayDiff = Calendar.current.dateComponents([.day], from: localDate, to: Date()).day else {
+            return "Unknown".localized
+        }
+        
         if (dayDiff == 0) {
-            startDay = "Today"
+            startDay = "Today".localized
         }
         else if (dayDiff == 1) {
-            startDay = "Yesterday"
+            startDay = "Yesterday".localized
         }
         
         if (startDay == "") {
-            let startDayFormatter = NSDateFormatter()
+            let startDayFormatter = DateFormatter()
             startDayFormatter.dateFormat = "MM/dd"
-            startDayFormatter.timeZone = NSTimeZone.localTimeZone()
-            startDay = startDayFormatter.stringFromDate(self)
+            startDayFormatter.timeZone = TimeZone.ReferenceType.local
+            startDay = startDayFormatter.string(from: self)
         }
         
-        let timeFormatter = NSDateFormatter()
+        let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
-        timeFormatter.timeZone = NSTimeZone.localTimeZone()
-        let startTime = timeFormatter.stringFromDate(self)
+        timeFormatter.timeZone = TimeZone.ReferenceType.local
+        let startTime = timeFormatter.string(from: self)
         
         return startDay + " " + startTime
     }
 
-    public func relativeDayAndStartEndTime(endDate: NSDate) -> String {
-        let dayOfWeek: [String] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-        
-        let localDate = NSDate(timeInterval: NSTimeInterval(NSTimeZone.systemTimeZone().secondsFromGMT), sinceDate: self)
+    public func relativeDayAndStartEndTime(endDate: Date) -> String {
+        let dayOfWeek: [String] = ["Sunday".localized,
+                                        "Monday".localized,
+                                        "Tuesday".localized,
+                                        "Wednesday".localized,
+                                        "Thursday".localized,
+                                        "Friday".localized,
+                                        "Saturday".localized]
+        let localDate = Date(timeInterval: TimeInterval(TimeZone.ReferenceType.system.secondsFromGMT()), since: self)
         
         var startDay = ""
-        let dayDiff = NSCalendar.currentCalendar().components([.Day], fromDate: localDate, toDate: NSDate(), options: []).day
-        let weekday = NSCalendar.currentCalendar().components([.Weekday], fromDate: endDate).weekday - 1
+        guard let dayDiff = Calendar.current.dateComponents([.day], from: localDate, to: Date()).day else {
+            return "Unkonwn".localized
+        }
+        
+        guard let weekday = Calendar.current.dateComponents([.weekday], from: endDate).weekday else {
+            return "Unknown".localized
+        }
+        
         if (dayDiff == 0) {
-            startDay = "Today"
+            startDay = "Today".localized
         }
         else if (dayDiff == 1) {
-            startDay = "Yesterday"
+            startDay = "Yesterday".localized
         }
         else if (dayDiff < 7) {
-            startDay = dayOfWeek[weekday]
+            startDay = dayOfWeek[weekday - 1]
         }
 
         if (startDay == "") {
-            let startDayFormatter = NSDateFormatter()
+            let startDayFormatter = DateFormatter()
             startDayFormatter.dateFormat = "MM/dd"
-            startDayFormatter.timeZone = NSTimeZone.localTimeZone()
-            startDay = startDayFormatter.stringFromDate(self)
+            startDayFormatter.timeZone = TimeZone.ReferenceType.local
+            startDay = startDayFormatter.string(from: self)
         }
         
-        let timeFormatter = NSDateFormatter()
+        let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
-        timeFormatter.timeZone = NSTimeZone.localTimeZone()
-        let startTime = timeFormatter.stringFromDate(self)
-        let endTime = timeFormatter.stringFromDate(endDate)
+        timeFormatter.timeZone = TimeZone.ReferenceType.local
+        let startTime = timeFormatter.string(from: self)
+        let endTime = timeFormatter.string(from: endDate)
         
         return startDay + " " + startTime + " - " + endTime
     }
     
-    func offsetFrom(endDate: NSDate) -> String {
-        let difference = NSCalendar.currentCalendar().components([.Day, .Hour, .Minute, .Second], fromDate: endDate, toDate: self, options: [])
+    func offsetFrom(endDate: Date) -> String {
+        let difference = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: endDate, to: self)
         
         var durationText = ""
-        if (difference.second > 0) {
-            durationText = String(format: "00:%02d", difference.second)
+        if (difference.second! > 0) {
+            durationText = String(format: "00m %02ds", difference.second!)
         }
         
-        if (difference.minute > 0) {
-            durationText = String(format: "%02d", difference.minute) + ":" + String(format: "%02d", difference.second)
+        if (difference.minute! > 0) {
+            durationText = String(format: "%dm ", difference.minute!) + String(format: "%02ds", difference.second!)
         }
         
-        if (difference.hour > 0) {
-            durationText = String(format: "%02d", difference.hour) + ":" + durationText
+        if (difference.hour! > 0) {
+            durationText = String(format: "%02dh ", difference.hour!) + durationText
         }
         
-        if (difference.day > 0) {
-            durationText = String(format: "%02d", difference.day) + ":" + durationText
+        if (difference.day! > 0) {
+            durationText = String(format: "%02dd ", difference.day!) + durationText
         }
         
         return durationText

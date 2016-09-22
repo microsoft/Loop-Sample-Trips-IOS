@@ -1,25 +1,26 @@
 //
 //  MapViewController.swift
-//  Loop Trips Sample
+//  Trips App
 //
-//  Created by Xuwen Cao on 6/3/16.
-//  Copyright © 2016 Microsoft. All rights reserved.
+//  Copyright (c) 2016 Microsoft Corporation
 //
-//  Copyright (c) Microsoft Corporation
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-//  All rights reserved.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-//  Licensed under the Apache License, Version 2.0 (the License); you may not 
-//  use this file except in compliance with the License. You may obtain a copy 
-//  of the License at http://www.apache.org/licenses/LICENSE-2.0
-//
-//  THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS 
-//  OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
-//  IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, 
-//  MERCHANTABLITY OR NON-INFRINGEMENT.
-//
-//  See the Apache Version 2.0 License for specific language governing permissions 
-//  and limitations under the License.
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 
 import UIKit
@@ -40,60 +41,56 @@ class LoopPointAnnotation: MKPointAnnotation {
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
-    @IBOutlet weak var detailsView: UIView!
-    @IBOutlet weak var startLocation: UILabel!
-    @IBOutlet weak var endLocation: UILabel!
-    @IBOutlet weak var locationIcon: UIImageView!
-    @IBOutlet weak var destinationArrow: UIImageView!
-    @IBOutlet weak var locationDistance: UILabel!
-    @IBOutlet weak var locationDuration: UILabel!
-    @IBOutlet weak var locationTime: UILabel!
-    @IBOutlet weak var endLocationLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var tripDetailsView: MapDetailsView!
+    @IBOutlet weak var tripDetailsViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mapView: MKMapView!
 
     private var mapViewUpdateObserver: NSObjectProtocol!
     
-    var showTrips = true
     var tripData: LoopTrip?
-    var transportMode = MKDirectionsTransportType.Walking
+    var isSample: Bool = false
+    var transportMode = MKDirectionsTransportType.walking
     let mapRouteLineCache = MapRouteLineCache.sharedInstance
     let knownLocationRepository = KnownLocationRepository.sharedInstance
-    let leadingConstraintConstant: CGFloat = 10.0
 	
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         if let mapViewUpdateObserver = mapViewUpdateObserver {
-            NSNotificationCenter.defaultCenter().removeObserver(mapViewUpdateObserver)
+            NotificationCenter.default.removeObserver(mapViewUpdateObserver)
         }
     }
 
     override func viewDidLoad() {
 		super.viewDidLoad()
         
-        self.initDetailsView()
+        self.title = "TRIP ROUTE".localized
         
-        self.title = self.showTrips ? "TRIP ROUTE" : "DRIVE ROUTE"
+        self.tripDetailsView.layer.shadowOpacity = 0.7
+        self.tripDetailsView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        self.tripDetailsView.setData(trip: self.tripData!, sampleTrip: self.isSample)
+        
+        // adjust height of details view based on whether this is a sample trip
+        if (self.isSample) {
+            tripDetailsViewHeightConstraint.constant += 26
+        }
+        
         self.mapView.delegate = self
         
-        self.setDetailsInfo()
-        
-        mapViewUpdateObserver = NSNotificationCenter.defaultCenter().addObserverForName(MapRouteLineCacheAddedContentNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
+        mapViewUpdateObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: MapRouteLineCacheAddedContentNotification), object: nil, queue: OperationQueue.main) {
             notification in
-            self.contentChangedNotification(notification)
+            self.contentChangedNotification(notification: notification as NSNotification!)
         }
-
+        
 		if let loopTrip = self.tripData {
             if let loopTripTransportMode = loopTrip.transportMode {
                 switch loopTripTransportMode {
                     case "driving":
-                        transportMode = MKDirectionsTransportType.Automobile
+                        transportMode = MKDirectionsTransportType.automobile
                     case "on_foot":
-                        transportMode = MKDirectionsTransportType.Walking
+                        transportMode = MKDirectionsTransportType.walking
                     case "cycling":
-                        transportMode = MKDirectionsTransportType.Automobile
+                        transportMode = MKDirectionsTransportType.automobile
                     default:
-                        transportMode = MKDirectionsTransportType.Walking
+                        transportMode = MKDirectionsTransportType.walking
                 }
             }
             
@@ -116,88 +113,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 }
 
 
-// MARK - Details
+// MARK - Internal
 
 extension MapViewController {
-    private func initDetailsView() {
-        self.detailsView.layer.shadowOpacity = 0.7
-        self.detailsView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-    }
-    
-    private func setDetailsInfo() {
-        if let loopTrip = self.tripData {
-            self.setLocaleLabels(loopTrip)
-            
-            self.locationDistance.text = " \(ConversionUtils.kilometersToMiles(loopTrip.distanceTraveledInKilometers)) mi. "
-            self.locationDuration.text = loopTrip.endedAt.offsetFrom(loopTrip.startedAt)
-            self.locationTime.text = loopTrip.startedAt.relativeDayAndStartEndTime(loopTrip.endedAt)
-        }
-    }
-    
-    func setLocaleLabels(trip: LoopTrip) {
-        var locationIconName = "ICO Cell Blank"
-        
-        if knownLocationRepository.locationsEntityIdMap.count > 0 {
-            if let locationEntityId = trip.entityId {
-                if let iconName = knownLocationRepository.locationsEntityIdMap[locationEntityId] {
-                    locationIconName = iconName
-                }
-            }
-        }
-        
-        if let startLocaleText = trip.startLocale?.getFriendlyName().uppercaseString {
-            setStartLocaleLabelText(startLocaleText)
-            
-            if let endLocaleText = trip.endLocale?.getFriendlyName().uppercaseString {
-                if (endLocaleText != startLocaleText) {
-                    adjustEndLocaleLabelText(false)
-                    setEndLocaleLabelText(endLocaleText)
-                }
-                else {
-                    adjustEndLocaleLabelText(true)
-                }
-            }
-            else {
-                adjustEndLocaleLabelText(true)
-            }
-        } else {
-            adjustEndLocaleLabelText(true)
-            setStartLocaleLabelText("UNKONWN")
-        }
-        
-        locationIcon.image = UIImage(named: locationIconName)
-    }
-
-    private func setStartLocaleLabelText(text: String) {
-        self.startLocation.text = text
-    }
-    
-    private func setEndLocaleLabelText(text: String) {
-        self.endLocation.text = text
-    }
-    
-    private func adjustEndLocaleLabelText(removeLabel: Bool) {
-        let adjustConstraintConstant = removeLabel ? 0 : self.leadingConstraintConstant
-        
-        self.endLocation.hidden = removeLabel
-        self.endLocationLeadingConstraint.constant = adjustConstraintConstant
-        
-        self.destinationArrow.hidden = removeLabel
-        self.destinationArrowLeadingConstraint.constant = adjustConstraintConstant
-    }
-}
-
-    
-// MARK - Privates
-
-extension MapViewController {
-    func setData(tripData: LoopTrip, showTrips: Bool) {
+    func setData(tripData: LoopTrip, isSample: Bool) {
         self.tripData = tripData
-        self.showTrips = showTrips
+        self.isSample = isSample
     }
     
-    private func contentChangedNotification(notification: NSNotification!) {
-        switch notification.name {
+    fileprivate func contentChangedNotification(notification: NSNotification!) {
+        switch notification.name.rawValue {
         case MapRouteLineCacheAddedContentNotification:
             NSLog("Received update notification in MapView")
             self.setMapView()
@@ -206,18 +131,18 @@ extension MapViewController {
         }
     }
     
-    private func createAnnotationFromLocation(routePosition: RouteAnnotationPosition, loopTripPoint: LoopTripPoint) -> MKPointAnnotation {
+    fileprivate func createAnnotationFromLocation(routePosition: RouteAnnotationPosition, loopTripPoint: LoopTripPoint) -> MKPointAnnotation {
         let annotation = LoopPointAnnotation()
 		
 		annotation.coordinate = loopTripPoint.coordinate
-        annotation.title = routePosition == RouteAnnotationPosition.startPosition ? "Starting Location" : "Ending Location"
+        annotation.title = routePosition == RouteAnnotationPosition.startPosition ? "Starting Location".localized : "Ending Location".localized
 		annotation.subtitle = loopTripPoint.timeAt.relativeDayAndTime()
-        annotation.imageName = routePosition == RouteAnnotationPosition.startPosition ? "ICO Pin Start" : "ICO Pin End"
+        annotation.imageName = routePosition == RouteAnnotationPosition.startPosition ? "ICO Pin Start Small" : "ICO Pin End Small"
         
-		return annotation;
+		return annotation
 	}
     
-    private func createRoutePathsAsync() {
+    fileprivate func createRoutePathsAsync() {
         if let loopTrip = self.tripData {
             let paths = loopTrip.path
             
@@ -227,18 +152,18 @@ extension MapViewController {
                     NSLog("Found cached polylines")
 
                     for polyline in polylines {
-                        self.mapView.addOverlay(polyline, level: MKOverlayLevel.AboveRoads)
+                        self.mapView.add(polyline, level: MKOverlayLevel.aboveRoads)
                     }
                 }
                 else {
                     NSLog("Creating new route polylines")
                     
                     // create route segments (and overlays) based on mode, speed, and other attributes
-                    createRouteForMode(paths[0].coordinate, destinationLocation: paths[1].coordinate, routeType: transportMode)
+                    createRouteForMode(sourceLocation: paths[0].coordinate, destinationLocation: paths[1].coordinate, routeType: transportMode)
                     var index = 0
                     repeat {
-                        let nextIndex = findNextRoutePointIndex(loopTrip, currentIndex: index)
-                        createRouteForMode(paths[index].coordinate, destinationLocation: paths[nextIndex].coordinate, routeType: transportMode)
+                        let nextIndex = findNextRoutePointIndex(loopTrip: loopTrip, currentIndex: index)
+                        createRouteForMode(sourceLocation: paths[index].coordinate, destinationLocation: paths[nextIndex].coordinate, routeType: transportMode)
                         index = nextIndex
                     } while index < paths.count - 1
                 }
@@ -246,10 +171,10 @@ extension MapViewController {
         }
         
         NSLog("Sending update notification for automobile route")
-        NSNotificationCenter.defaultCenter().postNotificationName(MapRouteLineCacheAddedContentNotification, object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: MapRouteLineCacheAddedContentNotification), object: nil)
     }
     
-    private func createRouteForMode(sourceLocation: CLLocationCoordinate2D, destinationLocation: CLLocationCoordinate2D, routeType: MKDirectionsTransportType) {
+    fileprivate func createRouteForMode(sourceLocation: CLLocationCoordinate2D, destinationLocation: CLLocationCoordinate2D, routeType: MKDirectionsTransportType) {
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
         
@@ -263,7 +188,7 @@ extension MapViewController {
         
         let directions = MKDirections(request: directionRequest)
         
-        directions.calculateDirectionsWithCompletionHandler {
+        directions.calculate {
             (response, error) -> Void in
             
             guard let response = response else {
@@ -274,10 +199,10 @@ extension MapViewController {
                 return
             }
             
-            self.mapView.addOverlay(response.routes[0].polyline, level: MKOverlayLevel.AboveRoads)
+            self.mapView.add(response.routes[0].polyline, level: MKOverlayLevel.aboveRoads)
             if let loopTrip = self.tripData {
                 if let entityId = loopTrip.entityId {
-                    self.mapRouteLineCache.appendPolyLine(entityId, polyline: response.routes[0].polyline)
+                    self.mapRouteLineCache.appendPolyLine(entityId: entityId, polyline: response.routes[0].polyline)
                 }
             }
             
@@ -285,7 +210,7 @@ extension MapViewController {
         }
     }
 
-    private func findNextRoutePointIndex(loopTrip: LoopTrip, currentIndex: Int) -> Int {
+    fileprivate func findNextRoutePointIndex(loopTrip: LoopTrip, currentIndex: Int) -> Int {
         let distanceOffsetLimit = (300.0)   // 300 m ~= 900ft (an estimated city block)
         let averageSpeedLimit = (13.0)       // 13 m/s ~= 29 mph
         let paths = loopTrip.path
@@ -294,8 +219,8 @@ extension MapViewController {
         }
         
         for index in currentIndex + 1 ..< paths.count - 1 {
-            let distanceOffset = pathDistanceOffset(paths[index - 1].coordinate, endPoint: paths[index].coordinate)
-            let averageSpeed = distanceOffset / pathTimeOffset(paths[index - 1], endPoint: paths[index])
+            let distanceOffset = pathDistanceOffset(startPoint: paths[index - 1].coordinate, endPoint: paths[index].coordinate)
+            let averageSpeed = distanceOffset / pathTimeOffset(startPoint: paths[index - 1], endPoint: paths[index])
 
             // ignore segments where travel was less than limit
             if (distanceOffset < distanceOffsetLimit) {
@@ -317,61 +242,64 @@ extension MapViewController {
         return paths.count - 1
     }
     
-    private func pathTimeOffset(startPoint: LoopTripPoint, endPoint: LoopTripPoint) -> NSTimeInterval {
-        return endPoint.timeAt.timeIntervalSinceDate(startPoint.timeAt)
+    fileprivate func pathTimeOffset(startPoint: LoopTripPoint, endPoint: LoopTripPoint) -> TimeInterval {
+        return endPoint.timeAt.timeIntervalSince(startPoint.timeAt)
     }
     
-    private func pathDistanceOffset(startPoint: CLLocationCoordinate2D, endPoint: CLLocationCoordinate2D) -> CLLocationDistance {
+    fileprivate func pathDistanceOffset(startPoint: CLLocationCoordinate2D, endPoint: CLLocationCoordinate2D) -> CLLocationDistance {
         let startLocation = CLLocation.init(latitude: startPoint.latitude, longitude: startPoint.longitude)
         let endLocation = CLLocation.init(latitude: endPoint.latitude, longitude: endPoint.longitude)
-        return startLocation.distanceFromLocation(endLocation)
+        return startLocation.distance(from: endLocation)
     }
     
-    private func setMapView() {
+    fileprivate func setMapView() {
         if let loopTrip = self.tripData {
             let paths = loopTrip.path
             
             // set the map to show start/end annotations
             let mapStartEndAnnotations = [
-                self.createAnnotationFromLocation(RouteAnnotationPosition.startPosition, loopTripPoint: paths[0]),
-                self.createAnnotationFromLocation(RouteAnnotationPosition.endPosition, loopTripPoint: paths[paths.count - 1])
+                self.createAnnotationFromLocation(routePosition: RouteAnnotationPosition.startPosition, loopTripPoint: paths[0]),
+                self.createAnnotationFromLocation(routePosition: RouteAnnotationPosition.endPosition, loopTripPoint: paths[paths.count - 1])
             ]
             
             self.mapView.showAnnotations(mapStartEndAnnotations, animated: false)
             
             // set the map to encompass all of our route points
-            var mapPoints = paths.enumerate().map {
+            var mapPoints = paths.enumerated().map {
                 index, element in
                 return element.coordinate
             }
             let routePolyline = MKPolyline(coordinates: &mapPoints, count: mapPoints.count)
             
             self.mapView.setRegion(MKCoordinateRegionForMapRect(routePolyline.boundingMapRect), animated: false)
-            self.mapView.camera.altitude = self.mapView.camera.altitude * 2.0
+            self.mapView.camera.altitude = self.mapView.camera.altitude * 4.0
             
             // if walking or biking use the basic polyline instead of route-based line
             //if (self.transportMode != MKDirectionsTransportType.Automobile) {
-                self.mapView.addOverlay(routePolyline)
+                self.mapView.add(routePolyline)
             //}
         }
     }
 }
 
 
-//MARK:- MapViewDelegate methods
+// MARK:- MapViewDelegate
 
 extension MapViewController {
-	func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-		let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-		polylineRenderer.strokeColor = UIColor.mapRouteLineColor
-		polylineRenderer.lineWidth = 4
-        polylineRenderer.alpha = 0.80
+    @objc(mapView:rendererForOverlay:) public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+        polylineRenderer.strokeColor = UIColor.mapRouteLineColor
+        polylineRenderer.lineWidth = 4
+        polylineRenderer.alpha = 0.30
         
-		return polylineRenderer
-	}
+        return polylineRenderer
+    }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        guard annotation.isKindOfClass(LoopPointAnnotation) else {
+    // mapView:viewForAnnotation: provides the view for each annotation.
+    // This method may be called for all or some of the added annotations.
+    // For MapKit provided annotations (eg. MKUserLocation) return nil to use the MapKit provided annotation view.
+    @objc(mapView:viewForAnnotation:) public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation.isKind(of: LoopPointAnnotation.self) else {
             return nil
         }
         
@@ -379,7 +307,7 @@ extension MapViewController {
         let annotationId = "LoopAnnotation"
         
         var annotationView: MKAnnotationView?
-        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationId) {
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationId) {
             annotationView = dequeuedAnnotationView
             annotationView?.annotation = annotation
         }
@@ -393,7 +321,7 @@ extension MapViewController {
         // Set annotation-specific properties **AFTER** the view is dequeued or created...
         let loopPointAnnotation = annotation as! LoopPointAnnotation
         annotationView!.image = UIImage(named: loopPointAnnotation.imageName)
-        annotationView!.centerOffset = CGPointMake(0, -18);
+        annotationView!.centerOffset = CGPoint(x: 0, y: -15)
         
         return annotationView
     }

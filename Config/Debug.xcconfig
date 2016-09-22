@@ -1,7 +1,8 @@
 //
 //  Debug.xcconfig
-//  Loop Trips
+//  Trips App
 //
+
 
 ONLY_ACTIVE_ARCH = YES
 
@@ -18,3 +19,7 @@ GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
 SWIFT_OPTIMIZATION_LEVEL = -Onone
 
 MTL_ENABLE_DEBUG_INFO = YES
+
+ENABLE_TESTABILITY = YES
+
+ONLY_ACTIVE_ARCH = YES
