@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B505DC511D148FD1008646FE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B505DC4F1D148FD1008646FE /* Alamofire.framework */; };
-		B505DC521D148FD1008646FE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B505DC4F1D148FD1008646FE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58887131CF3A6AD00B25BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58887121CF3A6AD00B25BCD /* AppDelegate.swift */; };
 		B58887181CF3A6AD00B25BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58887161CF3A6AD00B25BCD /* Main.storyboard */; };
 		B588871A1CF3A6AD00B25BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58887191CF3A6AD00B25BCD /* Assets.xcassets */; };
@@ -16,7 +15,6 @@
 		B5CEBD531CFD051A00EC3F20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEBD521CFD051A00EC3F20 /* MapViewController.swift */; };
 		B5CEFDCA1D024A7600E0B799 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEFDC91D024A7600E0B799 /* Logger.swift */; };
 		F60A2FA81D7E80EF00E297B0 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F60A2FA71D7E80EF00E297B0 /* HockeySDK.framework */; };
-		F60A2FA91D7E80EF00E297B0 /* HockeySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F60A2FA71D7E80EF00E297B0 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F60A2FAD1D80D19D00E297B0 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A2FAC1D80D19D00E297B0 /* Text.swift */; };
 		F60A2FAF1D81357500E297B0 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A2FAE1D81357500E297B0 /* Alert.swift */; };
 		F654898A1D76AA760005BB9B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65489851D76AA760005BB9B /* Color.swift */; };
@@ -31,8 +29,7 @@
 		F65A938A1D6CCD3C006F5358 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65A93891D6CCD3C006F5358 /* TripCell.xib */; };
 		F65A938C1D6CD473006F5358 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A938B1D6CD473006F5358 /* TripCell.swift */; };
 		F6825FF21D73DA7B00D6F926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825FF11D73DA7B00D6F926 /* TripViewController.swift */; };
-		F6A0ABFF1D90E776007637CE /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A0ABFE1D90E776007637CE /* LoopSDK.framework */; };
-		F6A0AC001D90E776007637CE /* LoopSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6A0ABFE1D90E776007637CE /* LoopSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F69E72B61D9476F700127752 /* LoopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69E72B41D9476CD00127752 /* LoopSDK.framework */; };
 		F6A483311D8937BD00B885D0 /* MapDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A483301D8937BD00B885D0 /* MapDetailsView.xib */; };
 		F6A483331D89381800B885D0 /* MapDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A483321D89381800B885D0 /* MapDetailsView.swift */; };
 		F6F13F661D93A56B000DD3EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6F13F681D93A56B000DD3EF /* Localizable.strings */; };
@@ -45,9 +42,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F6A0AC001D90E776007637CE /* LoopSDK.framework in Embed Frameworks */,
-				B505DC521D148FD1008646FE /* Alamofire.framework in Embed Frameworks */,
-				F60A2FA91D7E80EF00E297B0 /* HockeySDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,7 +74,7 @@
 		F65A938B1D6CD473006F5358 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		F6825FF11D73DA7B00D6F926 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		F69E72B11D93B28300127752 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LoopTripIOS/Info.plist; sourceTree = "<group>"; };
-		F6A0ABFE1D90E776007637CE /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LoopSDK.framework; sourceTree = "<group>"; };
+		F69E72B41D9476CD00127752 /* LoopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopSDK.framework; path = Carthage/Build/iOS/LoopSDK.framework; sourceTree = "<group>"; };
 		F6A483301D8937BD00B885D0 /* MapDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapDetailsView.xib; sourceTree = "<group>"; };
 		F6A483321D89381800B885D0 /* MapDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailsView.swift; sourceTree = "<group>"; };
 		F6E0F6671D1066A8005A13E5 /* Trips.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Trips.xcconfig; sourceTree = "<group>"; };
@@ -98,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6A0ABFF1D90E776007637CE /* LoopSDK.framework in Frameworks */,
+				F69E72B61D9476F700127752 /* LoopSDK.framework in Frameworks */,
 				B505DC511D148FD1008646FE /* Alamofire.framework in Frameworks */,
 				F60A2FA81D7E80EF00E297B0 /* HockeySDK.framework in Frameworks */,
 			);
@@ -110,7 +104,7 @@
 		B58887061CF3A6AD00B25BCD = {
 			isa = PBXGroup;
 			children = (
-				F6A0ABFE1D90E776007637CE /* LoopSDK.framework */,
+				F69E72B41D9476CD00127752 /* LoopSDK.framework */,
 				F60A2FA71D7E80EF00E297B0 /* HockeySDK.framework */,
 				B505DC4F1D148FD1008646FE /* Alamofire.framework */,
 				F6E0F6661D10666B005A13E5 /* Config */,
