@@ -48,6 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private var mapViewUpdateObserver: NSObjectProtocol!
     
     var tripData: LoopTrip?
+    var rowIndex = -1
     var isSample: Bool = false
     var transportMode = MKDirectionsTransportType.walking
     let mapRouteLineCache = MapRouteLineCache.sharedInstance
@@ -66,7 +67,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         self.tripDetailsView.layer.shadowOpacity = 0.7
         self.tripDetailsView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        self.tripDetailsView.setData(trip: self.tripData!, sampleTrip: self.isSample)
+        self.tripDetailsView.setData(trip: self.tripData!, rowIndex: self.rowIndex, sampleTrip: self.isSample)
         
         // adjust height of details view based on whether this is a sample trip
         if (self.isSample) {
@@ -116,7 +117,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 // MARK - Internal
 
 extension MapViewController {
-    func setData(tripData: LoopTrip, isSample: Bool) {
+    func setData(tripData: LoopTrip, rowIndex: Int, isSample: Bool) {
         self.tripData = tripData
         self.isSample = isSample
     }

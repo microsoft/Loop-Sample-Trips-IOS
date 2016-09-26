@@ -34,6 +34,7 @@ class TripCell: UITableViewCell {
 
     @IBOutlet weak var startLocationIcon: UIImageView!
     @IBOutlet weak var startLocationIconLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var startLocationIconWidthConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var destinationArrow: UIImageView!
     @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
@@ -44,6 +45,7 @@ class TripCell: UITableViewCell {
 
     @IBOutlet weak var endLocationIcon: UIImageView!
     @IBOutlet weak var endLocationIconLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var endLocationIconWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var locationTime: UILabel!
     @IBOutlet weak var locationDistance: UILabel!
@@ -52,6 +54,7 @@ class TripCell: UITableViewCell {
     
     
     let knownLocationRepository = KnownLocationRepository.sharedInstance
+    var rowIndex = -1
     
     override func awakeFromNib () {
         super.awakeFromNib()
@@ -60,15 +63,33 @@ class TripCell: UITableViewCell {
         self.selectionStyle = UITableViewCellSelectionStyle.none
     }
     
-    func setData(trip: LoopTrip, isSample: Bool) {
+    override func prepareForReuse() {
+        self.startLocationIcon.isHidden = true
+        self.startLocationIconWidthConstraint.constant = CGFloat(0)
+        
+        self.endLocationIcon.isHidden = true
+        self.endLocationIconLeadingConstraint.constant = CGFloat(0)
+        
+        self.endLocationLabel.isHidden = false
+        self.endLocationLeadingConstraint.constant = CGFloat(10)
+        
+        self.destinationArrow.isHidden = false
+        self.destinationArrowLeadingConstraint.constant = CGFloat(10)
+        
+        self.sampleTripIndicator.isHidden = false
+    }
+    
+    func setData(trip: LoopTrip, rowIndex: Int, isSample: Bool) {
+        self.rowIndex = rowIndex
+        
         if (!isSample) {
-            sampleTripIndicator.isHidden = true
+            self.sampleTripIndicator.isHidden = true
         }
         
         self.locationDistance.text = " \(ConversionUtils.kilometersToMiles(kilometers: trip.distanceTraveledInKilometers)) mi. "
         self.locationDuration.text = trip.endedAt.offsetFrom(endDate: trip.startedAt)
         self.locationTime.text = trip.startedAt.relativeDayAndStartEndTime(endDate: trip.endedAt)
-
+        
         setLocationLabels(trip: trip)
     }
     
@@ -81,51 +102,66 @@ class TripCell: UITableViewCell {
     }
     
     private func setStartLocationLabel(trip: LoopTrip) -> String {
+        var startLocation = "Unknown".localized
         if let startLocationText = trip.startLocale?.getFriendlyName().uppercased() {
-            self.startLocationLabel.text = startLocationText
-            
-            if let locationEntityId = trip.startLocationEntityId {
-                let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
-                
-                if (locationIconName != "unknown") {
-                    startLocationIcon.image = UIImage(named: locationIconName)
-                }
-                else {
-                    startLocationIcon.removeFromSuperview()
-                }
-            }
-            else {
-                startLocationIcon.removeFromSuperview()
-            }
+            startLocation = startLocationText
         }
         
-        return self.startLocationLabel.text!
+        self.startLocationLabel.text = startLocation
+        
+        if let locationEntityId = trip.startLocationEntityId {
+            let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
+            
+            if (locationIconName != "unknown") {
+                self.startLocationIcon.image = UIImage(named: locationIconName)
+                self.startLocationIcon.isHidden = false
+                self.startLocationIconWidthConstraint.constant = CGFloat(16)
+            }
+            else {
+                self.startLocationIcon.isHidden = true
+                self.startLocationIconWidthConstraint.constant = 0
+            }
+        }
+        else {
+            self.startLocationIcon.isHidden = true
+            self.startLocationIconWidthConstraint.constant = 0
+        }
+        
+        return startLocation
     }
     
     private func setEndLocationLabel(trip: LoopTrip) -> String {
+        var endLocation = "Unknown".localized
         if let endLocationText = trip.endLocale?.getFriendlyName().uppercased() {
-            self.endLocationLabel.text = endLocationText
-            
-            if let locationEntityId = trip.endLocationEntityId {
-                let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
+            endLocation = endLocationText
+        }
 
-                if (locationIconName != "unknown") {
-                    endLocationIcon.image = UIImage(named: locationIconName)
-                }
-                else {
-                    endLocationIcon.removeFromSuperview()
-                }
+        self.endLocationLabel.text = endLocation
+        
+        if let locationEntityId = trip.endLocationEntityId {
+            let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
+
+            if (locationIconName != "unknown") {
+                self.endLocationIcon.image = UIImage(named: locationIconName)
+                self.endLocationIcon.isHidden = false
+                self.endLocationIconWidthConstraint.constant = CGFloat(16)
             }
             else {
-                endLocationIcon.removeFromSuperview()
+                self.endLocationIcon.isHidden = true
+                self.endLocationIconWidthConstraint.constant = 0
             }
         }
+        else {
+            self.endLocationIcon.isHidden = true
+            self.endLocationIconWidthConstraint.constant = 0
+        }
         
-        return self.endLocationLabel.text!
+        return endLocation
     }
     
     private func removeEndLocationLabel() {
         self.endLocationIcon.isHidden = true
+        self.endLocationWidthConstraint.constant = CGFloat(0)
         self.endLocationIconLeadingConstraint.constant = CGFloat(0)
 
         self.endLocationLabel.isHidden = true
@@ -139,7 +175,10 @@ class TripCell: UITableViewCell {
         let startLabelWidth = createAttributedString(text: self.startLocationLabel.text!, textSize: 16.0).widthWithConstrainedHeight(height: 18.0)
         let endLabelWidth = createAttributedString(text: self.endLocationLabel.text!, textSize: 16.0).widthWithConstrainedHeight(height: 18.0)
         let distanceLabelWidth = createAttributedString(text: self.locationDistance.text!, textSize: 12.0).widthWithConstrainedHeight(height: 12.0)
-        let totalLabelsWidth = CGFloat.init(self.bounds.size.width - (distanceLabelWidth + 70))
+        let cellWidthRemaining = 100
+                + self.startLocationIconWidthConstraint.constant + 5
+                + self.endLocationIconWidthConstraint.constant + 5
+        let totalLabelsWidth = CGFloat.init(self.bounds.size.width - (distanceLabelWidth + cellWidthRemaining))
         let singleLabelWidth = (totalLabelsWidth / 2)
         
         if (self.endLocationLabel.isHidden == true) {

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -13,6 +13,7 @@
                 <outlet property="destinationArrowLeadingConstraint" destination="K8T-ur-kyz" id="hgl-Z7-sno"/>
                 <outlet property="endLocationIcon" destination="ryJ-gb-rGs" id="rAD-Wo-pWd"/>
                 <outlet property="endLocationIconLeadingConstraint" destination="1zE-OA-Sjj" id="Lij-fg-Wjf"/>
+                <outlet property="endLocationIconWidthConstraint" destination="iSg-TG-Zbd" id="7tG-xR-GDt"/>
                 <outlet property="endLocationLabel" destination="VIi-77-QO4" id="UOK-Lc-yTy"/>
                 <outlet property="endLocationLeadingConstraint" destination="UP0-Qu-0YB" id="MFP-Dc-Lb9"/>
                 <outlet property="endLocationWidthConstraint" destination="xQc-rN-vCR" id="DPb-c9-pXt"/>
@@ -22,6 +23,7 @@
                 <outlet property="sampleTripIndicator" destination="6uy-3l-udz" id="JVk-Ks-tlv"/>
                 <outlet property="startLocationIcon" destination="QLA-4n-woE" id="zi3-Gq-G69"/>
                 <outlet property="startLocationIconLeadingConstraint" destination="nFR-We-g5d" id="qnn-9R-ysz"/>
+                <outlet property="startLocationIconWidthConstraint" destination="cRv-xl-m78" id="w9x-to-v52"/>
                 <outlet property="startLocationLabel" destination="kcs-P7-uXT" id="4Yi-cy-s25"/>
                 <outlet property="startLocationWidthConstraint" destination="EU0-o2-8Fb" id="jY8-yy-EvT"/>
             </connections>
