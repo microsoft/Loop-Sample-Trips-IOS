@@ -39,6 +39,7 @@ class MapDetailsView: UIView {
     
     @IBOutlet weak var startLocationIcon: UIImageView!
     @IBOutlet weak var startLocationIconLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var startLocationIconWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var destinationArrow: UIImageView!
     @IBOutlet weak var destinationArrowLeadingConstraint: NSLayoutConstraint!
@@ -49,6 +50,7 @@ class MapDetailsView: UIView {
     
     @IBOutlet weak var endLocationIcon: UIImageView!
     @IBOutlet weak var endLocationIconLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var endLocationIconWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var locationTime: UILabel!
     @IBOutlet weak var locationDistance: UILabel!
@@ -56,6 +58,7 @@ class MapDetailsView: UIView {
     @IBOutlet weak var sampleTripIndicator: UILabel!
     
     let knownLocationRepository = KnownLocationRepository.sharedInstance
+    var rowIndex = -1
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,8 +71,6 @@ class MapDetailsView: UIView {
     }
     
     private func commonInit() {
-        //self.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 50)
-        
         Bundle.main.loadNibNamed("MapDetailsView", owner: self, options: nil)
         guard let content = contentView else { return }
         content.frame = self.bounds
@@ -77,7 +78,7 @@ class MapDetailsView: UIView {
         self.addSubview(content)
     }
     
-    func setData(trip: LoopTrip, sampleTrip: Bool) {
+    func setData(trip: LoopTrip, rowIndex: Int, sampleTrip: Bool) {
         if (!sampleTrip) {
             sampleTripIndicator.isHidden = true
         }
@@ -98,51 +99,66 @@ class MapDetailsView: UIView {
     }
     
     private func setStartLocationLabel(trip: LoopTrip) -> String {
+        var startLocation = "Unknown".localized
         if let startLocationText = trip.startLocale?.getFriendlyName().uppercased() {
-            self.startLocationLabel.text = startLocationText
-            
-            if let locationEntityId = trip.startLocationEntityId {
-                let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
-                
-                if (locationIconName != "unknown") {
-                    startLocationIcon.image = UIImage(named: locationIconName)
-                }
-                else {
-                    startLocationIcon.removeFromSuperview()
-                }
-            }
-            else {
-                startLocationIcon.removeFromSuperview()
-            }
+            startLocation = startLocationText
         }
         
-        return self.startLocationLabel.text!
+        self.startLocationLabel.text = startLocation
+        
+        if let locationEntityId = trip.startLocationEntityId {
+            let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
+            
+            if (locationIconName != "unknown") {
+                self.startLocationIcon.image = UIImage(named: locationIconName)
+                self.startLocationIcon.isHidden = false
+                self.startLocationIconWidthConstraint.constant = CGFloat(16)
+            }
+            else {
+                self.startLocationIcon.isHidden = true
+                self.startLocationIconWidthConstraint.constant = 0
+            }
+        }
+        else {
+            self.startLocationIcon.isHidden = true
+            self.startLocationIconWidthConstraint.constant = 0
+        }
+        
+        return startLocation
     }
     
     private func setEndLocationLabel(trip: LoopTrip) -> String {
+        var endLocation = "Unknown".localized
         if let endLocationText = trip.endLocale?.getFriendlyName().uppercased() {
-            self.endLocationLabel.text = endLocationText
-            
-            if let locationEntityId = trip.endLocationEntityId {
-                let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
-                
-                if (locationIconName != "unknown") {
-                    endLocationIcon.image = UIImage(named: locationIconName)
-                }
-                else {
-                    endLocationIcon.removeFromSuperview()
-                }
-            }
-            else {
-                endLocationIcon.removeFromSuperview()
-            }
+            endLocation = endLocationText
         }
         
-        return self.endLocationLabel.text!
+        self.endLocationLabel.text = endLocation
+        
+        if let locationEntityId = trip.endLocationEntityId {
+            let locationIconName = getIconNameFromLocationEntityId(locationEntityId: locationEntityId)
+            
+            if (locationIconName != "unknown") {
+                self.endLocationIcon.image = UIImage(named: locationIconName)
+                self.endLocationIcon.isHidden = false
+                self.endLocationIconWidthConstraint.constant = CGFloat(16)
+            }
+            else {
+                self.endLocationIcon.isHidden = true
+                self.endLocationIconWidthConstraint.constant = 0
+            }
+        }
+        else {
+            self.endLocationIcon.isHidden = true
+            self.endLocationIconWidthConstraint.constant = 0
+        }
+        
+        return endLocation
     }
     
     private func removeEndLocationLabel() {
         self.endLocationIcon.isHidden = true
+        self.endLocationWidthConstraint.constant = CGFloat(0)
         self.endLocationIconLeadingConstraint.constant = CGFloat(0)
         
         self.endLocationLabel.isHidden = true
@@ -156,7 +172,10 @@ class MapDetailsView: UIView {
         let startLabelWidth = createAttributedString(text: self.startLocationLabel.text!, textSize: 16.0).widthWithConstrainedHeight(height: 18.0)
         let endLabelWidth = createAttributedString(text: self.endLocationLabel.text!, textSize: 16.0).widthWithConstrainedHeight(height: 18.0)
         let distanceLabelWidth = createAttributedString(text: self.locationDistance.text!, textSize: 12.0).widthWithConstrainedHeight(height: 12.0)
-        let totalLabelsWidth = CGFloat.init(self.bounds.size.width - (distanceLabelWidth + 70))
+        let cellWidthRemaining = 100
+            + self.startLocationIconWidthConstraint.constant + 5
+            + self.endLocationIconWidthConstraint.constant + 5
+        let totalLabelsWidth = CGFloat.init(self.bounds.size.width - (distanceLabelWidth + cellWidthRemaining))
         let singleLabelWidth = (totalLabelsWidth / 2)
         
         if (self.endLocationLabel.isHidden == true) {
