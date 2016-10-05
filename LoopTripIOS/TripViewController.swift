@@ -87,7 +87,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "showMapViewForTrips", let mapView = segue.destination as? MapViewController {
             if let indexPath = sender as? NSIndexPath {
                 let row = self.repositoryManager.tripRepository.tableData[indexPath.row]
-                mapView.setData(tripData: row.data!, isSample: row.isSample)
+                mapView.setData(tripData: row.data!, rowIndex: indexPath.row, isSample: row.isSample)
             }
         }
     }
@@ -128,7 +128,7 @@ extension TripViewController {
     @objc(tableView:cellForRowAtIndexPath:) public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TripCell", for: indexPath as IndexPath) as! TripCell
         let row = self.repositoryManager.tripRepository.tableData[indexPath.row]
-        cell.setData(trip: row.data!, isSample: row.isSample)
+        cell.setData(trip: row.data!, rowIndex: indexPath.row, isSample: row.isSample)
         
         return cell
     }
