@@ -245,7 +245,7 @@
 				TargetAttributes = {
 					B588870E1CF3A6AD00B25BCD = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 586WTGM8MR;
+						DevelopmentTeam = UBF8T346G9;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -369,7 +369,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6E0F6681D1066B2005A13E5 /* Debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 586WTGM8MR;
+				DEVELOPMENT_TEAM = UBF8T346G9;
 			};
 			name = Debug;
 		};
@@ -377,7 +377,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6E0F6691D1066BC005A13E5 /* Release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 586WTGM8MR;
+				DEVELOPMENT_TEAM = UBF8T346G9;
 			};
 			name = Release;
 		};
