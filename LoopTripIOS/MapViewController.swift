@@ -65,8 +65,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         self.title = "TRIP ROUTE".localized
         
-        self.tripDetailsView.layer.shadowOpacity = 0.7
-        self.tripDetailsView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        self.tripDetailsView.layer.shadowOpacity = 0.4
+        self.tripDetailsView.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
         self.tripDetailsView.setData(trip: self.tripData!, rowIndex: self.rowIndex, sampleTrip: self.isSample)
         
         // adjust height of details view based on whether this is a sample trip
