@@ -134,6 +134,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="q0g-qb-Qmg" firstAttribute="leading" secondItem="wME-yT-cyb" secondAttribute="leading" constant="20" id="4Av-u7-cgZ"/>
                                     <constraint firstItem="q0g-qb-Qmg" firstAttribute="top" secondItem="8kK-Uq-alY" secondAttribute="bottom" constant="15" id="4ke-AJ-wPl"/>
                                     <constraint firstItem="7qe-LA-9zM" firstAttribute="top" secondItem="wME-yT-cyb" secondAttribute="top" constant="15" id="5hT-5n-wGo"/>
                                     <constraint firstItem="8kK-Uq-alY" firstAttribute="top" secondItem="XLa-aQ-zVy" secondAttribute="bottom" constant="20" id="GyI-W2-ogU"/>
@@ -148,7 +149,6 @@
                                     <constraint firstItem="XLa-aQ-zVy" firstAttribute="top" secondItem="QJl-KS-o7c" secondAttribute="bottom" constant="10" id="c7T-C2-JqN"/>
                                     <constraint firstAttribute="bottom" secondItem="rHS-wb-bRH" secondAttribute="bottom" constant="3" id="cEB-FR-ba2"/>
                                     <constraint firstItem="8kK-Uq-alY" firstAttribute="leading" secondItem="wME-yT-cyb" secondAttribute="leading" constant="20" id="eBK-bb-9ZR"/>
-                                    <constraint firstItem="q0g-qb-Qmg" firstAttribute="centerX" secondItem="wME-yT-cyb" secondAttribute="centerX" id="fIX-CG-EDq"/>
                                     <constraint firstAttribute="bottom" secondItem="7PA-0r-lRT" secondAttribute="bottom" constant="10" id="fdf-Ig-hHN"/>
                                     <constraint firstItem="8kK-Uq-alY" firstAttribute="top" secondItem="7qe-LA-9zM" secondAttribute="bottom" constant="15.5" id="gKG-hp-9uk"/>
                                     <constraint firstAttribute="trailing" secondItem="ir8-Wi-FXK" secondAttribute="trailing" constant="16" id="h2c-H5-zRG"/>
@@ -164,9 +164,9 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="c7T-C2-JqN"/>
                                         <exclude reference="GyI-W2-ogU"/>
                                         <exclude reference="oca-wS-R2U"/>
-                                        <exclude reference="c7T-C2-JqN"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -313,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUO-fO-1qD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2102" y="1359"/>
+            <point key="canvasLocation" x="-2103.1999999999998" y="1358.7706146926537"/>
         </scene>
         <!--TripsNavController-->
         <scene sceneID="g97-tt-V2c">
