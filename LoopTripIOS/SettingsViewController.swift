@@ -53,8 +53,8 @@ class SettingsViewController: UIViewController {
         versionString.text = "v" + buildVersion!
         
         learnLoopLink.attributedText = createAttributedStringWithLink(linkText: "LEARN_ABOUT_LOOP".localized, linkUrlString: "https://www.loop.ms", fontSize: 14.0)
-        touLink.attributedText = createAttributedStringWithLink(linkText: "TERMS".localized, linkUrlString: "http://go.microsoft.com/fwlink/?LinkID=530144", fontSize: 12.0)
-        privacyLink.attributedText = createAttributedStringWithLink(linkText: "PRIVACY".localized, linkUrlString: "http://go.microsoft.com/fwlink/?LinkId=521839", fontSize: 12.0)
+        touLink.attributedText = createAttributedStringWithLink(linkText: "TERMS".localized, linkUrlString: "https://go.microsoft.com/fwlink/?LinkID=530144", fontSize: 12.0)
+        privacyLink.attributedText = createAttributedStringWithLink(linkText: "PRIVACY".localized, linkUrlString: "https://go.microsoft.com/fwlink/?LinkId=521839", fontSize: 12.0)
     }
     
 // MARK - Actions
@@ -112,6 +112,6 @@ extension SettingsViewController {
             NSForegroundColorAttributeName: UIColor.settingsLinkTextColor
         ]
         
-        return NSAttributedString.init(string: linkText, attributes: linkAttributes)
+        return NSAttributedString(string: linkText, attributes: linkAttributes)
     }
 }

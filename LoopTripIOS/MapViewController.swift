@@ -68,6 +68,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.tripDetailsView.layer.shadowOpacity = 0.7
         self.tripDetailsView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         self.tripDetailsView.setData(trip: self.tripData!, rowIndex: self.rowIndex, sampleTrip: self.isSample)
+        self.tripDetailsView.layoutIfNeeded()
         
         // adjust height of details view based on whether this is a sample trip
         if (self.isSample) {
@@ -248,8 +249,8 @@ extension MapViewController {
     }
     
     fileprivate func pathDistanceOffset(startPoint: CLLocationCoordinate2D, endPoint: CLLocationCoordinate2D) -> CLLocationDistance {
-        let startLocation = CLLocation.init(latitude: startPoint.latitude, longitude: startPoint.longitude)
-        let endLocation = CLLocation.init(latitude: endPoint.latitude, longitude: endPoint.longitude)
+        let startLocation = CLLocation(latitude: startPoint.latitude, longitude: startPoint.longitude)
+        let endLocation = CLLocation(latitude: endPoint.latitude, longitude: endPoint.longitude)
         return startLocation.distance(from: endLocation)
     }
     

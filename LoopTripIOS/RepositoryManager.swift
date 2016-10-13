@@ -36,7 +36,7 @@ public class RepositoryManager {
     let tripRepository = TripRepository.sharedInstance
     let knownLocationRepository = KnownLocationRepository.sharedInstance
     
-    func loadRepositoryDataAsync(sendUpdateNotification: Bool) {
+    func loadRepositoryDataAsync() {
         let dispatchGroupRepositoryManager = DispatchGroup()
         dispatchGroupRepositoryManager.enter()
         self.tripRepository.loadData(loadDataCompletion: {
@@ -49,10 +49,13 @@ public class RepositoryManager {
         })
         
         dispatchGroupRepositoryManager.notify(queue: DispatchQueue.main, execute: {
-            if (sendUpdateNotification) {
-                NSLog("SENDING UPDATE NOTIFICATION")
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: RepositoryManagerAddedContentNotification), object: nil)
-            }
+            NSLog("SENDING UPDATE NOTIFICATION")
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: RepositoryManagerAddedContentNotification), object: nil)
         })
     }
+    
+    func updateData() {
+        self.tripRepository.updateData()
+        self.knownLocationRepository.updateData()
+     }
 }
