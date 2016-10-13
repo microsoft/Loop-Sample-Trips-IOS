@@ -185,16 +185,7 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="H6I-tG-dFc"/>
-                        <exclude reference="IYq-m8-Qv3"/>
-                        <exclude reference="WHj-LH-CV8"/>
-                        <exclude reference="Nb5-Gc-wNI"/>
-                        <exclude reference="Pxc-Te-psl"/>
-                        <exclude reference="dJW-4F-Oub"/>
-                        <exclude reference="1aW-Ed-vSf"/>
-                        <exclude reference="8Zh-Rc-FC4"/>
-                        <exclude reference="vhQ-0L-aJL"/>
-                        <exclude reference="kGc-b0-Hbi"/>
+                        <exclude reference="uUS-N9-yfQ"/>
                         <exclude reference="5sW-Co-sD7"/>
                         <exclude reference="6p6-qy-SON"/>
                         <exclude reference="8Zb-Rh-OsK"/>
@@ -203,6 +194,12 @@
                         <exclude reference="QrD-je-nbc"/>
                         <exclude reference="VOf-Wk-pFj"/>
                         <exclude reference="fed-cc-cgp"/>
+                        <exclude reference="H6I-tG-dFc"/>
+                        <exclude reference="C3O-EB-Ukv"/>
+                        <exclude reference="LIu-QC-g2o"/>
+                        <exclude reference="YxK-eU-9Yc"/>
+                        <exclude reference="Yz7-Bs-YRz"/>
+                        <exclude reference="bTh-7C-2c9"/>
                         <exclude reference="9lN-Zs-Srw"/>
                         <exclude reference="CjI-Ew-e9c"/>
                         <exclude reference="Ebg-f8-AD1"/>
@@ -211,6 +208,7 @@
                         <exclude reference="vtP-gX-6RB"/>
                         <exclude reference="web-5R-J1B"/>
                         <exclude reference="yMU-bn-eVQ"/>
+                        <exclude reference="kGc-b0-Hbi"/>
                         <exclude reference="5pV-QA-DpA"/>
                         <exclude reference="LYf-gT-462"/>
                         <exclude reference="OK5-ck-Jmb"/>
@@ -219,12 +217,14 @@
                         <exclude reference="p3A-Mq-g9d"/>
                         <exclude reference="qYP-p9-zh5"/>
                         <exclude reference="tDu-hl-yfH"/>
-                        <exclude reference="uUS-N9-yfQ"/>
-                        <exclude reference="C3O-EB-Ukv"/>
-                        <exclude reference="LIu-QC-g2o"/>
-                        <exclude reference="YxK-eU-9Yc"/>
-                        <exclude reference="Yz7-Bs-YRz"/>
-                        <exclude reference="bTh-7C-2c9"/>
+                        <exclude reference="Nb5-Gc-wNI"/>
+                        <exclude reference="Pxc-Te-psl"/>
+                        <exclude reference="dJW-4F-Oub"/>
+                        <exclude reference="IYq-m8-Qv3"/>
+                        <exclude reference="WHj-LH-CV8"/>
+                        <exclude reference="1aW-Ed-vSf"/>
+                        <exclude reference="8Zh-Rc-FC4"/>
+                        <exclude reference="vhQ-0L-aJL"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -247,7 +247,7 @@
                 <outlet property="startLocationLabel" destination="89N-BC-108" id="EeO-Rw-dc7"/>
                 <outlet property="startLocationWidthConstraint" destination="SnB-bT-bUn" id="JHa-SY-I99"/>
             </connections>
-            <point key="canvasLocation" x="1448.5" y="385"/>
+            <point key="canvasLocation" x="1042" y="200"/>
         </tableViewCell>
     </objects>
     <resources>

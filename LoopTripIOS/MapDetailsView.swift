@@ -79,6 +79,8 @@ class MapDetailsView: UIView {
     }
     
     func setData(trip: LoopTrip, rowIndex: Int, sampleTrip: Bool) {
+        self.rowIndex = rowIndex
+
         if (!sampleTrip) {
             sampleTripIndicator.isHidden = true
         }
@@ -169,14 +171,22 @@ class MapDetailsView: UIView {
     }
     
     private func adjustLocationLabelConstraints() {
+        // This table has a fixed layout and font size. A better approach to respect accessibility would be to respond
+        // to the UIContentSizeCategoryDidChange notification and map the new size category to an appropriate size in
+        // the custom font used here.
+
         let startLabelWidth = createAttributedString(text: self.startLocationLabel.text!, textSize: 16.0).widthWithConstrainedHeight(height: 18.0)
         let endLabelWidth = createAttributedString(text: self.endLocationLabel.text!, textSize: 16.0).widthWithConstrainedHeight(height: 18.0)
         let distanceLabelWidth = createAttributedString(text: self.locationDistance.text!, textSize: 12.0).widthWithConstrainedHeight(height: 12.0)
         let cellWidthRemaining = 100
             + self.startLocationIconWidthConstraint.constant + 5
             + self.endLocationIconWidthConstraint.constant + 5
-        let totalLabelsWidth = CGFloat.init(self.bounds.size.width - (distanceLabelWidth + cellWidthRemaining))
+        let totalLabelsWidth = CGFloat(self.frame.size.width - (distanceLabelWidth + cellWidthRemaining))
         let singleLabelWidth = (totalLabelsWidth / 2)
+        
+        
+NSLog("mapDetailsView width \(self.frame.size.width)")
+        
         
         if (self.endLocationLabel.isHidden == true) {
             if (startLabelWidth < totalLabelsWidth) {
@@ -234,6 +244,6 @@ class MapDetailsView: UIView {
             NSFontAttributeName: UIFont(name: "Menlo", size: textSize)!,
             ]
         
-        return NSAttributedString.init(string: text, attributes: linkAttributes)
+        return NSAttributedString(string: text, attributes: linkAttributes)
     }
 }

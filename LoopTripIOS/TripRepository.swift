@@ -42,31 +42,30 @@ public class TripRepository {
         }
         return tableDataCopy
     }
+    private var newTableData: TripDataModel = []
     
     func loadData(loadDataCompletion: @escaping () -> Void) {
         let dispatchGroupTrip = DispatchGroup()
         dispatchGroupTrip.enter()
 
+        NSLog("Calling LoopSDK.syncManager.getTrips")
+
         LoopSDK.syncManager.getTrips(20, callback: {
             (loopTrips:[LoopTrip]) in
             
-            self.concurrentTripQueue.sync(flags: .barrier) {
-                self._tableData.removeAll()
-            }
+            NSLog("Returned from LoopSDK.syncManager.getTrips")
+
+            self.newTableData.removeAll()
             
             if loopTrips.isEmpty {
                 let sampleTrips = JSONUtils.loadSampleTripData(sampleName: "SampleTrips")
                 for trip in sampleTrips {
-                    self.concurrentTripQueue.sync(flags: .barrier) {
-                        self._tableData.append((isSample: true, data: trip))
-                    }
+                    self.newTableData.append((isSample: true, data: trip))
                 }
             } else {
                 NSLog("Loop SDK returned \(loopTrips.count) trips")
                 for trip in loopTrips {
-                    self.concurrentTripQueue.sync(flags: .barrier) {
-                        self._tableData.append((isSample: false, data: trip))
-                    }
+                    self.newTableData.append((isSample: false, data: trip))
                 }
             }
             
@@ -77,10 +76,23 @@ public class TripRepository {
             loadDataCompletion()
         })
     }
-
+    
+    func updateData() {
+        self.concurrentTripQueue.sync {
+            self._tableData.removeAll()
+            self._tableData = self.newTableData
+        }
+    }
+    
     func removeData(index: Int) {
-        self.concurrentTripQueue.sync(flags: .barrier) {
+        self.concurrentTripQueue.sync {
             _ = self._tableData.remove(at: index)
+        }
+    }
+
+    func removeAllData() {
+        self.concurrentTripQueue.sync {
+            self._tableData.removeAll()
         }
     }
 }

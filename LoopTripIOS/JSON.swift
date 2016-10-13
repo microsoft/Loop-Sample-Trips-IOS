@@ -59,7 +59,7 @@ class JSONUtils {
             userId: jsonTrip["userId"] as! String,
             path: (jsonTrip["path"] as! [[String: AnyObject]]).map { serverPoint in
                 return LoopTripPoint(
-                    coordinate: CLLocationCoordinate2D.init(
+                    coordinate: CLLocationCoordinate2D(
                         latitude: serverPoint["latDegrees"] as! CLLocationDegrees,
                         longitude: serverPoint["longDegrees"] as! CLLocationDegrees),
                     accuracy: serverPoint["accuracyMeters"] as! Double,

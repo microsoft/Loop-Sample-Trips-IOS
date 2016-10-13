@@ -42,6 +42,7 @@ public class KnownLocationRepository {
         }
         return locationsEntityIdMapCopy
     }
+    private var newLocationsEntityIdMap: KnownLocationDataModel = [:]
     
     func loadData(loadDataCompletion: @escaping () -> Void) {
         let dispatchGroupKnownLocation = DispatchGroup()
@@ -50,9 +51,7 @@ public class KnownLocationRepository {
         LoopSDK.syncManager.getProfileLocations {
             (loopLocations:[LoopLocation]) in
             
-            self.concurrentKnownLocationQueue.sync {
-                self._locationsEntityIdMap.removeAll()
-            }
+            self.newLocationsEntityIdMap.removeAll()
             
             if !loopLocations.isEmpty {
                 NSLog("Loop SDK returned \(loopLocations.count) known locations")
@@ -69,9 +68,7 @@ public class KnownLocationRepository {
                         }
                     }
                     
-                    self.concurrentKnownLocationQueue.sync {
-                        self._locationsEntityIdMap[location.entityId] = knownLocationName
-                    }
+                    self.newLocationsEntityIdMap[location.entityId] = knownLocationName
                 }
             }
             
@@ -91,5 +88,18 @@ public class KnownLocationRepository {
         }
         
         return "unknown"
+    }
+    
+    func updateData() {
+        self.concurrentKnownLocationQueue.sync {
+            self._locationsEntityIdMap.removeAll()
+            self._locationsEntityIdMap = self.newLocationsEntityIdMap
+        }
+    }
+    
+    func removeAllData() {
+        self.concurrentKnownLocationQueue.sync {
+            self._locationsEntityIdMap.removeAll()
+        }
     }
 }
